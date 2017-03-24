@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import './App.css';
 
-const SignedInNav = () => {
+const SignedInNav = (props) => {
   return (
     <nav>
       <ul>
@@ -9,28 +9,28 @@ const SignedInNav = () => {
         <li>JobOrNot</li>
         <li>How It Works</li>
         <li>Profile</li>
-        <li>Sign Out</li>
+        <li>{props.button}</li>
       </ul>
     </nav>
   )
 }
 
-const SignedOutNav = () => {
+const SignedOutNav = (props) => {
   return (
     <nav>
       <ul>
         <li><img src="http://placehold.it/50x50" alt='logo'/></li>
         <li>JobOrNot</li>
         <li>How It Works</li>
-        <li>Sign In</li>
+        <li>{props.button}</li>
       </ul>
     </nav>
   )
 }
 
 const Nav = (props) => {
-  if(props.signedIn) return (<SignedInNav />)
-  else if (!props.signedIn) return (<SignedOutNav />)
+  if(props.signedIn) return (<SignedInNav button={props.button}/>)
+  else if (!props.signedIn) return (<SignedOutNav button={props.button} />)
 };
 
 const Welcome = () => {
@@ -88,11 +88,10 @@ class App extends Component {
 
   
   render() {
-
     return (
       <div>
-        <Nav signedIn={this.state.signedIn}/>
-        <button onClick={this.onSignIn}>sign in/out</button>
+        <Nav signedIn={this.state.signedIn} button={<button onClick={this.onSignIn}>sign in/out</button>}/>
+        {/*<button onClick={this.onSignIn}>sign in/out</button>*/}
         <Welcome />
         <RecruiterIntro />
         <SeekerIntro />

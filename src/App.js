@@ -82,7 +82,8 @@ class App extends Component {
   }
 
   onSignIn = () => {
-    this.setState({ signedIn: true});
+    if(!this.state.signedIn) this.setState({ signedIn: true})
+    else this.setState({ signedIn: false})
   }
 
   
@@ -91,7 +92,7 @@ class App extends Component {
     return (
       <div>
         <Nav signedIn={this.state.signedIn}/>
-        <button onClick={this.onSignIn}>sign in </button>
+        <button onClick={this.onSignIn}>sign in/out</button>
         <Welcome />
         <RecruiterIntro />
         <SeekerIntro />

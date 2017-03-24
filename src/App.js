@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router.
+  Route,
+  Link,
+  Switch
+} from 'react-router-dom';
 // import './App.css';
 
 import SignedInNav from './components/navbar/SignedInNav';
@@ -25,14 +31,15 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Nav signedIn={this.state.signedIn} button={<button onClick={this.onSignIn}>sign in/out</button>}/>
-        {/*<button onClick={this.onSignIn}>sign in/out</button>*/}
-        <Welcome />
-        <RecruiterIntro />
-        <SeekerIntro />
-        <Footer />
-      </div>
+      <Router>
+        <div>
+          <Nav signedIn={this.state.signedIn} button={<button onClick={this.onSignIn}>sign in/out</button>}/>
+          <Welcome />
+          <RecruiterIntro />
+          <SeekerIntro />
+          <Footer />
+        </div>
+      </Router>
     );
   }
 }

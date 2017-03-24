@@ -25,9 +25,10 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <Home signedIn={this.state.signedIn} onSignIn={this.onSignIn}/>
-        </div>
+
+        <Switch>
+          <Route exact path='/' render={(props)=> <Home {...props} signedIn={this.state.signedIn} onSignIn={this.onSignIn}/>} />
+        </Switch>
       </Router>
     );
   }

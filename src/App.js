@@ -1,19 +1,12 @@
 import React, { Component } from 'react';
 import {
-  BrowserRouter as Router.
+  BrowserRouter as Router,
   Route,
   Link,
   Switch
 } from 'react-router-dom';
-// import './App.css';
 
-import SignedInNav from './components/navbar/SignedInNav';
-import SignedOutNav from './components/navbar/SignedOutNav';
-import Nav from './components/navbar/Nav';
-import Welcome from './components/home/Welcome';
-import RecruiterIntro from './components/home/RecruiterIntro';
-import SeekerIntro from './components/home/SeekerIntro';
-import Footer from './components/footer';
+import Home from './components/home/Home';
 
 class App extends Component {
   constructor(props){
@@ -33,11 +26,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Nav signedIn={this.state.signedIn} button={<button onClick={this.onSignIn}>sign in/out</button>}/>
-          <Welcome />
-          <RecruiterIntro />
-          <SeekerIntro />
-          <Footer />
+          <Home signedIn={this.state.signedIn} onSignIn={this.onSignIn}/>
         </div>
       </Router>
     );

@@ -1,76 +1,13 @@
 import React, { Component } from 'react';
 // import './App.css';
 
-const SignedInNav = (props) => {
-  return (
-    <nav>
-      <ul>
-        <li><img src="http://placehold.it/50x50" alt='logo' /></li>
-        <li>JobOrNot</li>
-        <li>How It Works</li>
-        <li>Profile</li>
-        <li>{props.button}</li>
-      </ul>
-    </nav>
-  )
-}
-
-const SignedOutNav = (props) => {
-  return (
-    <nav>
-      <ul>
-        <li><img src="http://placehold.it/50x50" alt='logo'/></li>
-        <li>JobOrNot</li>
-        <li>How It Works</li>
-        <li>{props.button}</li>
-      </ul>
-    </nav>
-  )
-}
-
-const Nav = (props) => {
-  if(props.signedIn) return (<SignedInNav button={props.button}/>)
-  else if (!props.signedIn) return (<SignedOutNav button={props.button} />)
-};
-
-const Welcome = () => {
-  return (
-    <div>
-      <p>Welcome message from JobOrNot</p>
-    </div>
-  )
-}
-
-const RecruiterIntro = () => {
-  return (
-    <div>
-      <p>
-        Recruiter instructions here
-      </p>
-      <button>button to sign up</button>
-    </div>
-  )
-}
-
-const SeekerIntro = () => {
-  return (
-    <div>
-      <p>
-        Seeker instructions here
-      </p>
-      <button>button to sign up</button>
-    </div>
-  )
-}
-
-const Footer = () => {
-  return (
-    <ul>
-      <li>&copy; Copyright Team Banana/Guava 2017</li>
-      <li>About</li>
-    </ul>
-  )
-}
+import SignedInNav from './components/navbar/SignedInNav';
+import SignedOutNav from './components/navbar/SignedOutNav';
+import Nav from './components/navbar/Nav';
+import Welcome from './components/home/Welcome';
+import RecruiterIntro from './components/home/RecruiterIntro';
+import SeekerIntro from './components/home/SeekerIntro';
+import Footer from './components/footer';
 
 class App extends Component {
   constructor(props){
@@ -86,7 +23,6 @@ class App extends Component {
     else this.setState({ signedIn: false})
   }
 
-  
   render() {
     return (
       <div>

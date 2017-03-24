@@ -33,6 +33,45 @@ const Nav = (props) => {
   else if (!props.signedIn) return (<SignedOutNav />)
 };
 
+const Welcome = () => {
+  return (
+    <div>
+      <p>Welcome message from JobOrNot</p>
+    </div>
+  )
+}
+
+const RecruiterIntro = () => {
+  return (
+    <div>
+      <p>
+        Recruiter instructions here
+      </p>
+      <button>button to sign up</button>
+    </div>
+  )
+}
+
+const SeekerIntro = () => {
+  return (
+    <div>
+      <p>
+        Seeker instructions here
+      </p>
+      <button>button to sign up</button>
+    </div>
+  )
+}
+
+const Footer = () => {
+  return (
+    <ul>
+      <li>&copy; Copyright Team Banana/Guava 2017</li>
+      <li>About</li>
+    </ul>
+  )
+}
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -53,6 +92,10 @@ class App extends Component {
       <div>
         <Nav signedIn={this.state.signedIn}/>
         <button onClick={this.onSignIn}>sign in </button>
+        <Welcome />
+        <RecruiterIntro />
+        <SeekerIntro />
+        <Footer />
       </div>
     );
   }

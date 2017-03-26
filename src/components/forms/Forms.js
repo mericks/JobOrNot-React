@@ -14,8 +14,8 @@ class Forms extends Component {
             jobTitleToFill: '',
             jobCompanyToFill: '',
             resume: '',
-            // skills: [],
-            // locations: [],
+            skills: '',
+            locations: ''
         };
 
         this.handleFormSignUp = this.handleFormSignUp.bind(this);
@@ -30,6 +30,8 @@ class Forms extends Component {
         this.handleJobTitleToFillChange = this.handleJobTitleToFillChange.bind(this);
         this.handleJobCompanyToFillChange = this.handleJobCompanyToFillChange.bind(this);
         this.handleResumeChange = this.handleResumeChange.bind(this);
+        this.handleSkillsChange = this.handleSkillsChange.bind(this);
+        this.handleLocationsChange = this.handleLocationsChange.bind(this);
     }
 
     // componentDidMount() {
@@ -52,12 +54,11 @@ class Forms extends Component {
             email: this.state.email,
             password: this.state.password,
             company: this.state.company,
-            jobTitleToFill: '',
-            jobCompanyToFill: '',
-            resume: '',
-            // skills: [],
-            // locations: [],
-
+            jobTitleToFill: this.state.jobTitleToFill,
+            jobCompanyToFill: this.state.jobCompanyToFill,
+            resume: this.state.resume,
+            skills: this.state.skills,
+            locations: this.state.locations
         };
 
         console.log('to be sent to DB - formPayload:', formPayload);
@@ -80,8 +81,8 @@ class Forms extends Component {
             jobTitleToFill: '',
             jobCompanyToFill: '',
             resume: '',
-            // skills: [],
-            // locations: [],
+            skills: '',
+            locations: '',
         })
     }
 
@@ -121,7 +122,14 @@ class Forms extends Component {
         this.setState({ resume: e.target.value }, () => console.log('Resume: ', this.state.resume));
     }
 
+    handleSkillsChange(e) {
+        this.setState({ skills: e.target.value }, () => console.log('Skills: ', this.state.skills));
+    }
 
+    handleLocationsChange(e) {
+        this.setState({ locations: e.target.value }, () => console.log('Locations: ', this.state.locations));
+    }
+ 
     render() {
         return (
             <form onSubmit={this.handleFormSignUp}>
@@ -189,7 +197,20 @@ class Forms extends Component {
                     content={this.state.resume}
                     controlFunc={this.handleResumeChange}
                     placeholder={'Holding box for resume uploads'} />
-
+                <SingleInput 
+                    title={'Skills'}
+                    name={'skills'}
+                    inputType={'text'}
+                    content={this.state.skills}
+                    controlFunc={this.handleSkillsChange}
+                    placeholder={'Top Skills'} />
+                <SingleInput 
+                    title={'Locations'}
+                    name={'locations'}
+                    inputType={'text'}
+                    content={this.state.locations}
+                    controlFunc={this.handleLocationsChange}
+                    placeholder={'Locations'} />
                 <button onClick={this.handleFormClear}>
                     Clear Form
                 </button>

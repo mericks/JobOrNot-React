@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-// import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch
+} from 'react-router-dom';
 
-import SignedInNav from './components/navbar/SignedInNav';
-import SignedOutNav from './components/navbar/SignedOutNav';
-import Nav from './components/navbar/Nav';
-import Welcome from './components/home/Welcome';
-import RecruiterIntro from './components/home/RecruiterIntro';
-import SeekerIntro from './components/home/SeekerIntro';
-import Footer from './components/footer';
+import Home from './components/home/Home';
 
 class App extends Component {
   constructor(props){
@@ -25,14 +24,12 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Nav signedIn={this.state.signedIn} button={<button onClick={this.onSignIn}>sign in/out</button>}/>
-        {/*<button onClick={this.onSignIn}>sign in/out</button>*/}
-        <Welcome />
-        <RecruiterIntro />
-        <SeekerIntro />
-        <Footer />
-      </div>
+      <Router>
+
+        <Switch>
+          <Route exact path='/' render={(props)=> <Home {...props} signedIn={this.state.signedIn} onSignIn={this.onSignIn}/>} />
+        </Switch>
+      </Router>
     );
   }
 }

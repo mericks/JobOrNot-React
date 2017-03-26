@@ -7,7 +7,7 @@ class Forms extends Component {
         this.state = {
             firstName: '',
             lastName: '',
-            // userName: '',
+            userName: '',
             // email: '',
             // password: '',
             // company: '',
@@ -21,6 +21,7 @@ class Forms extends Component {
         this.handleFormClear = this.handleFormClear.bind(this);
         this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
         this.handleLastNameChange = this.handleLastNameChange.bind(this);
+        this.handleUserNameChange = this.handleUserNameChange.bind(this);
     }
 
     // componentDidMount() {
@@ -39,6 +40,7 @@ class Forms extends Component {
         const formPayload = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
+            userName: this.state.userName,
         };
 
         console.log('to be sent to DB - formPayload:', formPayload);
@@ -54,7 +56,7 @@ class Forms extends Component {
         this.setState({
             firstName: '',
             lastName: '',
-            // userName: '',
+            userName: '',
             // email: '',
             // password: '',
             // company: '',
@@ -70,6 +72,10 @@ class Forms extends Component {
 
     handleLastNameChange(e) {
         this.setState({ lastName: e.target.value }, () => console.log('Last Name: ', this.state.lastName));
+    }
+
+    handleUserNameChange(e) {
+        this.setState({ userName: e.target.value }, () => console.log('User Name: ', this.state.userName));
     }
 
 
@@ -91,6 +97,13 @@ class Forms extends Component {
                     content={this.state.lastName}
                     controlFunc={this.handleLastNameChange}
                     placeholder={'Last Name'} />
+                <SingleInput 
+                    title={'User Name'}
+                    name={'userName'}
+                    inputType={'text'}
+                    content={this.state.userName}
+                    controlFunc={this.handleUserNameChange}
+                    placeholder={'Select a User Name'} />
 
                 <input 
                     type='submit'

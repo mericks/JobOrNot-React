@@ -9,7 +9,7 @@ class Forms extends Component {
             lastName: '',
             userName: '',
             email: '',
-            // password: '',
+            password: '',
             // company: '',
             // resume: '',
             // skills: [],
@@ -23,6 +23,7 @@ class Forms extends Component {
         this.handleLastNameChange = this.handleLastNameChange.bind(this);
         this.handleUserNameChange = this.handleUserNameChange.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
     }
 
     // componentDidMount() {
@@ -43,6 +44,7 @@ class Forms extends Component {
             lastName: this.state.lastName,
             userName: this.state.userName,
             email: this.state.email,
+            password: this.state.password,
         };
 
         console.log('to be sent to DB - formPayload:', formPayload);
@@ -60,7 +62,7 @@ class Forms extends Component {
             lastName: '',
             userName: '',
             email: '',
-            // password: '',
+            password: '',
             // company: '',
             // resume: '',
             // skills: [],
@@ -82,6 +84,10 @@ class Forms extends Component {
 
     handleEmailChange(e) {
         this.setState({ email: e.target.value }, () => console.log('Email: ', this.state.email));
+    }
+
+    handlePasswordChange(e) {
+        this.setState({ password: e.target.value }, () => console.log('Password: ', this.state.password));
     }
 
 
@@ -117,6 +123,13 @@ class Forms extends Component {
                     content={this.state.email}
                     controlFunc={this.handleEmailChange}
                     placeholder={'Email Address'} />
+                <SingleInput 
+                    title={'Password'}
+                    name={'password'}
+                    inputType={'text'}
+                    content={this.state.password}
+                    controlFunc={this.handlePasswordChange}
+                    placeholder={'Select a Password'} />
 
                 <input 
                     type='submit'

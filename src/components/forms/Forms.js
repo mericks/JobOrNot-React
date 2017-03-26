@@ -10,7 +10,9 @@ class Forms extends Component {
             userName: '',
             email: '',
             password: '',
-            // company: '',
+            company: '',
+            // jobTitleToFill: '',
+            // jobCompanyToFill: '',
             // resume: '',
             // skills: [],
             // locations: [],
@@ -24,6 +26,7 @@ class Forms extends Component {
         this.handleUserNameChange = this.handleUserNameChange.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.handleCompanyChange = this.handleCompanyChange.bind(this);
     }
 
     // componentDidMount() {
@@ -45,6 +48,13 @@ class Forms extends Component {
             userName: this.state.userName,
             email: this.state.email,
             password: this.state.password,
+            company: this.state.company,
+            // jobTitleToFill: '',
+            // jobCompanyToFill: '',
+            // resume: '',
+            // skills: [],
+            // locations: [],
+
         };
 
         console.log('to be sent to DB - formPayload:', formPayload);
@@ -63,7 +73,9 @@ class Forms extends Component {
             userName: '',
             email: '',
             password: '',
-            // company: '',
+            company: '',
+            // jobTitleToFill: '',
+            // jobCompanyToFill: '',
             // resume: '',
             // skills: [],
             // locations: [],
@@ -88,6 +100,10 @@ class Forms extends Component {
 
     handlePasswordChange(e) {
         this.setState({ password: e.target.value }, () => console.log('Password: ', this.state.password));
+    }
+
+    handleCompanyChange(e) {
+        this.setState({ company: e.target.value }, () => console.log('Company: ', this.state.company));
     }
 
 
@@ -130,13 +146,20 @@ class Forms extends Component {
                     content={this.state.password}
                     controlFunc={this.handlePasswordChange}
                     placeholder={'Select a Password'} />
-
-                <input 
-                    type='submit'
-                    value='submit'/>
+                <SingleInput 
+                    title={'Company'}
+                    name={'company'}
+                    inputType={'text'}
+                    content={this.state.company}
+                    controlFunc={this.handleCompanyChange}
+                    placeholder={'Company'} />
+                    
                 <button onClick={this.handleFormClear}>
                     Clear Form
                 </button>
+                <input 
+                    type='submit'
+                    value='submit'/>
             </form>
         );
     };

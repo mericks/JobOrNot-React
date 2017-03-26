@@ -1,0 +1,83 @@
+import React, { Component } from 'react';
+import SingleInput from './SingleInput';
+
+class Forms extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            firstName: '',
+            // lastName: '',
+            // userName: '',
+            // email: '',
+            // password: '',
+            // company: '',
+            // resume: '',
+            // skills: [],
+            // locations: [],
+        };
+
+        this.handleFormSignUp = this.handleFormSignUp.bind(this);
+        // this.handleFormUpdate = this.handleFormUpdate.bind(this);
+        this.handleFormClear = this.handleFormClear.bind(this);
+        this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
+    }
+
+    // componentDidMount() {
+    //     fetch('./fetchToDB')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             this.setState({
+    //                 firstName: data.firstName
+    //             });
+    //         });
+    // };
+
+    handleFormSignUp(e) {
+        e.preventDefault();
+
+        const formPayload = {
+            firstName: this.state.firstName
+        };
+
+        console.log('to be sent to DB - formPayload:', formPayload);
+        // this.handleFormClear(e);
+    }
+
+    // handleFormUpdate() {
+    //     // update form logic goes here
+    // }
+
+    handleFormClear(e) {
+        e.preventDefault();
+        this.setState({
+            firstName: ''
+        })
+    }
+
+    handleFirstNameChange(e) {
+        this.setState({ firstName: e.target.value }, () => console.log('First Name: ', this.state.firstName));
+    }
+
+    render() {
+        return (
+            <form onSubmit={this.handleFormSignUp}>
+                <h1>THIS FORM SIGNS UP</h1>
+                <SingleInput 
+                    title={'First Name'}
+                    name={'firstName'}
+                    inputType={'text'}
+                    content={this.state.firstName}
+                    controlFunc={this.handleFirstNameChange}
+                    placeholder={'First Name'} />
+                <input 
+                    type='submit'
+                    value='submit'/>
+                <button onClick={this.handleFormClear}>
+                    Clear Form
+                </button>
+            </form>
+        );
+    };
+}
+
+export default Forms;

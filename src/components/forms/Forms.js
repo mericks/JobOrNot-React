@@ -12,7 +12,7 @@ class Forms extends Component {
             password: '',
             company: '',
             jobTitleToFill: '',
-            // jobCompanyToFill: '',
+            jobCompanyToFill: '',
             // resume: '',
             // skills: [],
             // locations: [],
@@ -28,6 +28,7 @@ class Forms extends Component {
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleCompanyChange = this.handleCompanyChange.bind(this);
         this.handleJobTitleToFillChange = this.handleJobTitleToFillChange.bind(this);
+        this.handleJobCompanyToFillChange = this.handleJobCompanyToFillChange.bind(this);
     }
 
     // componentDidMount() {
@@ -51,7 +52,7 @@ class Forms extends Component {
             password: this.state.password,
             company: this.state.company,
             jobTitleToFill: '',
-            // jobCompanyToFill: '',
+            jobCompanyToFill: '',
             // resume: '',
             // skills: [],
             // locations: [],
@@ -76,7 +77,7 @@ class Forms extends Component {
             password: '',
             company: '',
             jobTitleToFill: '',
-            // jobCompanyToFill: '',
+            jobCompanyToFill: '',
             // resume: '',
             // skills: [],
             // locations: [],
@@ -109,6 +110,10 @@ class Forms extends Component {
     
     handleJobTitleToFillChange(e) {
         this.setState({ jobTitleToFill: e.target.value }, () => console.log('Job Title to Fill: ', this.state.jobTitleToFill));
+    }
+
+    handleJobCompanyToFillChange(e) {
+        this.setState({ jobCompanyToFill: e.target.value }, () => console.log('Job Company to Fill: ', this.state.jobCompanyToFill));
     }
 
 
@@ -160,11 +165,19 @@ class Forms extends Component {
                     placeholder={'Company'} />
                 <SingleInput 
                     title={'Title of Role You are Working to Fill'}
-                    name={'jobCompanyToFill'}
+                    name={'jobTitleToFill'}
                     inputType={'text'}
                     content={this.state.jobTitleToFill}
                     controlFunc={this.handleJobTitleToFillChange}
                     placeholder={'Job Title'} />
+                <SingleInput 
+                    title={'Company for Role You are Working to Fill'}
+                    name={'jobCompanyToFill'}
+                    inputType={'text'}
+                    content={this.state.jobCompanyToFill}
+                    controlFunc={this.handleJobCompanyToFillChange}
+                    placeholder={'Hiring Company'} />
+
 
                 <button onClick={this.handleFormClear}>
                     Clear Form

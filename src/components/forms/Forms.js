@@ -13,7 +13,7 @@ class Forms extends Component {
             company: '',
             jobTitleToFill: '',
             jobCompanyToFill: '',
-            // resume: '',
+            resume: '',
             // skills: [],
             // locations: [],
         };
@@ -29,6 +29,7 @@ class Forms extends Component {
         this.handleCompanyChange = this.handleCompanyChange.bind(this);
         this.handleJobTitleToFillChange = this.handleJobTitleToFillChange.bind(this);
         this.handleJobCompanyToFillChange = this.handleJobCompanyToFillChange.bind(this);
+        this.handleResumeChange = this.handleResumeChange.bind(this);
     }
 
     // componentDidMount() {
@@ -53,7 +54,7 @@ class Forms extends Component {
             company: this.state.company,
             jobTitleToFill: '',
             jobCompanyToFill: '',
-            // resume: '',
+            resume: '',
             // skills: [],
             // locations: [],
 
@@ -78,7 +79,7 @@ class Forms extends Component {
             company: '',
             jobTitleToFill: '',
             jobCompanyToFill: '',
-            // resume: '',
+            resume: '',
             // skills: [],
             // locations: [],
         })
@@ -114,6 +115,10 @@ class Forms extends Component {
 
     handleJobCompanyToFillChange(e) {
         this.setState({ jobCompanyToFill: e.target.value }, () => console.log('Job Company to Fill: ', this.state.jobCompanyToFill));
+    }
+
+    handleResumeChange(e) {
+        this.setState({ resume: e.target.value }, () => console.log('Resume: ', this.state.resume));
     }
 
 
@@ -177,7 +182,13 @@ class Forms extends Component {
                     content={this.state.jobCompanyToFill}
                     controlFunc={this.handleJobCompanyToFillChange}
                     placeholder={'Hiring Company'} />
-
+                <SingleInput 
+                    title={'Resume'}
+                    name={'resume'}
+                    inputType={'text'}
+                    content={this.state.resume}
+                    controlFunc={this.handleResumeChange}
+                    placeholder={'Holding box for resume uploads'} />
 
                 <button onClick={this.handleFormClear}>
                     Clear Form

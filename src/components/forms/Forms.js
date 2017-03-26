@@ -8,7 +8,7 @@ class Forms extends Component {
             firstName: '',
             lastName: '',
             userName: '',
-            // email: '',
+            email: '',
             // password: '',
             // company: '',
             // resume: '',
@@ -22,6 +22,7 @@ class Forms extends Component {
         this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
         this.handleLastNameChange = this.handleLastNameChange.bind(this);
         this.handleUserNameChange = this.handleUserNameChange.bind(this);
+        this.handleEmailChange = this.handleEmailChange.bind(this);
     }
 
     // componentDidMount() {
@@ -41,6 +42,7 @@ class Forms extends Component {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             userName: this.state.userName,
+            email: this.state.email,
         };
 
         console.log('to be sent to DB - formPayload:', formPayload);
@@ -57,7 +59,7 @@ class Forms extends Component {
             firstName: '',
             lastName: '',
             userName: '',
-            // email: '',
+            email: '',
             // password: '',
             // company: '',
             // resume: '',
@@ -76,6 +78,10 @@ class Forms extends Component {
 
     handleUserNameChange(e) {
         this.setState({ userName: e.target.value }, () => console.log('User Name: ', this.state.userName));
+    }
+
+    handleEmailChange(e) {
+        this.setState({ email: e.target.value }, () => console.log('Email: ', this.state.email));
     }
 
 
@@ -104,6 +110,13 @@ class Forms extends Component {
                     content={this.state.userName}
                     controlFunc={this.handleUserNameChange}
                     placeholder={'Select a User Name'} />
+                <SingleInput 
+                    title={'Email Address'}
+                    name={'email'}
+                    inputType={'text'}
+                    content={this.state.email}
+                    controlFunc={this.handleEmailChange}
+                    placeholder={'Email Address'} />
 
                 <input 
                     type='submit'

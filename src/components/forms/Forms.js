@@ -6,7 +6,7 @@ class Forms extends Component {
         super(props);
         this.state = {
             firstName: '',
-            // lastName: '',
+            lastName: '',
             // userName: '',
             // email: '',
             // password: '',
@@ -20,6 +20,7 @@ class Forms extends Component {
         // this.handleFormUpdate = this.handleFormUpdate.bind(this);
         this.handleFormClear = this.handleFormClear.bind(this);
         this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
+        this.handleLastNameChange = this.handleLastNameChange.bind(this);
     }
 
     // componentDidMount() {
@@ -36,11 +37,12 @@ class Forms extends Component {
         e.preventDefault();
 
         const formPayload = {
-            firstName: this.state.firstName
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
         };
 
         console.log('to be sent to DB - formPayload:', formPayload);
-        // this.handleFormClear(e);
+        this.handleFormClear(e);
     }
 
     // handleFormUpdate() {
@@ -50,13 +52,26 @@ class Forms extends Component {
     handleFormClear(e) {
         e.preventDefault();
         this.setState({
-            firstName: ''
+            firstName: '',
+            lastName: '',
+            // userName: '',
+            // email: '',
+            // password: '',
+            // company: '',
+            // resume: '',
+            // skills: [],
+            // locations: [],
         })
     }
 
     handleFirstNameChange(e) {
         this.setState({ firstName: e.target.value }, () => console.log('First Name: ', this.state.firstName));
     }
+
+    handleLastNameChange(e) {
+        this.setState({ lastName: e.target.value }, () => console.log('Last Name: ', this.state.lastName));
+    }
+
 
     render() {
         return (
@@ -69,6 +84,14 @@ class Forms extends Component {
                     content={this.state.firstName}
                     controlFunc={this.handleFirstNameChange}
                     placeholder={'First Name'} />
+                <SingleInput 
+                    title={'Last Name'}
+                    name={'lastName'}
+                    inputType={'text'}
+                    content={this.state.lastName}
+                    controlFunc={this.handleLastNameChange}
+                    placeholder={'Last Name'} />
+
                 <input 
                     type='submit'
                     value='submit'/>

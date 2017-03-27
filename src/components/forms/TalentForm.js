@@ -33,7 +33,7 @@ class TalentForm extends Component {
     //         });
     // };
 
-    handleFormSignUp(e) {
+    handleFormSignUp(e, props) {
         e.preventDefault();
 
         const formPayload = {
@@ -47,6 +47,7 @@ class TalentForm extends Component {
             locations: this.state.locations
         };
 
+        this.props.signUp(formPayload);
         console.log('to be sent to DB - formPayload:', formPayload);
         // this.handleFormClear(e);
     }

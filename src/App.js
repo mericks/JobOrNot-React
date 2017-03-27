@@ -13,12 +13,13 @@ class App extends Component {
     super(props);
     this.state = {
       signedIn: false,
-      token: false, 
+      token: 'PRESENT FOR BACKEND DEVS', 
       recruiter: {},
       talent: {},
     }
     this.onSignIn = this.onSignIn.bind(this);
     this.onRecruiterSignUp = this.onRecruiterSignUp.bind(this);
+    this.onTalentSignUp = this.onTalentSignUp.bind(this);
   }
 
   onSignIn = () => {
@@ -31,13 +32,18 @@ class App extends Component {
     // direct to recruiter profile page
   }
 
+  onTalentSignUp = (formPayload) => {
+    this.setState({ talent: formPayload, signedIn: true});
+    // direct to talent profile page
+  }
+
   render() {
     return (
       <Router>
         <div>
           <Route exact path='/' render={(props) => <Home {...props} signedIn={this.state.signedIn} onSignIn={this.onSignIn}/>} />
           <Route exact path='/recruitersignup' render={(props) => <RecruiterForm {...props} signUp={this.onRecruiterSignUp} signedIn={this.state.signedIn} button={<button onClick={this.onSignIn}>sign in/out</button>} />  } />
-          <Route exact path='/talentsignup' render={(props) => <TalentForm {...props} signedIn={this.state.signedIn} button={<button onClick={this.onSignIn}>sign in/out</button>} />  } />
+          <Route exact path='/talentsignup' render={(props) => <TalentForm {...props} signUp={this.onTalentSignUp} signedIn={this.state.signedIn} button={<button onClick={this.onSignIn}>sign in/out</button>} />  } />
           <Route exact path='/signin' render={(props) => <SignInForm {...props} signedIn={this.state.signedIn} button={<button onClick={this.onSignIn}>sign in/out</button>} />  } />
         </div>
       </Router>

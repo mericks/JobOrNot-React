@@ -11,7 +11,7 @@ class TalentForm extends Component {
             lastName: '',
             userName: '',
             email: '',
-            password: '',
+            password: '',   // TODO: DON'T BRING PW BACK IN THE STATE. HANDLE IN BACKEND
             resume: '',
             skills: '',
             locations: ''
@@ -111,7 +111,7 @@ class TalentForm extends Component {
                     <SingleInput 
                         title={'Password'}
                         name={'password'}
-                        inputType={'text'}
+                        inputType={'password'}
                         content={this.state.password}
                         controlFunc={this.handleChange}
                         placeholder={'Select a Password'} />

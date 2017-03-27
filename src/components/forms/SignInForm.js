@@ -8,7 +8,7 @@ class SignInForm extends Component {
         super(props);
         this.state = {
             userName: '',
-            password: '',
+            password: '',   // TODO: DON'T BRING PW BACK IN THE STATE. HANDLE IN BACKEND
         };
 
         this.handleFormSignIn = this.handleFormSignIn.bind(this);
@@ -66,7 +66,7 @@ class SignInForm extends Component {
                     <SingleInput 
                         title={'Password'}
                         name={'password'}
-                        inputType={'text'}
+                        inputType={'password'}
                         content={this.state.password}
                         controlFunc={this.handleChange}
                         placeholder={'Select a Password'} />

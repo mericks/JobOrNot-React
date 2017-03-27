@@ -8,14 +8,14 @@ const SignedInNav = (props) => {
         <li>JobOrNot</li>
         <li>How It Works</li>
         <li>Profile</li>
-        <li>{props.button}</li>
+        <li>Welcome _name here_</li>
+        <li>Sign Out</li>
       </ul>
     </nav>
   )
 }
 
 SignedInNav.propTypes = {
-  button: PropTypes.node.isRequired,
 }
 
 export default SignedInNav;

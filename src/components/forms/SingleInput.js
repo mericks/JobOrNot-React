@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const SingleInput = (props) => {
     return(
@@ -14,15 +14,15 @@ const SingleInput = (props) => {
     )
 }
 
-// SingleInput.propTypes = {
-//     title: React.propTypes.string.isRequired,
-//     name: React.propTypes.string.isRequired,
-//     inputType: React.propTypes.oneOf(['text', 'number']).isRequired,
-//     content: React.propTypes.oneOfType([
-//         React.propTypes.string,
-//         React.propTypes.number,
-//     ]).isRequired,
-//     placeholder: React.propTypes.string.isRequired,
-// }
+SingleInput.propTypes = {
+    title: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    inputType: PropTypes.oneOf(['text', 'number']).isRequired,
+    content: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ]).isRequired,
+    placeholder: PropTypes.string.isRequired,
+}
 
 export default SingleInput;

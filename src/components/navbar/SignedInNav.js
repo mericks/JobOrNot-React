@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const SignedInNav = (props) => {
   return (
@@ -12,6 +12,10 @@ const SignedInNav = (props) => {
       </ul>
     </nav>
   )
+}
+
+SignedInNav.propTypes = {
+  button: PropTypes.node.isRequired,
 }
 
 export default SignedInNav;

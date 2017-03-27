@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
-import RecruiterForm from '../forms/RecruiterForm';
+import { Link } from 'react-router-dom';
 
 const RecruiterIntro = () => (
   <div>
@@ -8,8 +7,6 @@ const RecruiterIntro = () => (
       Recruiter instructions here
     </p>
     <Link to={`/recruitersignup`}><button>button to sign up</button></Link>
-
-    <Route path={`/recruitersignup`} component={RecruiterForm} />
   </div>
 )
 

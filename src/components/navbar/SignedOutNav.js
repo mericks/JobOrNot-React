@@ -13,4 +13,8 @@ const SignedOutNav = (props) => {
   )
 }
 
+SignedOutNav.propTypes = {
+  button: PropTypes.node.isRequired,
+}
+
 export default SignedOutNav;

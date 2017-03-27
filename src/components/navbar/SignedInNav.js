@@ -14,4 +14,8 @@ const SignedInNav = (props) => {
   )
 }
 
+SignedInNav.propTypes = {
+  button: PropTypes.node.isRequired,
+}
+
 export default SignedInNav;

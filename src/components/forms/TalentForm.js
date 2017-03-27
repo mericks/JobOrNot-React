@@ -75,7 +75,7 @@ class TalentForm extends Component {
     render() {
         return (  
             <form onSubmit={this.handleFormSignUp}>
-                <h1>THIS FORM SIGNS UP</h1>
+                <h1>THIS FORM SIGNS UP TALENT</h1>
                 <SingleInput 
                     title={'First Name'}
                     name={'firstName'}

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Home from './components/home/Home';
+import RecruiterForm from './components/forms/RecruiterForm';
+import TalentForm from './components/forms/TalentForm';
+
 
 class App extends Component {
   constructor(props){
@@ -25,10 +23,11 @@ class App extends Component {
   render() {
     return (
       <Router>
-
-        <Switch>
+        <div>
           <Route exact path='/' render={(props)=> <Home {...props} signedIn={this.state.signedIn} onSignIn={this.onSignIn}/>} />
-        </Switch>
+          <Route exact path='/recruitersignup' component={RecruiterForm} />
+          <Route exact path='/talentsignup' component={TalentForm} />
+        </div>
       </Router>
     );
   }

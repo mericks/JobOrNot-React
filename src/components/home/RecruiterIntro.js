@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const RecruiterIntro = () => {
-  return (
+const RecruiterIntro = () => (
     <div>
       <h2>Recruiters and hiring managers</h2>
       <p>
@@ -11,9 +11,8 @@ const RecruiterIntro = () => {
         the profile page to see the resume collections for individual postings and 
         contact the candidates for hire!
       </p>
-      <button>button to sign up</button>
+      <Link to={`/recruitersignup`}><button>button to sign up</button></Link>
     </div>
-  )
-}
+)
 
 export default RecruiterIntro;

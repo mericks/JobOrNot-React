@@ -38,10 +38,6 @@ class SignInForm extends Component {
         // this.handleFormClear(e);
     }
 
-    // handleFormUpdate() {
-    //     // update form logic goes here
-    // }
-
     handleFormClear(e) {
         e.preventDefault();
         this.setState({

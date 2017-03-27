@@ -3,13 +3,12 @@ import SignedInNav from './SignedInNav';
 import SignedOutNav from './SignedOutNav';
 
 const Nav = (props) => {
-  if(props.signedIn) return (<SignedInNav button={props.button}/>)
-  else if (!props.signedIn) return (<SignedOutNav button={props.button} />)
+  if(props.signedIn) return (<SignedInNav />)
+  else if (!props.signedIn) return (<SignedOutNav />)
 };
 
 Nav.propTypes = {
   signedIn: PropTypes.bool.isRequired,
-  button: PropTypes.node.isRequired,
 };
 
 export default Nav;

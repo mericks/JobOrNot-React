@@ -9,13 +9,18 @@ import Footer from '../footer';
 const Home = (props) => {
     return (
         <div>
-            <Nav signedIn={props.signedIn} button={<button onClick={props.onSignIn}>sign in/out</button>}/>
+            <Nav button={<button onClick={props.onSignIn}>sign in/out</button>}/>
             <Welcome />
             <RecruiterIntro />
             <TalentIntro />
             <Footer />
         </div> 
-    )
-}
+    );
+};
 
 export default Home;
+
+Home.propTypes = {
+    signedIn: React.PropTypes.bool,
+    onSignIn: React.PropTypes.func
+};

@@ -48,7 +48,7 @@ class TalentForm extends Component {
         };
 
         console.log('to be sent to DB - formPayload:', formPayload);
-        this.handleFormClear(e);
+        // this.handleFormClear(e);
     }
 
     // handleFormUpdate() {

@@ -49,7 +49,7 @@ class RecruiterForm extends Component {
 
         this.props.signUp(formPayload);
         console.log('to be sent to DB - formPayload:', formPayload);
-        // this.handleFormClear(e);
+        this.handleFormClear(e);
     }
 
     // handleFormUpdate() {

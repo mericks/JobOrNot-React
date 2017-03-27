@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import UploadFiles from './components/UploadFiles';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-} from 'react-router-dom';
-
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/home/Home';
+import RecruiterForm from './components/forms/RecruiterForm';
+import TalentForm from './components/forms/TalentForm';
+
 
 class App extends Component {
     constructor(props) {
@@ -18,23 +15,23 @@ class App extends Component {
         this.onSignIn = this.onSignIn.bind(this);
     }
 
-    onSignIn() {
-        if (!this.state.signedIn) this.setState({ signedIn: true });
-        else this.setState({ signedIn: false });
-    }
+  onSignIn = () => {
+    if(!this.state.signedIn) this.setState({ signedIn: true})
+    else this.setState({ signedIn: false})
+  }
 
-    render() {
-        return (
-          <Router>
-              <div>
-                <UploadFiles />
-                <Switch>
-                <Route exact path='/' render={(props) => <Home {...props} signedIn={this.state.signedIn} onSignIn={this.onSignIn}/>} />
-                </Switch>
-              </div>
-          </Router>
-        );
-    }
+  render() {
+    return (
+      <Router>
+        <div>
+          <UploadFiles />
+          <Route exact path='/' render={(props)=> <Home {...props} signedIn={this.state.signedIn} onSignIn={this.onSignIn}/>} />
+          <Route exact path='/recruitersignup' component={RecruiterForm} />
+          <Route exact path='/talentsignup' component={TalentForm} />
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;

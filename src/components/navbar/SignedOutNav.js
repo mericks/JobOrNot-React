@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const SignedOutNav = (props) => {
   return (
@@ -11,6 +11,10 @@ const SignedOutNav = (props) => {
       </ul>
     </nav>
   )
+}
+
+SignedOutNav.propTypes = {
+  button: PropTypes.node.isRequired,
 }
 
 export default SignedOutNav;

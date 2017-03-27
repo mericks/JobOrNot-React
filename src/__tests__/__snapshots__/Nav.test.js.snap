@@ -1,0 +1,8 @@
+exports[`Nav runs the Nav 1`] = `
+<SignedInNav
+  button={
+    <button>
+      it\'s a button node
+    </button>
+  } />
+`;

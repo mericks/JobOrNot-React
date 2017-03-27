@@ -3,8 +3,11 @@ import React from 'react';
 const SeekerIntro = () => {
   return (
     <div>
+      <h2>Job seekers</h2>
       <p>
-        Seeker instructions here
+        Sign up and get a job! Upload a resume in pdf format and join the JobOrNot 
+        pool of highly qualified job seekers. Track stats on the profile page and wait 
+        for the job offers to roll in!
       </p>
       <button>button to sign up</button>
     </div>

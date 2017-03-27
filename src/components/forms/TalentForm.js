@@ -143,4 +143,4 @@ class TalentForm extends Component {
     };
 }
 
-export default Forms;
+export default TalentForm;

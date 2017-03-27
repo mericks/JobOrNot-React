@@ -1,0 +1,22 @@
+exports[`SignedOutNav renders the SignedOutNav component 1`] = `
+<nav>
+  <ul>
+    <li>
+      <img
+        alt="logo"
+        src="http://placehold.it/50x50" />
+    </li>
+    <li>
+      JobOrNot
+    </li>
+    <li>
+      How It Works
+    </li>
+    <li>
+      <button>
+        button node
+      </button>
+    </li>
+  </ul>
+</nav>
+`;

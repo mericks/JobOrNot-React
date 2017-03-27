@@ -25,7 +25,7 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path='/' render={(props)=> <Home {...props} signedIn={this.state.signedIn} onSignIn={this.onSignIn}/>} />
-          <Route exact path='/recruitersignup' component={RecruiterForm} />
+          <Route exact path='/recruitersignup' render={(props) => <RecruiterForm {...props} signedIn={this.state.signedIn} button={<button onClick={this.onSignIn}>sign in/out</button>} />  } />
           <Route exact path='/talentsignup' component={TalentForm} />
         </div>
       </Router>

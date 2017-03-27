@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SingleInput from './SingleInput';
 
+
 class Forms extends Component {
     constructor(props) {
         super(props);
@@ -131,7 +132,7 @@ class Forms extends Component {
     }
  
     render() {
-        return (
+        return (  
             <form onSubmit={this.handleFormSignUp}>
                 <h1>THIS FORM SIGNS UP</h1>
                 <SingleInput 
@@ -218,7 +219,7 @@ class Forms extends Component {
                     type='submit'
                     value='submit'/>
             </form>
-        );
+        )
     };
 }
 

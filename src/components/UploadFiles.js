@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { uploadDocumentRequest } from './actions/upload-actions';
+import { uploadDocumentRequest } from '../actions/upload-actions';
 
 class UploadFiles extends React.Component {
     constructor(props) {
@@ -8,11 +8,11 @@ class UploadFiles extends React.Component {
         this.handleFileUpload = this.handleFileUpload.bind(this);
     }
 
-    handleFileUpload({ files }) {
-        const file = files[0];
+    handleFileUpload(e) {
+        const file = e.target.files[0];
         this.props.uploadFile({
             file,
-            name: 'place holder text'
+            name: e.target.files[0].name
         });
     }
 

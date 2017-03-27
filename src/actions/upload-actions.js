@@ -17,7 +17,7 @@ export function uploadDocumentRequest({ file, name }) {
     data.append('file', file);
     data.append('name', name);
     return (dispatch) => {
-        return fetch('http://localhost:4000/files', {
+        return fetch('http://localhost:4000/myResume', {
             method: 'POST',
             body: data
         })

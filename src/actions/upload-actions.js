@@ -1,7 +1,7 @@
-export function uploadSuccess({ data }) {
+export function uploadSuccess(resume) {
     return {
         type: 'UPLOAD_DOCUMENT_SUCCESS',
-        data
+        resume
     };
 }
 
@@ -21,7 +21,16 @@ export function uploadDocumentRequest({ file, name }) {
             method: 'POST',
             body: data
         })
-        .then(res => dispatch(uploadSuccess(res)))
-        .catch(error => dispatch(uploadFail(error)));
+        .then(res => {
+            if (!res.ok) {
+                throw Error(res.statusText);
+            }
+            return res;
+        })
+        .then(res => {
+            return res.json();
+        })
+            .then(res => dispatch(uploadSuccess(res)))
+            .catch(error => dispatch(uploadFail(error)));
     };
 }

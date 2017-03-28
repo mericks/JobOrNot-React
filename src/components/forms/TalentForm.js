@@ -25,16 +25,16 @@ class TalentForm extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleFormSignUp(e, props) {
+    handleFormSignUp(e) {
         e.preventDefault();
-
+        console.log('props: ', this.props);
         const formPayload = {
             firstname: this.state.firstname,
             lastname: this.state.lastname,
             username: this.state.username,
             email: this.state.email,
             password: this.state.password,
-            resume: this.state.resume,
+            myResume: this.props.resume._id,
             skills: this.state.skills,
             locations: this.state.locations
         };
@@ -133,14 +133,22 @@ class TalentForm extends Component {
     };
 }
 
+function mapStateToProps(state) {
+    console.log('state: ', state);
+    return {
+        resume: state.uploads
+    };
+}
+
 function mapDispatchToProps(dispatch) {
     return {
         signUp: (options) => dispatch(sendSignUp(options))
     };
 }
 
-export default connect(null, mapDispatchToProps)(TalentForm);
+export default connect(mapStateToProps, mapDispatchToProps)(TalentForm);
 
 TalentForm.propTypes = {
-    signUp: React.PropTypes.func
+    signUp: React.PropTypes.func,
+    resume: React.PropTypes.object
 };

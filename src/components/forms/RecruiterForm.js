@@ -38,7 +38,6 @@ class RecruiterForm extends Component {
             jobCompanyToFill: this.state.jobCompanyToFill,
         };
 
-        console.log('props: ', this.props);
         this.props.signUp({ method: 'POST', path: '/signup', body: formPayload });
         this.handleFormClear(e);
     }

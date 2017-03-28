@@ -23,12 +23,20 @@ export function userSignUpSuccess(user) {
 }
 
 export function sendSignUp(options) {
-    console.log('options: ', options);
     return (dispatch) => {
         fetcher(options)
             .then(user => {
-                console.log('user: ', user);
                 dispatch(userSignUpSuccess(user));
+            })
+            .catch(() => dispatch(itemsHasErrored(true)));
+    };
+}
+
+export function sendLogIn(options) {
+    return (dispatch) => {
+        fetcher(options)
+            .then(user => {
+                dispatch(userLoginSuccess(user));
             })
             .catch(() => dispatch(itemsHasErrored(true)));
     };

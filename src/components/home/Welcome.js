@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Welcome = () => {
+
   return (
     <div>
       <p><strong>Welcome to the fastest way to sort through resumes and find a job. </strong>

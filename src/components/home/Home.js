@@ -9,17 +9,13 @@ import Footer from '../footer';
 const Home = (props) => {
     return (
         <div>
-            <Nav signedIn={props.signedIn} />
+            <Nav />
             <Welcome />
             <RecruiterIntro />
             <TalentIntro />
             <Footer />
         </div> 
-    )
-}
-
-Home.propTypes = {
-    signedIn: PropTypes.bool.isRequired,
+    );
 };
 
 export default Home;

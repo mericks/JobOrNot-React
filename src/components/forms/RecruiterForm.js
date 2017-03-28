@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import SingleInput from './SingleInput';
 import Nav from '../navbar/Nav';
-
+import { connect } from 'react-redux';
+import { sendSignUp } from '../../actions/auth-actions';
 
 class RecruiterForm extends Component {
     constructor(props) {
@@ -23,16 +24,6 @@ class RecruiterForm extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    // componentDidMount() {
-    //     fetch('./fetchToDB')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             this.setState({
-    //                 firstName: data.firstName
-    //             });
-    //         });
-    // };
-
     handleFormSignUp(e) {
         e.preventDefault();
 
@@ -45,10 +36,10 @@ class RecruiterForm extends Component {
             company: this.state.company,
             jobTitleToFill: this.state.jobTitleToFill,
             jobCompanyToFill: this.state.jobCompanyToFill,
+            role: 'recruiter'
         };
 
-        this.props.signUp(formPayload);
-        console.log('to be sent to DB - formPayload:', formPayload);
+        this.props.signUp({ method: 'POST', path: '/signup', body: formPayload });
         this.handleFormClear(e);
     }
 
@@ -67,17 +58,17 @@ class RecruiterForm extends Component {
             company: '',
             jobTitleToFill: '',
             jobCompanyToFill: '',
-        })
+        });
     }
 
     handleChange(e) {
-        this.setState({ [e.target.name]: e.target.value }, () => console.log(this.state));
+        this.setState({ [e.target.name]: e.target.value });
     }
  
     render() {
         return ( 
             <div>
-                <Nav signedIn={this.props.signedIn} />
+                <Nav />
                 <form onSubmit={this.handleFormSignUp}>
                     <h1>THIS FORM SIGNS UP RECRUITERS</h1>
                     <SingleInput 
@@ -144,13 +135,18 @@ class RecruiterForm extends Component {
                         value='submit'/>
                 </form>
             </div>
-        )
+        );
     };
 }
 
-RecruiterForm.propTypes = {
-    signUp: PropTypes.func.isRequired,
-    signedIn: PropTypes.bool.isRequired,
-};
+function mapDispatchToProps(dispatch) {
+    return {
+        signUp: (options) => dispatch(sendSignUp(options))
+    };
+}
 
-export default RecruiterForm;
+export default connect(null, mapDispatchToProps)(RecruiterForm);
+
+RecruiterForm.propTypes = {
+    signUp: React.PropTypes.func
+};

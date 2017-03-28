@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import SingleInput from './SingleInput';
 import Nav from '../navbar/Nav';
-
+import { sendLogIn } from '../../actions/auth-actions';
 
 class SignInForm extends Component {
     constructor(props) {
@@ -16,44 +17,34 @@ class SignInForm extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    // componentDidMount() {
-    //     fetch('./fetchToDB')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             this.setState({
-    //                 firstName: data.firstName
-    //             });
-    //         });
-    // };
-
     handleFormSignIn(e) {
         e.preventDefault();
 
         const formPayload = {
-            userName: this.state.userName,
+            username: this.state.userName,
             password: this.state.password,
         };
 
-        console.log('to be sent to DB - formPayload:', formPayload);
-        // this.handleFormClear(e);
+        this.props.signIn({ method: 'POST', path: '/signin', body: formPayload });
+        this.handleFormClear(e);
     }
 
     handleFormClear(e) {
         e.preventDefault();
         this.setState({
-            userName: '',
+            username: '',
             password: '',
-        })
+        });
     }
 
     handleChange(e) {
-        this.setState({ [e.target.name]: e.target.value }, () => console.log(this.state));
+        this.setState({ [e.target.name]: e.target.value });
     }
  
     render() {
         return (
             <div>
-                <Nav signedIn={this.props.signedIn} button={this.props.button}/>
+                <Nav button={this.props.button}/>
                 <form onSubmit={this.handleFormSignIn}>
                     <h1>THIS IS THE SIGN IN FORM</h1>
                     <SingleInput 
@@ -78,8 +69,19 @@ class SignInForm extends Component {
                         value='submit'/>
                 </form>
             </div>
-        )
+        );
     };
 }
 
-export default SignInForm;
+function mapDispatchToProps(dispatch) {
+    return {
+        signIn: (options) => dispatch(sendLogIn(options))
+    };
+}
+
+export default connect(null, mapDispatchToProps)(SignInForm);
+
+SignInForm.propTypes = {
+    button: React.PropTypes.element,
+    signIn: React.PropTypes.func
+};

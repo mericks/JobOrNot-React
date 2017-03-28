@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import SingleInput from './SingleInput';
 import Nav from '../navbar/Nav';
-
+import { connect } from 'react-redux';
+import { sendSignUp } from '../../actions/auth-actions';
+import UploadFiles from './UploadFiles';
 
 class TalentForm extends Component {
     constructor(props) {
@@ -11,8 +13,7 @@ class TalentForm extends Component {
             lastName: '',
             userName: '',
             email: '',
-            password: '',   // TODO: DON'T BRING PW BACK IN THE STATE. HANDLE IN BACKEND
-            resume: '',
+            password: '',
             skills: '',
             locations: ''
         };
@@ -23,32 +24,22 @@ class TalentForm extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    // componentDidMount() {
-    //     fetch('./fetchToDB')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             this.setState({
-    //                 firstName: data.firstName
-    //             });
-    //         });
-    // };
-
-    handleFormSignUp(e, props) {
+    handleFormSignUp(e) {
         e.preventDefault();
-
+        console.log('props: ', this.props);
         const formPayload = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             userName: this.state.userName,
             email: this.state.email,
             password: this.state.password,
-            resume: this.state.resume,
+            myResume: this.props.resume._id,
             skills: this.state.skills,
-            locations: this.state.locations
+            locations: this.state.locations,
+            role: 'talent'
         };
 
-        this.props.signUp(formPayload);
-        console.log('to be sent to DB - formPayload:', formPayload);
+        this.props.signUp({ method: 'POST', path: '/signup', body: formPayload });
         this.handleFormClear(e);
     }
 
@@ -64,20 +55,19 @@ class TalentForm extends Component {
             userName: '',
             email: '',
             password: '',
-            resume: '',
             skills: '',
             locations: '',
-        })
+        });
     }
 
     handleChange(e) {
-        this.setState({ [e.target.name]: e.target.value }, () => console.log(this.state));
+        this.setState({ [e.target.name]: e.target.value });
     }
  
     render() {
         return (
             <div>
-                <Nav signedIn={this.props.signedIn} />
+                <Nav />
                 <form onSubmit={this.handleFormSignUp}>
                     <h1>THIS FORM SIGNS UP TALENT</h1>
                     <SingleInput 
@@ -115,13 +105,7 @@ class TalentForm extends Component {
                         content={this.state.password}
                         controlFunc={this.handleChange}
                         placeholder={'Select a Password'} />
-                    <SingleInput 
-                        title={'Resume'}
-                        name={'resume'}
-                        inputType={'text'}
-                        content={this.state.resume}
-                        controlFunc={this.handleChange}
-                        placeholder={'Holding box for resume uploads'} />
+                    <UploadFiles />
                     <SingleInput 
                         title={'Skills'}
                         name={'skills'}
@@ -144,13 +128,26 @@ class TalentForm extends Component {
                         value='submit'/>
                 </form>
             </div>
-        )
+        );
     };
 }
 
-TalentForm.propTypes = {
-    signUp: PropTypes.func.isRequired,
-    signedIn: PropTypes.bool.isRequired,
-};
+function mapStateToProps(state) {
+    console.log('state: ', state);
+    return {
+        resume: state.uploads
+    };
+}
 
-export default TalentForm;
+function mapDispatchToProps(dispatch) {
+    return {
+        signUp: (options) => dispatch(sendSignUp(options))
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TalentForm);
+
+TalentForm.propTypes = {
+    signUp: React.PropTypes.func,
+    resume: React.PropTypes.object
+};

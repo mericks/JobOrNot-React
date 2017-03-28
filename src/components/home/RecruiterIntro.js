@@ -11,8 +11,8 @@ const RecruiterIntro = () => (
         the profile page to see the resume collections for individual postings and 
         contact the candidates for hire!
       </p>
-      <Link to={`/recruitersignup`}><button>button to sign up</button></Link>
+      <Link to={'/recruitersignup'}><button>button to sign up</button></Link>
     </div>
-)
+);
 
 export default RecruiterIntro;

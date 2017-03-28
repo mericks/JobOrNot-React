@@ -9,8 +9,8 @@ const TalentIntro = () => (
       pool of highly qualified job seekers. Track stats on the profile page and wait 
       for the job offers to roll in!
     </p>
-    <Link to={`/talentsignup`}><button>button to sign up</button></Link>
+    <Link to={'/talentsignup'}><button>button to sign up</button></Link>
   </div>
-)
+);
 
 export default TalentIntro;

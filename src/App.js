@@ -22,9 +22,9 @@ class App extends Component {
             <div>
               <UploadFiles />
               <Route exact path='/' render={(props) => <Home {...props} />} />
-              <Route exact path='/recruitersignup' render={(props) => <RecruiterForm {...props} signUp={this.onRecruiterSignUp} />  } />
-              <Route exact path='/talentsignup' render={(props) => <TalentForm {...props} signUp={this.onTalentSignUp} />  } />
-              <Route exact path='/signin' render={(props) => <SignInForm {...props} signedIn={this.state.signedIn} button={<button>sign in/out</button>} />  } />
+              <Route exact path='/recruitersignup' render={(props) => <RecruiterForm {...props} />  } />
+              <Route exact path='/talentsignup' render={(props) => <TalentForm {...props} />  } />
+              <Route exact path='/signin' render={(props) => <SignInForm {...props} button={<button>sign in/out</button>} />  } />
             </div>
           </Router>
         );

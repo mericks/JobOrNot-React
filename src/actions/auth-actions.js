@@ -15,7 +15,7 @@ export function userLoginSuccess(user) {
     };
 }
 
-export function userSignupSuccess(user) {
+export function userSignUpSuccess(user) {
     return {
         type: 'USER_SIGNUP_SUCCESS',
         user
@@ -23,10 +23,12 @@ export function userSignupSuccess(user) {
 }
 
 export function sendSignUp(options) {
+    console.log('options: ', options);
     return (dispatch) => {
         fetcher(options)
             .then(user => {
-                dispatch(userSignupSuccess(user));
+                console.log('user: ', user);
+                dispatch(userSignUpSuccess(user));
             })
             .catch(() => dispatch(itemsHasErrored(true)));
     };

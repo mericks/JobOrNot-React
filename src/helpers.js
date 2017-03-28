@@ -6,7 +6,7 @@ export default function fetcher(options) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify(body)
     })
     .then(res => {
         if (!res.ok) {

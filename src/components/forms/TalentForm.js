@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import SingleInput from './SingleInput';
 import Nav from '../navbar/Nav';
-
+import { connect } from 'react-redux';
+import { sendSignUp } from '../../actions/auth-actions';
 
 class TalentForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstName: '',
-            lastName: '',
-            userName: '',
+            firstname: '',
+            lastname: '',
+            username: '',
             email: '',
             password: '',
             resume: '',
@@ -23,23 +24,13 @@ class TalentForm extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    // componentDidMount() {
-    //     fetch('./fetchToDB')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             this.setState({
-    //                 firstName: data.firstName
-    //             });
-    //         });
-    // };
-
     handleFormSignUp(e, props) {
         e.preventDefault();
 
         const formPayload = {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            userName: this.state.userName,
+            firstname: this.state.firstname,
+            lastname: this.state.lastname,
+            username: this.state.username,
             email: this.state.email,
             password: this.state.password,
             resume: this.state.resume,
@@ -47,8 +38,7 @@ class TalentForm extends Component {
             locations: this.state.locations
         };
 
-        this.props.signUp(formPayload);
-        console.log('to be sent to DB - formPayload:', formPayload);
+        this.props.signUp({ method: 'POST', path: '/signup', body: formPayload });
         this.handleFormClear(e);
     }
 
@@ -59,19 +49,19 @@ class TalentForm extends Component {
     handleFormClear(e) {
         e.preventDefault();
         this.setState({
-            firstName: '',
-            lastName: '',
-            userName: '',
+            firstname: '',
+            lastname: '',
+            username: '',
             email: '',
             password: '',
             resume: '',
             skills: '',
             locations: '',
-        })
+        });
     }
 
     handleChange(e) {
-        this.setState({ [e.target.name]: e.target.value }, () => console.log(this.state));
+        this.setState({ [e.target.name]: e.target.value });
     }
  
     render() {
@@ -82,23 +72,23 @@ class TalentForm extends Component {
                     <h1>THIS FORM SIGNS UP TALENT</h1>
                     <SingleInput 
                         title={'First Name'}
-                        name={'firstName'}
+                        name={'firstname'}
                         inputType={'text'}
-                        content={this.state.firstName}
+                        content={this.state.firstname}
                         controlFunc={this.handleChange}
                         placeholder={'First Name'} />
                     <SingleInput 
                         title={'Last Name'}
-                        name={'lastName'}
+                        name={'lastname'}
                         inputType={'text'}
-                        content={this.state.lastName}
+                        content={this.state.lastname}
                         controlFunc={this.handleChange}
                         placeholder={'Last Name'} />
                     <SingleInput 
                         title={'User Name'}
-                        name={'userName'}
+                        name={'username'}
                         inputType={'text'}
-                        content={this.state.userName}
+                        content={this.state.username}
                         controlFunc={this.handleChange}
                         placeholder={'Select a User Name'} />
                     <SingleInput 
@@ -144,8 +134,18 @@ class TalentForm extends Component {
                         value='submit'/>
                 </form>
             </div>
-        )
+        );
     };
 }
 
-export default TalentForm;
+function mapDispatchToProps(dispatch) {
+    return {
+        signUp: (options) => dispatch(sendSignUp(options))
+    };
+}
+
+export default connect(null, mapDispatchToProps)(TalentForm);
+
+TalentForm.propTypes = {
+    signUp: React.PropTypes.func
+};

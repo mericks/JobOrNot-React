@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import TalentProfile from './TalentProfile';
 import RecruiterProfile from './RecruiterProfile';
 import ProfileInfo from './ProfileInfo';
 
+const mapStateToProps = (state) => {
+    return {
+        user: state.user
+    };
+};
+
 const Profile = (props) => {
     let ProfileType;
 
-    if(props.user.role === 'talent') ProfileType = TalentProfile;
+    if (props.user.role === 'talent') ProfileType = TalentProfile;
     else ProfileType = RecruiterProfile;
 
     return (
@@ -18,5 +25,8 @@ const Profile = (props) => {
     )
 };
 
+export default connect(mapStateToProps)(Profile);
 
-export default Profile;
+Profile.propTypes = {
+    user: PropTypes.object
+};

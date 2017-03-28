@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import SingleInput from './SingleInput';
 import Nav from '../navbar/Nav';
-
+import { connect } from 'react-redux';
+import { sendSignUp } from '../../actions/auth-actions';
 
 class RecruiterForm extends Component {
     constructor(props) {
@@ -9,9 +10,9 @@ class RecruiterForm extends Component {
         this.state = {
             firstName: '',
             lastName: '',
-            userName: '',
+            username: '',
             email: '',
-            password: '',
+            password: '',   // TODO: DON'T BRING PW BACK IN THE STATE. HANDLE IN BACKEND
             company: '',
             jobTitleToFill: '',
             jobCompanyToFill: '',
@@ -23,32 +24,23 @@ class RecruiterForm extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    // componentDidMount() {
-    //     fetch('./fetchToDB')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             this.setState({
-    //                 firstName: data.firstName
-    //             });
-    //         });
-    // };
-
     handleFormSignUp(e) {
         e.preventDefault();
 
         const formPayload = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
-            userName: this.state.userName,
+            username: this.state.username,
             email: this.state.email,
             password: this.state.password,
             company: this.state.company,
             jobTitleToFill: this.state.jobTitleToFill,
             jobCompanyToFill: this.state.jobCompanyToFill,
+            role: 'recruiter'
         };
 
-        console.log('to be sent to DB - formPayload:', formPayload);
-        // this.handleFormClear(e);
+        this.props.signUp({ method: 'POST', path: '/signup', body: formPayload });
+        this.handleFormClear(e);
     }
 
     // handleFormUpdate() {
@@ -60,23 +52,23 @@ class RecruiterForm extends Component {
         this.setState({
             firstName: '',
             lastName: '',
-            userName: '',
+            username: '',
             email: '',
             password: '',
             company: '',
             jobTitleToFill: '',
             jobCompanyToFill: '',
-        })
+        });
     }
 
     handleChange(e) {
-        this.setState({ [e.target.name]: e.target.value }, () => console.log(this.state));
+        this.setState({ [e.target.name]: e.target.value });
     }
  
     render() {
         return ( 
             <div>
-                <Nav signedIn={this.props.signedIn} button={this.props.button}/>
+                <Nav />
                 <form onSubmit={this.handleFormSignUp}>
                     <h1>THIS FORM SIGNS UP RECRUITERS</h1>
                     <SingleInput 
@@ -95,9 +87,9 @@ class RecruiterForm extends Component {
                         placeholder={'Last Name'} />
                     <SingleInput 
                         title={'User Name'}
-                        name={'userName'}
+                        name={'username'}
                         inputType={'text'}
-                        content={this.state.userName}
+                        content={this.state.username}
                         controlFunc={this.handleChange}
                         placeholder={'Select a User Name'} />
                     <SingleInput 
@@ -110,7 +102,7 @@ class RecruiterForm extends Component {
                     <SingleInput 
                         title={'Password'}
                         name={'password'}
-                        inputType={'text'}
+                        inputType={'password'}
                         content={this.state.password}
                         controlFunc={this.handleChange}
                         placeholder={'Select a Password'} />
@@ -143,8 +135,18 @@ class RecruiterForm extends Component {
                         value='submit'/>
                 </form>
             </div>
-        )
+        );
     };
 }
 
-export default RecruiterForm;
+function mapDispatchToProps(dispatch) {
+    return {
+        signUp: (options) => dispatch(sendSignUp(options))
+    };
+}
+
+export default connect(null, mapDispatchToProps)(RecruiterForm);
+
+RecruiterForm.propTypes = {
+    signUp: React.PropTypes.func
+};

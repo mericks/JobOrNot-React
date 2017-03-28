@@ -5,11 +5,11 @@ import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import Nav from '../components/navbar/Nav';
+import TalentForm from '../TalentForm';
 
-describe('Nav', function () {
-    it('runs the Nav', () => {
-        const rendered = shallow(<Nav signedIn={true} button={<button>it's a button node</button>} />);
+describe('TalentForm', function () {
+    it('renders the TalentForm form/component', () => {
+        const rendered = shallow(<TalentForm signUp={() => {}} signedIn={true}/>);
         expect(toJson(rendered)).toMatchSnapshot();
     });
 });

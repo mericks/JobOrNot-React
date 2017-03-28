@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import Nav from '../navbar/Nav';
 import Welcome from './Welcome';
@@ -9,13 +9,13 @@ import Footer from '../footer';
 const Home = (props) => {
     return (
         <div>
-            <Nav signedIn={props.signedIn} button={<button onClick={props.onSignIn}>sign in/out</button>}/>
+            <Nav />
             <Welcome />
             <RecruiterIntro />
             <TalentIntro />
             <Footer />
         </div> 
-    )
-}
+    );
+};
 
 export default Home;

@@ -4,18 +4,21 @@ const initialState = {
 };
 
 export function userAuth(state = initialState, action) {
+    console.log('state: ', action);
     switch (action.type) {
         case 'USER_LOGIN_SUCCESS':
             return {
                 ...state,
                 isLoggedIn: true,
-                token: action.token
+                user: action.user.userObj,
+                token: action.user.token
             };
         case 'USER_SIGNUP_SUCCESS':
             return {
                 ...state,
                 isLoggedIn: true,
-                token: action.token
+                user: action.user.userObj,
+                token: action.user.token
             };
         default:
             return state;

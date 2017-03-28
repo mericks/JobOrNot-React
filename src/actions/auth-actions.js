@@ -22,6 +22,13 @@ export function userSignUpSuccess(user) {
     };
 }
 
+export function setToken(token) {
+    return {
+        type: 'SET_TOKEN',
+        token
+    };
+}
+
 export function sendSignUp(options) {
     return (dispatch) => {
         fetcher(options)

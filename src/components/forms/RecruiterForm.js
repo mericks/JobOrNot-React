@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import SingleInput from './SingleInput';
 import Nav from '../navbar/Nav';
 
@@ -147,5 +147,10 @@ class RecruiterForm extends Component {
         )
     };
 }
+
+RecruiterForm.propTypes = {
+    signUp: PropTypes.func.isRequired,
+    signedIn: PropTypes.bool.isRequired,
+};
 
 export default RecruiterForm;

@@ -24,6 +24,7 @@ class App extends Component {
     this.onTalentSignUp = this.onTalentSignUp.bind(this);
   }
 
+  // TODO: STAGE THIS FOR REMOVAL
   onSignIn = () => {
     if(!this.state.signedIn) this.setState({ signedIn: true})
     else this.setState({ signedIn: false})
@@ -43,7 +44,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path='/' render={(props) => <Home {...props} signedIn={this.state.signedIn} onSignIn={this.onSignIn}/>} />
+          <Route exact path='/' render={(props) => <Home {...props} signedIn={this.state.signedIn} />} />
           <Route exact path='/recruitersignup' render={(props) => <RecruiterForm {...props} signUp={this.onRecruiterSignUp} signedIn={this.state.signedIn} />  } />
           <Route exact path='/talentsignup' render={(props) => <TalentForm {...props} signUp={this.onTalentSignUp} signedIn={this.state.signedIn} />  } />
           <Route exact path='/signin' render={(props) => <SignInForm {...props} signedIn={this.state.signedIn} button={<button onClick={this.onSignIn}>sign in/out</button>} />  } />

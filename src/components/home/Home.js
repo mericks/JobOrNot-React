@@ -9,7 +9,7 @@ import Footer from '../footer';
 const Home = (props) => {
     return (
         <div>
-            <Nav signedIn={props.signedIn} button={<button onClick={props.onSignIn}>sign in/out</button>}/>
+            <Nav signedIn={props.signedIn} />
             <Welcome />
             <RecruiterIntro />
             <TalentIntro />

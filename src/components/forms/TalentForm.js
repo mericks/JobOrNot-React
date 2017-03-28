@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import SingleInput from './SingleInput';
 import Nav from '../navbar/Nav';
 import { connect } from 'react-redux';
@@ -101,7 +101,7 @@ class TalentForm extends Component {
                     <SingleInput 
                         title={'Password'}
                         name={'password'}
-                        inputType={'text'}
+                        inputType={'password'}
                         content={this.state.password}
                         controlFunc={this.handleChange}
                         placeholder={'Select a Password'} />

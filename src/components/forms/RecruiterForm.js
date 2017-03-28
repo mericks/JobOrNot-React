@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import SingleInput from './SingleInput';
 import Nav from '../navbar/Nav';
 import { connect } from 'react-redux';
@@ -12,7 +12,7 @@ class RecruiterForm extends Component {
             lastName: '',
             userName: '',
             email: '',
-            password: '',
+            password: '',   // TODO: DON'T BRING PW BACK IN THE STATE. HANDLE IN BACKEND
             company: '',
             jobTitleToFill: '',
             jobCompanyToFill: '',
@@ -102,7 +102,7 @@ class RecruiterForm extends Component {
                     <SingleInput 
                         title={'Password'}
                         name={'password'}
-                        inputType={'text'}
+                        inputType={'password'}
                         content={this.state.password}
                         controlFunc={this.handleChange}
                         placeholder={'Select a Password'} />

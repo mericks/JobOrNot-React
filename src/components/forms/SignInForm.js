@@ -8,8 +8,8 @@ class SignInForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
-            password: '',
+            userName: '',
+            password: '',   // TODO: DON'T BRING PW BACK IN THE STATE. HANDLE IN BACKEND
         };
 
         this.handleFormSignIn = this.handleFormSignIn.bind(this);
@@ -21,7 +21,7 @@ class SignInForm extends Component {
         e.preventDefault();
 
         const formPayload = {
-            username: this.state.username,
+            username: this.state.userName,
             password: this.state.password,
         };
 
@@ -49,15 +49,15 @@ class SignInForm extends Component {
                     <h1>THIS IS THE SIGN IN FORM</h1>
                     <SingleInput 
                         title={'User Name'}
-                        name={'username'}
+                        name={'userName'}
                         inputType={'text'}
-                        content={this.state.username}
+                        content={this.state.userName}
                         controlFunc={this.handleChange}
                         placeholder={'Select a User Name'} />
                     <SingleInput 
                         title={'Password'}
                         name={'password'}
-                        inputType={'text'}
+                        inputType={'password'}
                         content={this.state.password}
                         controlFunc={this.handleChange}
                         placeholder={'Select a Password'} />

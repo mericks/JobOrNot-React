@@ -1,4 +1,4 @@
-exports[`SignedInNav renders the SignedInNav component 1`] = `
+exports[`SignedOutNav renders the SignedOutNav component 1`] = `
 <nav>
   <ul>
     <li>
@@ -13,12 +13,11 @@ exports[`SignedInNav renders the SignedInNav component 1`] = `
       How It Works
     </li>
     <li>
-      Profile
-    </li>
-    <li>
-      <button>
-        button node
-      </button>
+      <Link
+        replace={false}
+        to="/signin">
+        Sign In
+      </Link>
     </li>
   </ul>
 </nav>

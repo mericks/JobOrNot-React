@@ -5,7 +5,7 @@ import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import SignedInNav from '../components/navbar/SignedInNav';
+import SignedInNav from '../SignedInNav';
 
 describe('SignedInNav', function () {
     it('renders the SignedInNav component', () => {

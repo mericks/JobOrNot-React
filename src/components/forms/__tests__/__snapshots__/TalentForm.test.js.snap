@@ -1,6 +1,7 @@
 exports[`TalentForm renders the TalentForm form/component 1`] = `
 <div>
-  <Nav />
+  <Nav
+    signedIn={true} />
   <form
     onSubmit={[Function]}>
     <h1>

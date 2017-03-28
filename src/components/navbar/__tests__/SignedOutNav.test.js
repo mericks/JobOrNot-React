@@ -5,11 +5,11 @@ import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import Nav from '../components/navbar/Nav';
+import SignedOutNav from '../SignedOutNav';
 
-describe('Nav', function () {
-    it('runs the Nav', () => {
-        const rendered = shallow(<Nav signedIn={true} />);
+describe('SignedOutNav', function () {
+    it('renders the SignedOutNav component', () => {
+        const rendered = shallow(<SignedOutNav />);
         expect(toJson(rendered)).toMatchSnapshot();
     });
 });

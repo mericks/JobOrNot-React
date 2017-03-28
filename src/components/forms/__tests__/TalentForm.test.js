@@ -9,7 +9,7 @@ import TalentForm from '../TalentForm';
 
 describe('TalentForm', function () {
     it('renders the TalentForm form/component', () => {
-        const rendered = shallow(<TalentForm />);
+        const rendered = shallow(<TalentForm signUp={() => {}} signedIn={true}/>);
         expect(toJson(rendered)).toMatchSnapshot();
     });
 });

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import Nav from '../navbar/Nav';
 import Welcome from './Welcome';
@@ -9,7 +9,7 @@ import Footer from '../footer';
 const Home = (props) => {
     return (
         <div>
-            <Nav signedIn={props.signedIn} button={<button onClick={props.onSignIn}>sign in/out</button>}/>
+            <Nav signedIn={props.signedIn} />
             <Welcome />
             <RecruiterIntro />
             <TalentIntro />
@@ -17,5 +17,9 @@ const Home = (props) => {
         </div> 
     )
 }
+
+Home.propTypes = {
+    signedIn: PropTypes.bool.isRequired,
+};
 
 export default Home;

@@ -5,11 +5,11 @@ import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import SignedInNav from '../components/navbar/SignedInNav';
+import RecruiterForm from '../RecruiterForm';
 
-describe('SignedInNav', function () {
-    it('renders the SignedInNav component', () => {
-        const rendered = shallow(<SignedInNav button={<button>button node</button>} />);
+describe('RecruiterForm', function () {
+    it('renders the RecruiterForm form/component', () => {
+        const rendered = shallow(<RecruiterForm signedIn={false} signUp={() => {}} />);
         expect(toJson(rendered)).toMatchSnapshot();
     });
 });

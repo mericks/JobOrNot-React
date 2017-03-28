@@ -1,0 +1,13 @@
+exports[`SingleInput renders the SingleInput field/component 1`] = `
+<div>
+  <label>
+    string
+  </label>
+  <input
+    name="string"
+    onChange={[Function]}
+    placeholder="string"
+    type="text"
+    value="string" />
+</div>
+`;

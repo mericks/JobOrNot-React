@@ -1,0 +1,74 @@
+exports[`TalentForm renders the TalentForm form/component 1`] = `
+<div>
+  <Nav />
+  <form
+    onSubmit={[Function]}>
+    <h1>
+      THIS FORM SIGNS UP TALENT
+    </h1>
+    <SingleInput
+      content=""
+      controlFunc={[Function]}
+      inputType="text"
+      name="firstName"
+      placeholder="First Name"
+      title="First Name" />
+    <SingleInput
+      content=""
+      controlFunc={[Function]}
+      inputType="text"
+      name="lastName"
+      placeholder="Last Name"
+      title="Last Name" />
+    <SingleInput
+      content=""
+      controlFunc={[Function]}
+      inputType="text"
+      name="userName"
+      placeholder="Select a User Name"
+      title="User Name" />
+    <SingleInput
+      content=""
+      controlFunc={[Function]}
+      inputType="text"
+      name="email"
+      placeholder="Email Address"
+      title="Email Address" />
+    <SingleInput
+      content=""
+      controlFunc={[Function]}
+      inputType="password"
+      name="password"
+      placeholder="Select a Password"
+      title="Password" />
+    <SingleInput
+      content=""
+      controlFunc={[Function]}
+      inputType="text"
+      name="resume"
+      placeholder="Holding box for resume uploads"
+      title="Resume" />
+    <SingleInput
+      content=""
+      controlFunc={[Function]}
+      inputType="text"
+      name="skills"
+      placeholder="Top Skills"
+      title="Skills" />
+    <SingleInput
+      content=""
+      controlFunc={[Function]}
+      inputType="text"
+      name="locations"
+      placeholder="Locations"
+      title="Locations" />
+    <button
+      onClick={[Function]}>
+      Clear Form
+    </button>
+    <input
+      type="submit"
+      value="submit" />
+  </form>
+</div>
+`;

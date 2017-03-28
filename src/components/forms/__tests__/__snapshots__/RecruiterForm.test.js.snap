@@ -1,0 +1,75 @@
+exports[`RecruiterForm renders the RecruiterForm form/component 1`] = `
+<div>
+  <Nav
+    signedIn={false} />
+  <form
+    onSubmit={[Function]}>
+    <h1>
+      THIS FORM SIGNS UP RECRUITERS
+    </h1>
+    <SingleInput
+      content=""
+      controlFunc={[Function]}
+      inputType="text"
+      name="firstName"
+      placeholder="First Name"
+      title="First Name" />
+    <SingleInput
+      content=""
+      controlFunc={[Function]}
+      inputType="text"
+      name="lastName"
+      placeholder="Last Name"
+      title="Last Name" />
+    <SingleInput
+      content=""
+      controlFunc={[Function]}
+      inputType="text"
+      name="userName"
+      placeholder="Select a User Name"
+      title="User Name" />
+    <SingleInput
+      content=""
+      controlFunc={[Function]}
+      inputType="text"
+      name="email"
+      placeholder="Email Address"
+      title="Email Address" />
+    <SingleInput
+      content=""
+      controlFunc={[Function]}
+      inputType="password"
+      name="password"
+      placeholder="Select a Password"
+      title="Password" />
+    <SingleInput
+      content=""
+      controlFunc={[Function]}
+      inputType="text"
+      name="company"
+      placeholder="Company"
+      title="Company" />
+    <SingleInput
+      content=""
+      controlFunc={[Function]}
+      inputType="text"
+      name="jobTitleToFill"
+      placeholder="Job Title"
+      title="Title of Role You are Working to Fill" />
+    <SingleInput
+      content=""
+      controlFunc={[Function]}
+      inputType="text"
+      name="jobCompanyToFill"
+      placeholder="Hiring Company"
+      title="Company for Role You are Working to Fill" />
+    <button
+      onClick={[Function]}>
+      Clear Form
+    </button>
+    <input
+      type="submit"
+      value="submit" />
+  </form>
+</div>
+`;

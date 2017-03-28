@@ -19,10 +19,10 @@ class App extends Component {
         return (
           <Router>
             <div>
-              <Route exact path='/' render={(props) => <Home {...props} />} />
-              <Route exact path='/recruitersignup' render={(props) => <RecruiterForm {...props} />  } />
-              <Route exact path='/talentsignup' render={(props) => <TalentForm {...props} />  } />
-              <Route exact path='/signin' render={(props) => <SignInForm {...props} button={<button>sign in/out</button>} />  } />
+              <Route exact path='/' component={Home} />
+              <Route exact path='/recruitersignup' component={RecruiterForm} />
+              <Route exact path='/talentsignup' component={TalentForm} />
+              <Route exact path='/signin' component={SignInForm} />
             </div>
           </Router>
         );

@@ -9,12 +9,11 @@ class TalentForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            firstname: '',
-            lastname: '',
-            username: '',
+            firstName: '',
+            lastName: '',
+            userName: '',
             email: '',
             password: '',
-            resume: '',
             skills: '',
             locations: ''
         };
@@ -29,14 +28,15 @@ class TalentForm extends Component {
         e.preventDefault();
         console.log('props: ', this.props);
         const formPayload = {
-            firstname: this.state.firstname,
-            lastname: this.state.lastname,
-            username: this.state.username,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            userName: this.state.userName,
             email: this.state.email,
             password: this.state.password,
             myResume: this.props.resume._id,
             skills: this.state.skills,
-            locations: this.state.locations
+            locations: this.state.locations,
+            role: 'talent'
         };
 
         this.props.signUp({ method: 'POST', path: '/signup', body: formPayload });
@@ -50,12 +50,11 @@ class TalentForm extends Component {
     handleFormClear(e) {
         e.preventDefault();
         this.setState({
-            firstname: '',
-            lastname: '',
-            username: '',
+            firstName: '',
+            lastName: '',
+            userName: '',
             email: '',
             password: '',
-            resume: '',
             skills: '',
             locations: '',
         });
@@ -73,23 +72,23 @@ class TalentForm extends Component {
                     <h1>THIS FORM SIGNS UP TALENT</h1>
                     <SingleInput 
                         title={'First Name'}
-                        name={'firstname'}
+                        name={'firstName'}
                         inputType={'text'}
-                        content={this.state.firstname}
+                        content={this.state.firstName}
                         controlFunc={this.handleChange}
                         placeholder={'First Name'} />
                     <SingleInput 
                         title={'Last Name'}
-                        name={'lastname'}
+                        name={'lastName'}
                         inputType={'text'}
-                        content={this.state.lastname}
+                        content={this.state.lastName}
                         controlFunc={this.handleChange}
                         placeholder={'Last Name'} />
                     <SingleInput 
                         title={'User Name'}
-                        name={'username'}
+                        name={'userName'}
                         inputType={'text'}
-                        content={this.state.username}
+                        content={this.state.userName}
                         controlFunc={this.handleChange}
                         placeholder={'Select a User Name'} />
                     <SingleInput 

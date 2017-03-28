@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import UploadFiles from './components/UploadFiles';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/home/Home';
 import RecruiterForm from './components/forms/RecruiterForm';
@@ -20,7 +19,6 @@ class App extends Component {
         return (
           <Router>
             <div>
-              <UploadFiles />
               <Route exact path='/' render={(props) => <Home {...props} />} />
               <Route exact path='/recruitersignup' render={(props) => <RecruiterForm {...props} />  } />
               <Route exact path='/talentsignup' render={(props) => <TalentForm {...props} />  } />

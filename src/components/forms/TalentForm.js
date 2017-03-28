@@ -3,6 +3,7 @@ import SingleInput from './SingleInput';
 import Nav from '../navbar/Nav';
 import { connect } from 'react-redux';
 import { sendSignUp } from '../../actions/auth-actions';
+import UploadFiles from './UploadFiles';
 
 class TalentForm extends Component {
     constructor(props) {
@@ -105,13 +106,7 @@ class TalentForm extends Component {
                         content={this.state.password}
                         controlFunc={this.handleChange}
                         placeholder={'Select a Password'} />
-                    <SingleInput 
-                        title={'Resume'}
-                        name={'resume'}
-                        inputType={'text'}
-                        content={this.state.resume}
-                        controlFunc={this.handleChange}
-                        placeholder={'Holding box for resume uploads'} />
+                    <UploadFiles />
                     <SingleInput 
                         title={'Skills'}
                         name={'skills'}

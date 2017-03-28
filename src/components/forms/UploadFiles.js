@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { uploadDocumentRequest } from '../actions/upload-actions';
+import { uploadDocumentRequest } from '../../actions/upload-actions';
 
 class UploadFiles extends React.Component {
     constructor(props) {

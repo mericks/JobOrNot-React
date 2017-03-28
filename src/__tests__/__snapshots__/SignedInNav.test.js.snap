@@ -16,9 +16,10 @@ exports[`SignedInNav renders the SignedInNav component 1`] = `
       Profile
     </li>
     <li>
-      <button>
-        button node
-      </button>
+      Welcome _name here_
+    </li>
+    <li>
+      Sign Out
     </li>
   </ul>
 </nav>

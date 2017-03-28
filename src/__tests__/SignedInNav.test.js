@@ -9,7 +9,7 @@ import SignedInNav from '../components/navbar/SignedInNav';
 
 describe('SignedInNav', function () {
     it('renders the SignedInNav component', () => {
-        const rendered = shallow(<SignedInNav button={<button>button node</button>} />);
+        const rendered = shallow(<SignedInNav />);
         expect(toJson(rendered)).toMatchSnapshot();
     });
 });

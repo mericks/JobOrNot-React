@@ -9,7 +9,7 @@ import SignedOutNav from '../components/navbar/SignedOutNav';
 
 describe('SignedOutNav', function () {
     it('renders the SignedOutNav component', () => {
-        const rendered = shallow(<SignedOutNav button={<button>button node</button>} />);
+        const rendered = shallow(<SignedOutNav />);
         expect(toJson(rendered)).toMatchSnapshot();
     });
 });

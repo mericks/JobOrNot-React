@@ -9,7 +9,7 @@ import Nav from '../components/navbar/Nav';
 
 describe('Nav', function () {
     it('runs the Nav', () => {
-        const rendered = shallow(<Nav signedIn={true} button={<button>it's a button node</button>} />);
+        const rendered = shallow(<Nav signedIn={true} />);
         expect(toJson(rendered)).toMatchSnapshot();
     });
 });

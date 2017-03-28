@@ -13,9 +13,11 @@ exports[`SignedOutNav renders the SignedOutNav component 1`] = `
       How It Works
     </li>
     <li>
-      <button>
-        button node
-      </button>
+      <Link
+        replace={false}
+        to="/signin">
+        Sign In
+      </Link>
     </li>
   </ul>
 </nav>

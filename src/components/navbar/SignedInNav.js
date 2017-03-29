@@ -25,6 +25,7 @@ const SignedInNav = (props) => {
           <li>JobOrNot</li>
           <li>How It Works</li>
           <li><Link to='/profile'>Profile</Link></li>
+          <li><Link to='/resumesubmit'>ResumeSubmitTest</Link></li>
           <li>Welcome, {props.user.firstName}</li>
           {/* THIS WORKS (30-34)...but it may need to be improved...*/}
           <li><Link to='/' onClick={(e) => {

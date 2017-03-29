@@ -5,13 +5,14 @@ import TalentStats from './TalentStats';
 
 const mapStateToProps = (state) => {
     return {
-        user: state.userAuth.user
+        user: state.userAuth.user,
+        resume: state.userAuth.resume
     };
 };
 
 const TalentProfile = (props) => {
     let TalentStatus;
-    if (!props.user.myResume) TalentStatus = ResumeForm;
+    if (!props.user.file) TalentStatus = ResumeForm;
     else TalentStatus = TalentStats;
 
     return (

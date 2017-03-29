@@ -8,7 +8,7 @@ class SignInForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userName: '',
+            username: '',
             password: '',   // TODO: DON'T BRING PW BACK IN THE STATE. HANDLE IN BACKEND
         };
 
@@ -21,7 +21,7 @@ class SignInForm extends Component {
         e.preventDefault();
 
         const formPayload = {
-            username: this.state.userName,
+            username: this.state.username,
             password: this.state.password,
         };
 
@@ -49,9 +49,9 @@ class SignInForm extends Component {
                     <h1>THIS IS THE SIGN IN FORM</h1>
                     <SingleInput 
                         title={'User Name'}
-                        name={'userName'}
+                        name={'username'}
                         inputType={'text'}
-                        content={this.state.userName}
+                        content={this.state.username}
                         controlFunc={this.handleChange}
                         placeholder={'Select a User Name'} />
                     <SingleInput 

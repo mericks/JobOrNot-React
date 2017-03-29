@@ -1,57 +1,18 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import ResumeForm from '../forms/ResumeForm';
+import TalentStats from './TalentStats';
 
-const mapStateToProps = (state) => {
-    return {
-        user: state.userAuth.user
-    };
+const TalentProfile = (props) => {
+    let TalentStatus;
+    if (!props.state.myResume) TalentStatus = ResumeForm;
+    else TalentStatus = TalentStats;
+
+    return (
+        <div>
+            <p>THIS IS TALENTPROFILE SECTION</p>
+            <TalentStatus />
+        </div>
+    );
 };
 
-class TalentProfile extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            username: '',
-            user: '',
-            timesViewed: '',
-            timesLiked: '',
-            likedBy: [],
-            file: ''
-        };
-        // this.handlewhatever = this.handlewhatever.bind(this);
-    }
-
-    componentDidMount() {
-        fetch('./myResume')
-			.then(res => res.json())
-			.then(data => {
-                this.setState({
-					username: data.username,
-					user: data.user,
-					timesViewed: data.timesViewed,
-					timesLiked: data.timesLiked,
-					likedBy: data.likedBy,
-                    file: data.file
-				});
-            });
-        }
-
-    // handlewhaterver(e) {
-    // }  
-
-    render() {
-        return (
-            <div>
-                <p>THIS IS TALENTPROFILE SECTION</p>
-                <p>{this.props.user.firstName}, your resume has been viewed a total of {this.state.timesViewd} times.</p>
-                <p>It was saved {this.state.timesLiked} times by recruiters actively hiring for these companies: {this.props.user.jobCompanyToFill} .</p>
-            </div>
-        );
-    }  
-}
-
-export default connect(mapStateToProps)(TalentProfile);
-
-TalentProfile.propTypes = {
-    user: PropTypes.object
-};
+export default TalentProfile;

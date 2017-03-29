@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import SingleInput from './SingleInput';
 import Nav from '../navbar/Nav';
 import { connect } from 'react-redux';
@@ -133,7 +133,6 @@ class TalentForm extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log('state: ', state);
     return {
         resume: state.uploads
     };

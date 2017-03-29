@@ -5,6 +5,7 @@ import RecruiterForm from './components/forms/RecruiterForm';
 import TalentForm from './components/forms/TalentForm';
 import SignInForm from './components/forms/SignInForm';
 import Profile from './components/profile/Profile';
+import UploadFiles from './components/forms/UploadFiles';
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path='/talentsignup' component={TalentForm} />
           <Route exact path='/signin' component={SignInForm} />
           <Route exact path='/profile' component={Profile} />
+          <Route exact path='/resumesubmit' component={UploadFiles} />
         </div>
       </Router>
     );

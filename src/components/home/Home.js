@@ -6,7 +6,7 @@ import RecruiterIntro from './RecruiterIntro';
 import TalentIntro from './TalentIntro';
 import Footer from '../footer';
 
-const Home = (props) => {
+const Home = () => {
     return (
         <div>
             <Nav />

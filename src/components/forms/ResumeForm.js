@@ -3,11 +3,27 @@ import { connect } from 'react-redux';
 import SingleInput from './SingleInput';
 import { sendSkills } from '../../actions/upload-actions';
 
+function mapStateToProps(state) {
+    return {
+        // userId: state.resume.user,
+        userId: state.userAuth.user.username,
+        // resumeId: state.userAuth.resume._id
+    };
+}
+
+function mapDisptachToProps(dispatch) {
+    return {
+        sendSkills: (options) => dispatch(sendSkills(options))
+    };
+}
+
+
+
 class ResumeForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            skills: [],
+            skills: '',
             location: ''
         };
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -59,7 +75,7 @@ class ResumeForm extends Component {
                         title={'Location'}
                         name={'location'}
                         inputType={'text'}
-                        content={this.state.locations}
+                        content={this.state.location}
                         controlFunc={this.handleChange}
                         placeholder={'Your Location'} />
                     <button onClick={this.handleFormClear}>
@@ -79,18 +95,5 @@ ResumeForm.propTypes = {
     resumeId: PropTypes.string,
     sendSkills: PropTypes.func
 };
-
-function mapStateToProps(state) {
-    return {
-        userId: state.resume.user,
-        resumeId: state.resume._id
-    };
-}
-
-function mapDisptachToProps(dispatch) {
-    return {
-        sendSkills: (options) => dispatch(sendSkills(options))
-    };
-}
 
 export default connect(mapStateToProps, mapDisptachToProps)(ResumeForm);

@@ -5,28 +5,17 @@ import RecruiterForm from './components/forms/RecruiterForm';
 import TalentForm from './components/forms/TalentForm';
 import SignInForm from './components/forms/SignInForm';
 
-class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            token: 'PRESENT FOR BACKEND DEVS', 
-            recruiter: {},
-            talent: {},
-        };
-    }
-
-    render() {
-        return (
-          <Router>
-            <div>
-              <Route exact path='/' component={Home} />
-              <Route exact path='/recruitersignup' component={RecruiterForm} />
-              <Route exact path='/talentsignup' component={TalentForm} />
-              <Route exact path='/signin' component={SignInForm} />
-            </div>
-          </Router>
-        );
-    }
-  }
+function App() {
+    return (
+      <Router>
+        <div>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/recruitersignup' component={RecruiterForm} />
+          <Route exact path='/talentsignup' component={TalentForm} />
+          <Route exact path='/signin' component={SignInForm} />
+        </div>
+      </Router>
+    );
+}
 
 export default App;

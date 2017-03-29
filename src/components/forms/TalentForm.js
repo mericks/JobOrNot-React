@@ -11,11 +11,9 @@ class TalentForm extends Component {
         this.state = {
             firstName: '',
             lastName: '',
-            userName: '',
+            username: '',
             email: '',
-            password: '',
-            skills: '',
-            locations: ''
+            password: ''
         };
 
         this.handleFormSignUp = this.handleFormSignUp.bind(this);
@@ -30,16 +28,14 @@ class TalentForm extends Component {
         const formPayload = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
-            userName: this.state.userName,
+            username: this.state.username,
             email: this.state.email,
             password: this.state.password,
-            myResume: this.props.resume._id,
-            skills: this.state.skills,
-            locations: this.state.locations,
             role: 'talent'
         };
 
         this.props.signUp({ method: 'POST', path: '/signup', body: formPayload });
+        
         this.handleFormClear(e);
     }
 
@@ -52,11 +48,9 @@ class TalentForm extends Component {
         this.setState({
             firstName: '',
             lastName: '',
-            userName: '',
+            username: '',
             email: '',
             password: '',
-            skills: '',
-            locations: '',
         });
     }
 
@@ -86,9 +80,9 @@ class TalentForm extends Component {
                         placeholder={'Last Name'} />
                     <SingleInput 
                         title={'User Name'}
-                        name={'userName'}
+                        name={'username'}
                         inputType={'text'}
-                        content={this.state.userName}
+                        content={this.state.username}
                         controlFunc={this.handleChange}
                         placeholder={'Select a User Name'} />
                     <SingleInput 
@@ -106,20 +100,6 @@ class TalentForm extends Component {
                         controlFunc={this.handleChange}
                         placeholder={'Select a Password'} />
                     <UploadFiles />
-                    <SingleInput 
-                        title={'Skills'}
-                        name={'skills'}
-                        inputType={'text'}
-                        content={this.state.skills}
-                        controlFunc={this.handleChange}
-                        placeholder={'Top Skills'} />
-                    <SingleInput 
-                        title={'Locations'}
-                        name={'locations'}
-                        inputType={'text'}
-                        content={this.state.locations}
-                        controlFunc={this.handleChange}
-                        placeholder={'Locations'} />
                     <button onClick={this.handleFormClear}>
                         Clear Form
                     </button>

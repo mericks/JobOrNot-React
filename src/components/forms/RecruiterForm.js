@@ -10,7 +10,7 @@ class RecruiterForm extends Component {
         this.state = {
             firstName: '',
             lastName: '',
-            userName: '',
+            username: '',
             email: '',
             password: '',   // TODO: DON'T BRING PW BACK IN THE STATE. HANDLE IN BACKEND
             company: '',
@@ -30,7 +30,7 @@ class RecruiterForm extends Component {
         const formPayload = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
-            userName: this.state.userName,
+            username: this.state.username,
             email: this.state.email,
             password: this.state.password,
             company: this.state.company,
@@ -52,7 +52,7 @@ class RecruiterForm extends Component {
         this.setState({
             firstName: '',
             lastName: '',
-            userName: '',
+            username: '',
             email: '',
             password: '',
             company: '',
@@ -87,9 +87,9 @@ class RecruiterForm extends Component {
                         placeholder={'Last Name'} />
                     <SingleInput 
                         title={'User Name'}
-                        name={'userName'}
+                        name={'username'}
                         inputType={'text'}
-                        content={this.state.userName}
+                        content={this.state.username}
                         controlFunc={this.handleChange}
                         placeholder={'Select a User Name'} />
                     <SingleInput 

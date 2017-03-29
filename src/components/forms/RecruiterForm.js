@@ -148,5 +148,5 @@ function mapDispatchToProps(dispatch) {
 export default connect(null, mapDispatchToProps)(RecruiterForm);
 
 RecruiterForm.propTypes = {
-    signUp: React.PropTypes.func
+    signUp: PropTypes.func
 };

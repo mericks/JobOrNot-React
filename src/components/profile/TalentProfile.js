@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import ResumeForm from '../forms/ResumeForm';
 import TalentStats from './TalentStats';
 
+const mapStateToProps = (state) => {
+    return {
+        user: state.userAuth.user
+    };
+};
+
 const TalentProfile = (props) => {
     let TalentStatus;
-    if (!props.state.myResume) TalentStatus = ResumeForm;
+    if (!props.user.myResume) TalentStatus = ResumeForm;
     else TalentStatus = TalentStats;
 
     return (
@@ -15,4 +22,9 @@ const TalentProfile = (props) => {
     );
 };
 
-export default TalentProfile;
+export default connect(mapStateToProps)(TalentProfile);
+
+TalentProfile.propTypes = {
+    user: PropTypes.object
+};
+

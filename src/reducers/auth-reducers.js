@@ -4,7 +4,6 @@ const initialState = {
 };
 
 export function userAuth(state = initialState, action) {
-    console.log('state: ', action);
     switch (action.type) {
         case 'USER_LOGIN_SUCCESS':
             return {

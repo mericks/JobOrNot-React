@@ -19,7 +19,8 @@ class UploadFiles extends React.Component {
     render() {
         return (
             <div>
-                Resume: <input type='file' onChange={this.handleFileUpload} />
+                Resume: <input type='file' name='resume' />
+                <button onClick={this.handleFileUpload} />
             </div>
         );
     }

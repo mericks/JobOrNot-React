@@ -128,6 +128,6 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(TalentForm);
 
 TalentForm.propTypes = {
-    signUp: React.PropTypes.func,
-    resume: React.PropTypes.object
+    signUp: PropTypes.func,
+    resume: PropTypes.object
 };

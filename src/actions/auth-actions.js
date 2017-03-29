@@ -15,6 +15,12 @@ export function userLoginSuccess(user) {
     };
 }
 
+export function userLogoutSuccess() {
+    return {
+        type: 'USER_LOGOUT_SUCCESS',
+    };
+}
+
 export function userSignUpSuccess(user) {
     return {
         type: 'USER_SIGNUP_SUCCESS',

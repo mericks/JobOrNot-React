@@ -18,9 +18,12 @@ const ProfileFormFields = (props) => {
 
 const ProfileInfo = (props) => {
     return (
-        <ul>{ProfileFormFields}</ul>
+        <div>
+            <h3>where user object info should list out</h3>
+            <ul>{ProfileFormFields}</ul>
+        </div>
     );
-}    
+}; 
 
 export default connect(mapStateToProps)(ProfileInfo);
 

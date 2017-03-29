@@ -45,7 +45,6 @@ class ResumeForm extends Component {
     render() {
         return (
             <div>
-                <Nav />
                 <form onSubmit={this.handleResumeUpload}>
                     <h1>THIS FORM FINISHES THE TALENT PROFILE</h1>
                     <UploadFiles />

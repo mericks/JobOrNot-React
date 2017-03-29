@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 import Nav from '../navbar/Nav';
 import Welcome from './Welcome';

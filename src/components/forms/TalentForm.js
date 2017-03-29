@@ -13,9 +13,7 @@ class TalentForm extends Component {
             lastName: '',
             username: '',
             email: '',
-            password: '',
-            skills: '',
-            locations: ''
+            password: ''
         };
 
         this.handleFormSignUp = this.handleFormSignUp.bind(this);
@@ -33,13 +31,11 @@ class TalentForm extends Component {
             username: this.state.username,
             email: this.state.email,
             password: this.state.password,
-            myResume: this.props.resume._id,
-            skills: this.state.skills,
-            locations: this.state.locations,
             role: 'talent'
         };
 
         this.props.signUp({ method: 'POST', path: '/signup', body: formPayload });
+        
         this.handleFormClear(e);
     }
 
@@ -55,8 +51,6 @@ class TalentForm extends Component {
             username: '',
             email: '',
             password: '',
-            skills: '',
-            locations: '',
         });
     }
 
@@ -106,20 +100,6 @@ class TalentForm extends Component {
                         controlFunc={this.handleChange}
                         placeholder={'Select a Password'} />
                     <UploadFiles />
-                    <SingleInput 
-                        title={'Skills'}
-                        name={'skills'}
-                        inputType={'text'}
-                        content={this.state.skills}
-                        controlFunc={this.handleChange}
-                        placeholder={'Top Skills'} />
-                    <SingleInput 
-                        title={'Locations'}
-                        name={'locations'}
-                        inputType={'text'}
-                        content={this.state.locations}
-                        controlFunc={this.handleChange}
-                        placeholder={'Locations'} />
                     <button onClick={this.handleFormClear}>
                         Clear Form
                     </button>
@@ -148,6 +128,6 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(TalentForm);
 
 TalentForm.propTypes = {
-    signUp: React.PropTypes.func,
-    resume: React.PropTypes.object
+    signUp: PropTypes.func,
+    resume: PropTypes.object
 };

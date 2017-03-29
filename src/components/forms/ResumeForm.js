@@ -3,18 +3,19 @@ import Nav from '../navbar/Nav';
 import { connect } from 'react-redux';
 import { sendSignUp } from '../../actions/auth-actions';
 import UploadFiles from './UploadFiles';
+import SingleInput from './SingleInput';
 
 class ResumeForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            resume: '',
+            skills: '',
+            locations: ''
         };
-
         this.handleResumeUpload = this.handleResumeUpload.bind(this);
         // this.handleFormUpdate = this.handleFormUpdate.bind(this);
         this.handleFormClear = this.handleFormClear.bind(this);
-        // this.handleChange = this.handleChange.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     handleResumeUpload(e) {
@@ -22,9 +23,11 @@ class ResumeForm extends Component {
         console.log('props: ', this.props);
         const formPayload = {
             myResume: this.props.resume,
+            skills: this.state.skills,
+            locations: this.state.locations
         };
 
-        this.props.signUp({ method: 'PATCH', path: '/changeAccountInfo', body: formPayload });
+        this.props.signUp({ method: 'POST', path: '/myResume', body: formPayload });
         this.handleFormClear(e);
     }
 
@@ -44,8 +47,23 @@ class ResumeForm extends Component {
             <div>
                 <Nav />
                 <form onSubmit={this.handleResumeUpload}>
-                    <h1>THIS FORM UPLOADS THE USER RESUME</h1>
+                    <h1>THIS FORM FINISHES THE TALENT PROFILE</h1>
                     <UploadFiles />
+                    <SingleInput 
+                        title={'Skills'}
+                        name={'skills'}
+                        inputType={'text'}
+                        content={this.state.skills}
+                        controlFunc={this.handleChange}
+                        placeholder={'Top Skills'} />
+                    <SingleInput 
+                        title={'Locations'}
+                        name={'locations'}
+                        inputType={'text'}
+                        content={this.state.locations}
+                        controlFunc={this.handleChange}
+                        placeholder={'Locations'} />
+
                     <button onClick={this.handleFormClear}>
                         Clear Form
                     </button>

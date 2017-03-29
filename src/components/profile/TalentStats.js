@@ -21,7 +21,7 @@ class TalentStats extends Component {
         // this.handlewhatever = this.handlewhatever.bind(this);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         fetch('./myResume')
 			.then(res => res.json())
 			.then(data => {
@@ -43,7 +43,7 @@ class TalentStats extends Component {
         return (
             <div>
                 <p>THIS IS TalentStats SECTION</p>
-                <p>{this.props.user.firstName}, your resume has been viewed a total of {this.state.timesViewd} times.</p>
+                <p>{this.props.user.firstName}, your resume has been viewed a total of {this.state.timesViewed} times.</p>
                 <p>It was saved {this.state.timesLiked} times by recruiters actively hiring for these companies: {this.props.user.jobCompanyToFill} .</p>
             </div>
         );

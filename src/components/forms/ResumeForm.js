@@ -1,54 +1,59 @@
-import React from 'react';
-import SingleInput from './SingleInput';
-import Nav from '../navbar/Nav';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import UploadFiles from './UploadFiles';
+import SingleInput from './SingleInput';
 import { sendSkills } from '../../actions/upload-actions';
+import UploadFiles from './UploadFiles';
 
-class ResumeForm extends React.Component {
+class ResumeForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            skills: []
+            skills: '',
+            location: ''
         };
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        // this.handleFormUpdate = this.handleFormUpdate.bind(this);
+
         this.handleFormClear = this.handleFormClear.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
     handleFormSubmit(e) {
-        e.preventDevault();
+        e.preventDefault();
+
+        const skills = this.state.skills.split(' ');
+
+        console.log('skills: ', skills);
 
         const formPayload = {
-            skills: this.state.skills,
+            skills: skills,
             userId: this.props.userId,
-            resume: this.props.resumeId
+            resume: this.props.resumeId,
+            location: this.state.location
         };
 
-        this.sendSkills({ method: 'PATCH', path: '/myResume', body: formPayload });
+        this.props.sendSkills({ method: 'PATCH', path: `/myResume/${this.props.resumeId}`, body: formPayload, token: this.props.token });
         this.handleFormClear(e);
     }
 
     handleFormClear(e) {
-        e.preventDevault();
+        e.preventDefault();
         this.setState({
-            skill: []
+            skills: '',
+            location: ''
         });
     }
 
     handleChange(e) {
-        this.setState({
-            [e.target.name]: e.target.value
-        });
+        this.setState({ [e.target.name]: e.target.value });
     }
-
+ 
     render() {
         return (
             <div>
-                <Nav />
+                <h1>THIS FORM ADD TALENT RESUME</h1>
+                <UploadFiles />
                 <form onSubmit={this.handleFormSubmit}>
-                    <h1>THIS FORM ADD TALENT RESUME</h1>
-                    <UploadFiles />
                     <SingleInput 
                         title={'Skills'}
                         name={'skills'}
@@ -56,12 +61,17 @@ class ResumeForm extends React.Component {
                         content={this.state.skills}
                         controlFunc={this.handleChange}
                         placeholder={'Top Skills'} />
+                     <SingleInput 
+                        title={'Location'}
+                        name={'location'}
+                        inputType={'text'}
+                        content={this.state.location}
+                        controlFunc={this.handleChange}
+                        placeholder={'Location'} />
                     <button onClick={this.handleFormClear}>
                         Clear Form
                     </button>
-                    <input
-                        type='submit'
-                        value='submit' />
+                    <input type='submit' value='Submit' />
                 </form>
             </div>
         );
@@ -70,8 +80,9 @@ class ResumeForm extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        userId: state.user._id,
-        resumeId: state.resume_id
+        userId: state.userAuth.user._id,
+        resumeId: state.uploads,
+        token: state.userAuth.token
     };
 }
 
@@ -81,9 +92,12 @@ function mapDisptachToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDisptachToProps)(ResumeForm);
-
 ResumeForm.propTypes = {
+    uploads: React.PropTypes.object,
     resumeId: React.PropTypes.string,
-    userId: React.PropTypes.string
+    userId: React.PropTypes.string,
+    sendSkills: React.PropTypes.func,
+    token: React.PropTypes.string
 };
+
+export default connect(mapStateToProps, mapDisptachToProps)(ResumeForm);

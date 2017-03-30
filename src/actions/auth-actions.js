@@ -15,6 +15,12 @@ export function userLoginSuccess(user) {
     };
 }
 
+export function userLogoutSuccess() {
+    return {
+        type: 'USER_LOGOUT_SUCCESS',
+    };
+}
+
 export function userSignUpSuccess(user) {
     return {
         type: 'USER_SIGNUP_SUCCESS',
@@ -31,7 +37,7 @@ export function setToken(token) {
 
 export function sendSignUp(options) {
     return (dispatch) => {
-        fetcher(options)
+        return fetcher(options)
             .then(user => {
                 dispatch(userSignUpSuccess(user));
             })
@@ -41,7 +47,7 @@ export function sendSignUp(options) {
 
 export function sendLogIn(options) {
     return (dispatch) => {
-        fetcher(options)
+        return fetcher(options)
             .then(user => {
                 dispatch(userLoginSuccess(user));
             })

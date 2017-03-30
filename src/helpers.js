@@ -1,10 +1,11 @@
 export default function fetcher(options) {
-    const { method, path, body } = options;
-    return fetch(`http://localhost:4000${path}`, {
+    const { method, path, body, token } = options;
+    return fetch(`${path}`, {
         method: method,
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': token
         },
         body: JSON.stringify(body)
     })

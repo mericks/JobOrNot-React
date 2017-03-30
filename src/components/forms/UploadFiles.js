@@ -5,25 +5,49 @@ import { uploadDocumentRequest } from '../../actions/upload-actions';
 class UploadFiles extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            file: '',
+            name: ''
+        };
         this.handleFileUpload = this.handleFileUpload.bind(this);
+        this.handleFileChange = this.handleFileChange.bind(this);
     }
 
     handleFileUpload(e) {
-        const file = e.target.files[0];
+        e.preventDefault();
+
         this.props.uploadFile({
-            file,
+            file: this.state.file,
+            name: this.state.name,
+            token: this.props.token
+        });
+    }
+
+    handleFileChange(e) {
+        e.preventDefault();
+        this.setState({
+            file: e.target.files[0],
             name: e.target.files[0].name
         });
     }
 
     render() {
         return (
+            /*TODO: have a message about upload success*/
             <div>
-                Resume: <input type='file' name='resume' />
-                <button onClick={this.handleFileUpload} />
+                <form onSubmit={this.handleFileUpload}>
+                    Resume: <input type='file' name='resume' onChange={this.handleFileChange} />
+                    <button type='submit' onClick={this.handleFileUpload}>Submit Resume</button> 
+                </form>
             </div>
         );
     }
+}
+
+function mapStateToProps(state) {
+    return {
+        token: state.userAuth.token
+    };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -32,8 +56,9 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(null, mapDispatchToProps)(UploadFiles);
+export default connect(mapStateToProps, mapDispatchToProps)(UploadFiles);
 
 UploadFiles.propTypes = {
-    uploadFile: React.PropTypes.func
+    uploadFile: React.PropTypes.func,
+    token: React.PropTypes.string
 };

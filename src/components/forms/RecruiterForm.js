@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import SingleInput from './SingleInput';
 import Nav from '../navbar/Nav';
 import { connect } from 'react-redux';
@@ -39,8 +39,18 @@ class RecruiterForm extends Component {
             role: 'recruiter'
         };
 
-        this.props.signUp({ method: 'POST', path: '/signup', body: formPayload });
-        this.handleFormClear(e);
+        this.props.signUp({ method: 'POST', path: '/signup', body: formPayload })
+        .then((action) => {
+            if (action.type !== 'ITEMS_HAS_ERRORED') {
+                // this.handleFormClear(e);
+                // this.props.history.push('/profile'); 
+            } else alert('Signup was not executed correctly. Please try again.');
+        })
+        .catch(() => {
+            console.log('at catch');
+            this.handleFormClear(e);
+            this.props.history.push('/profile'); 
+        });
     }
 
     // handleFormUpdate() {
@@ -48,7 +58,7 @@ class RecruiterForm extends Component {
     // }
 
     handleFormClear(e) {
-        e.preventDefault();
+        // e.preventDefault();
         this.setState({
             firstName: '',
             lastName: '',
@@ -127,7 +137,10 @@ class RecruiterForm extends Component {
                         content={this.state.jobCompanyToFill}
                         controlFunc={this.handleChange}
                         placeholder={'Hiring Company'} />
-                    <button onClick={this.handleFormClear}>
+                    <button 
+                        type='button'
+                        onClick={this.handleFormClear}
+                    >
                         Clear Form
                     </button>
                     <input 
@@ -148,5 +161,5 @@ function mapDispatchToProps(dispatch) {
 export default connect(null, mapDispatchToProps)(RecruiterForm);
 
 RecruiterForm.propTypes = {
-    signUp: React.PropTypes.func
+    signUp: PropTypes.func
 };

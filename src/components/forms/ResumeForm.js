@@ -1,18 +1,19 @@
-import React from 'react';
-import SingleInput from './SingleInput';
-import Nav from '../navbar/Nav';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import UploadFiles from './UploadFiles';
+import SingleInput from './SingleInput';
 import { sendSkills } from '../../actions/upload-actions';
+import UploadFiles from './UploadFiles';
 
-class ResumeForm extends React.Component {
+class ResumeForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
             skills: '',
-            locations: ''
+            location: ''
         };
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        // this.handleFormUpdate = this.handleFormUpdate.bind(this);
+
         this.handleFormClear = this.handleFormClear.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -39,21 +40,18 @@ class ResumeForm extends React.Component {
     handleFormClear(e) {
         e.preventDefault();
         this.setState({
-            skills: [],
-            locations: ''
+            skills: '',
+            location: ''
         });
     }
 
     handleChange(e) {
-        this.setState({
-            [e.target.name]: e.target.value
-        });
+        this.setState({ [e.target.name]: e.target.value });
     }
-
+ 
     render() {
         return (
             <div>
-                <Nav />
                 <h1>THIS FORM ADD TALENT RESUME</h1>
                 <UploadFiles />
                 <form onSubmit={this.handleFormSubmit}>
@@ -65,10 +63,10 @@ class ResumeForm extends React.Component {
                         controlFunc={this.handleChange}
                         placeholder={'Top Skills'} />
                      <SingleInput 
-                        title={'Locations'}
-                        name={'locations'}
+                        title={'Location'}
+                        name={'location'}
                         inputType={'text'}
-                        content={this.state.locations}
+                        content={this.state.location}
                         controlFunc={this.handleChange}
                         placeholder={'Locations'} />
                     <button onClick={this.handleFormClear}>
@@ -96,8 +94,6 @@ function mapDisptachToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDisptachToProps)(ResumeForm);
-
 ResumeForm.propTypes = {
     uploads: React.PropTypes.object,
     resumeId: React.PropTypes.string,
@@ -105,3 +101,5 @@ ResumeForm.propTypes = {
     sendSkills: React.PropTypes.func,
     token: React.PropTypes.string
 };
+
+export default connect(mapStateToProps, mapDisptachToProps)(ResumeForm);

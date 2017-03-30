@@ -25,12 +25,22 @@ class SignInForm extends Component {
             password: this.state.password,
         };
 
-        this.props.signIn({ method: 'POST', path: '/signin', body: formPayload });
-        this.handleFormClear(e);
+        this.props.signIn({ method: 'POST', path: '/signin', body: formPayload })
+        .then((action) => {
+            if (action.type !== 'ITEMS_HAS_ERRORED') {
+                // this.handleFormClear(e);
+                // this.props.history.push('/profile');
+            } else alert('Correct username and password must be provided');
+        })
+        .catch(() => {
+            console.log('at catch');
+            this.handleFormClear(e);
+            this.props.history.push('/profile');
+        });
     }
 
     handleFormClear(e) {
-        e.preventDefault();
+        // e.preventDefault();
         this.setState({
             username: '',
             password: '',
@@ -61,7 +71,10 @@ class SignInForm extends Component {
                         content={this.state.password}
                         controlFunc={this.handleChange}
                         placeholder={'Select a Password'} />
-                    <button onClick={this.handleFormClear}>
+                    <button                         
+                        type='button'
+                        onClick={this.handleFormClear}
+                    >
                         Clear Form
                     </button>
                     <input 

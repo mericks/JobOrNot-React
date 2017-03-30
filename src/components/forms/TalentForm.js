@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import SingleInput from './SingleInput';
 import Nav from '../navbar/Nav';
 import { connect } from 'react-redux';
@@ -12,7 +12,7 @@ class TalentForm extends Component {
             lastName: '',
             username: '',
             email: '',
-            password: '',
+            password: ''
         };
 
         this.handleFormSignUp = this.handleFormSignUp.bind(this);
@@ -33,8 +33,18 @@ class TalentForm extends Component {
             role: 'talent'
         };
 
-        this.props.signUp({ method: 'POST', path: '/signup', body: formPayload });
-        this.handleFormClear(e);
+        this.props.signUp({ method: 'POST', path: '/signup', body: formPayload })
+        .then((action) => {
+            if (action.type !== 'ITEMS_HAS_ERRORED') {
+                // this.handleFormClear(e);
+                // this.props.history.push('/profile'); 
+            } else alert('Signup was not executed correctly. Please try again.');
+        })
+        .catch(() => {
+            console.log('at catch');
+            this.handleFormClear(e);
+            this.props.history.push('/profile');
+        });
     }
 
     // handleFormUpdate() {
@@ -42,7 +52,7 @@ class TalentForm extends Component {
     // }
 
     handleFormClear(e) {
-        e.preventDefault();
+        // e.preventDefault();
         this.setState({
             firstName: '',
             lastName: '',
@@ -97,7 +107,9 @@ class TalentForm extends Component {
                         content={this.state.password}
                         controlFunc={this.handleChange}
                         placeholder={'Select a Password'} />
-                    <button onClick={this.handleFormClear}>
+                    <button 
+                        type='button'
+                        onClick={this.handleFormClear}>
                         Clear Form
                     </button>
                     <input 
@@ -124,6 +136,5 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(TalentForm);
 
 TalentForm.propTypes = {
-    signUp: React.PropTypes.func,
-    resume: React.PropTypes.object
+    signUp: PropTypes.func,
 };

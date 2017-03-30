@@ -33,10 +33,11 @@ class UploadFiles extends React.Component {
 
     render() {
         return (
+            /*TODO: have a message about upload success*/
             <div>
                 <form onSubmit={this.handleFileUpload}>
                     Resume: <input type='file' name='resume' onChange={this.handleFileChange} />
-                    <button type='submit' onClick={this.handleFileUpload}>Submit Resume</button>
+                    <button type='submit' onClick={this.handleFileUpload}>Submit Resume</button> 
                 </form>
             </div>
         );

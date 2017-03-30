@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import ResumeSearchForm from '../forms/ResumeSearchForm'
 
@@ -12,10 +13,10 @@ const mapStateToProps = (state) => {
 const RecruiterProfile = (props) => {
     return (
         <div>
+            <Link to='/recruitersignup'>Edit profile</Link>
             <section>
                 <ResumeSearchForm />
             </section>
-            <button>Update Profile</button>
             <section>
                 __liked resumes go here__
                 {props.user.likedResumes}

@@ -14,7 +14,6 @@ export function userAuth(state = initialState, action) {
             };
         case 'USER_SIGNUP_SUCCESS':
             return {
-                ...state,
                 isLoggedIn: true,
                 user: action.user.userObj,
                 token: action.user.token

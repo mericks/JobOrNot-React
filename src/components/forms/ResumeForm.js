@@ -1,23 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SingleInput from './SingleInput';
 import { sendSkills } from '../../actions/upload-actions';
-
-function mapStateToProps(state) {
-    return {
-        // userId: state.resume.user,
-        userId: state.userAuth.user.username,
-        // resumeId: state.userAuth.resume._id
-    };
-}
-
-function mapDisptachToProps(dispatch) {
-    return {
-        sendSkills: (options) => dispatch(sendSkills(options))
-    };
-}
-
-
+import UploadFiles from './UploadFiles';
 
 class ResumeForm extends Component {
     constructor(props) {
@@ -35,22 +20,27 @@ class ResumeForm extends Component {
 
     handleFormSubmit(e) {
         e.preventDefault();
-        console.log('props: ', this.props);
+
+        const skills = this.state.skills.split(' ');
+
+        console.log('skills: ', skills);
+
         const formPayload = {
-            skills: this.state.skills,
-            location: this.state.location,
-            user: this.props.userId,
-            resume: this.props.resumeId
+            skills: skills,
+            userId: this.props.userId,
+            resume: this.props.resumeId,
+            location: this.state.location
         };
 
-        this.props.sendSkills({ method: 'PATCH', path: '/myResume', body: formPayload });
+        console.log('payload: ', formPayload);
+        this.props.sendSkills({ method: 'PATCH', path: `/myResume/${this.props.resumeId}`, body: formPayload, token: this.props.token });
         this.handleFormClear(e);
     }
 
     handleFormClear(e) {
         e.preventDefault();
         this.setState({
-            skills: [],
+            skills: '',
             location: ''
         });
     }
@@ -62,8 +52,9 @@ class ResumeForm extends Component {
     render() {
         return (
             <div>
+                <h1>THIS FORM ADD TALENT RESUME</h1>
+                <UploadFiles />
                 <form onSubmit={this.handleFormSubmit}>
-                    <h1>THIS FORM SENDS SKILLS AND LOCATION</h1>
                     <SingleInput 
                         title={'Skills'}
                         name={'skills'}
@@ -71,29 +62,44 @@ class ResumeForm extends Component {
                         content={this.state.skills}
                         controlFunc={this.handleChange}
                         placeholder={'Top Skills'} />
-                    <SingleInput 
+                     <SingleInput 
                         title={'Location'}
                         name={'location'}
                         inputType={'text'}
                         content={this.state.location}
                         controlFunc={this.handleChange}
-                        placeholder={'Your Location'} />
+                        placeholder={'Locations'} />
                     <button onClick={this.handleFormClear}>
                         Clear Form
                     </button>
-                    <input 
-                        type='submit'
-                        value='submit'/>
+                    <input type='submit' value='Submit' />
                 </form>
             </div>
         );
+    }
+}
+
+function mapStateToProps(state) {
+    console.log('state: ', state);
+    return {
+        userId: state.userAuth.user._id,
+        resumeId: state.uploads,
+        token: state.userAuth.token
+    };
+}
+
+function mapDisptachToProps(dispatch) {
+    return {
+        sendSkills: (options) => dispatch(sendSkills(options))
     };
 }
 
 ResumeForm.propTypes = {
-    userId: PropTypes.string,
-    resumeId: PropTypes.string,
-    sendSkills: PropTypes.func
+    uploads: React.PropTypes.object,
+    resumeId: React.PropTypes.string,
+    userId: React.PropTypes.string,
+    sendSkills: React.PropTypes.func,
+    token: React.PropTypes.string
 };
 
 export default connect(mapStateToProps, mapDisptachToProps)(ResumeForm);

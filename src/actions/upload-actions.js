@@ -22,16 +22,20 @@ export function sendSkills(options) {
                 dispatch(uploadSuccess(resume));
             })
             .catch(() => dispatch(itemsHasErrored(true)));
-    }
+    };
 }
 
-export function uploadDocumentRequest({ file, name }) {
+export function uploadDocumentRequest({ file, name, token }) {
     let data = new FormData();
     data.append('file', file);
     data.append('name', name);
+
     return (dispatch) => {
         return fetch('http://localhost:4000/myResume', {
             method: 'POST',
+            headers: {
+                'Authorization': token
+            },
             body: data
         })
         .then(res => {

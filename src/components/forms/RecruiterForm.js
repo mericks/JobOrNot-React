@@ -40,12 +40,17 @@ class RecruiterForm extends Component {
         };
 
         this.props.signUp({ method: 'POST', path: '/signup', body: formPayload })
-        .then(() => {
+        .then((action) => {
+            if (action.type !== 'ITEMS_HAS_ERRORED') {
+                // this.handleFormClear(e);
+                // this.props.history.push('/profile'); 
+            } else alert('Signup was not executed correctly. Please try again.');
+        })
+        .catch(() => {
+            console.log('at catch');
             this.handleFormClear(e);
-            this.props.history.push('/profile'); // THIS IS GOOD
+            this.props.history.push('/profile'); 
         });
-        console.dir(this.context);
-        /* can we add a link here to go to a new page */
     }
 
     // handleFormUpdate() {
@@ -132,7 +137,10 @@ class RecruiterForm extends Component {
                         content={this.state.jobCompanyToFill}
                         controlFunc={this.handleChange}
                         placeholder={'Hiring Company'} />
-                    <button onClick={this.handleFormClear}>
+                    <button 
+                        type='button'
+                        onClick={this.handleFormClear}
+                    >
                         Clear Form
                     </button>
                     <input 

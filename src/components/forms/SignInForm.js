@@ -28,12 +28,14 @@ class SignInForm extends Component {
         this.props.signIn({ method: 'POST', path: '/signin', body: formPayload })
         .then((action) => {
             if (action.type !== 'ITEMS_HAS_ERRORED') {
-                this.handleFormClear(e);
-                this.props.history.push('/profile'); // THIS IS GOOD
+                // this.handleFormClear(e);
+                // this.props.history.push('/profile');
             } else alert('Correct username and password must be provided');
         })
         .catch(() => {
             console.log('at catch');
+            this.handleFormClear(e);
+            this.props.history.push('/profile');
         });
     }
 

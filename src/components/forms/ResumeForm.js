@@ -68,7 +68,7 @@ class ResumeForm extends Component {
                         inputType={'text'}
                         content={this.state.location}
                         controlFunc={this.handleChange}
-                        placeholder={'Locations'} />
+                        placeholder={'Location'} />
                     <button onClick={this.handleFormClear}>
                         Clear Form
                     </button>

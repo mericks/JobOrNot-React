@@ -25,7 +25,6 @@ const mapStateToProps = (state) => {
 // };
 
 const ProfileInfo = (props) => {
-    console.log('prosp.user: ', props.user);
     let user = props.user
     // let fields = ProfileFormFields();
     // console.log('fields is', fields);

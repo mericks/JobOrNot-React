@@ -177,4 +177,5 @@ export default connect(mapStateToProps, mapDispatchToProps)(TalentForm);
 
 TalentForm.propTypes = {
     signUp: PropTypes.func,
+    history: PropTypes.any
 };

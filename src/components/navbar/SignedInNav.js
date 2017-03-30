@@ -38,5 +38,10 @@ const SignedInNav = (props) => {
     );
 };
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(SignedInNav);
+
+SignedInNav.propTypes = {
+    user: React.PropTypes.object,
+    handleSignOut: React.PropTypes.func,
+    history: React.PropTypes.any
+};

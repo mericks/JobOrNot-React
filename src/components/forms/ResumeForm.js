@@ -32,7 +32,6 @@ class ResumeForm extends Component {
             location: this.state.location
         };
 
-        console.log('payload: ', formPayload);
         this.props.sendSkills({ method: 'PATCH', path: `/myResume/${this.props.resumeId}`, body: formPayload, token: this.props.token });
         this.handleFormClear(e);
     }
@@ -68,7 +67,7 @@ class ResumeForm extends Component {
                         inputType={'text'}
                         content={this.state.location}
                         controlFunc={this.handleChange}
-                        placeholder={'Locations'} />
+                        placeholder={'Location'} />
                     <button onClick={this.handleFormClear}>
                         Clear Form
                     </button>
@@ -80,7 +79,6 @@ class ResumeForm extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log('state: ', state);
     return {
         userId: state.userAuth.user._id,
         resumeId: state.uploads,

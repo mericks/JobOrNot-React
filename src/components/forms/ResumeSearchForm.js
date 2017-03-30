@@ -39,7 +39,7 @@ class ResumeSearchForm extends Component {
         this.setState({
             jobTitleToFill: '',
             jobCompanyToFill: '',
-            jobSkills: ''
+            jobSkills: '',
         });
     }
 

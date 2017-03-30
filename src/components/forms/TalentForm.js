@@ -33,9 +33,11 @@ class TalentForm extends Component {
             role: 'talent'
         };
 
-        this.props.signUp({ method: 'POST', path: '/signup', body: formPayload });
-        
-        this.handleFormClear(e);
+        this.props.signUp({ method: 'POST', path: '/signup', body: formPayload })
+        .then(() => {
+            this.handleFormClear(e);
+            this.props.history.push('/profile'); // THIS IS GOOD
+        });
     }
 
     // handleFormUpdate() {
@@ -43,7 +45,7 @@ class TalentForm extends Component {
     // }
 
     handleFormClear(e) {
-        e.preventDefault();
+        // e.preventDefault();
         this.setState({
             firstName: '',
             lastName: '',

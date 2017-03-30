@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SignedInNav = (props) => {
     return (
@@ -9,6 +10,8 @@ const SignedInNav = (props) => {
           <li>How It Works</li>
           <li>Profile</li>
           <li>Welcome _name here_</li>
+          <li><Link to='/resume-upload'>Resume Upload</Link></li>
+          <li><Link to='/resume-display'>Resume Display</Link></li>
           <li>Sign Out</li>
         </ul>
       </nav>

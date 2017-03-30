@@ -32,7 +32,7 @@ class ResumeForm extends React.Component {
     handleFormClear(e) {
         e.preventDevault();
         this.setState({
-            skill: []
+            skills: []
         });
     }
 
@@ -46,9 +46,9 @@ class ResumeForm extends React.Component {
         return (
             <div>
                 <Nav />
+                <UploadFiles />
                 <form onSubmit={this.handleFormSubmit}>
                     <h1>THIS FORM ADD TALENT RESUME</h1>
-                    <UploadFiles />
                     <SingleInput 
                         title={'Skills'}
                         name={'skills'}
@@ -70,7 +70,7 @@ class ResumeForm extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        userId: state.user._id,
+        userId: state.userAuth.user._id,
         resumeId: state.resume_id
     };
 }

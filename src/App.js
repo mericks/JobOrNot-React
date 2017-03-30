@@ -4,6 +4,8 @@ import Home from './components/home/Home';
 import RecruiterForm from './components/forms/RecruiterForm';
 import TalentForm from './components/forms/TalentForm';
 import SignInForm from './components/forms/SignInForm';
+import ResumeDisplay from './components/resume-display/ResumeDisplay';
+import ResumeForm from './components/forms/ResumeForm';
 
 class App extends Component {
     constructor(props) {
@@ -23,6 +25,8 @@ class App extends Component {
               <Route exact path='/recruitersignup' component={RecruiterForm} />
               <Route exact path='/talentsignup' component={TalentForm} />
               <Route exact path='/signin' component={SignInForm} />
+              <Route exact path='/resume-display' component={ResumeDisplay} />
+              <Route exact path='/resume-upload' component={ResumeForm} />
             </div>
           </Router>
         );

@@ -10,7 +10,7 @@ class TalentForm extends Component {
         this.state = {
             firstName: '',
             lastName: '',
-            userName: '',
+            username: '',
             email: '',
             password: '',
             locations: ''
@@ -28,7 +28,7 @@ class TalentForm extends Component {
         const formPayload = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
-            userName: this.state.userName,
+            username: this.state.username,
             email: this.state.email,
             password: this.state.password,
             locations: this.state.locations,
@@ -48,7 +48,7 @@ class TalentForm extends Component {
         this.setState({
             firstName: '',
             lastName: '',
-            userName: '',
+            username: '',
             email: '',
             password: '',
             locations: '',
@@ -81,9 +81,9 @@ class TalentForm extends Component {
                         placeholder={'Last Name'} />
                     <SingleInput 
                         title={'User Name'}
-                        name={'userName'}
+                        name={'username'}
                         inputType={'text'}
-                        content={this.state.userName}
+                        content={this.state.username}
                         controlFunc={this.handleChange}
                         placeholder={'Select a User Name'} />
                     <SingleInput 

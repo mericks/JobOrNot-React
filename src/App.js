@@ -6,6 +6,8 @@ import TalentForm from './components/forms/TalentForm';
 import SignInForm from './components/forms/SignInForm';
 import Profile from './components/profile/Profile';
 import UploadFiles from './components/forms/UploadFiles';
+import '../styles/css/bootstrap-theme.css';
+import '../styles/css/bootstrap.css';
 
 function App() {
     return (

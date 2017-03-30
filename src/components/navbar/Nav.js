@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import SignedInNav from './SignedInNav';
-import SignedOutNav from './SignedOutNav';
+import SignedOutNav2 from './SignedOutNav2';
 
 const Nav = (props) => {
     if (props.isLoggedIn) return (<SignedInNav />);
-    else if (!props.isLoggedIn) return (<SignedOutNav />);
+    else if (!props.isLoggedIn) return (<SignedOutNav2 />);
 };
 
 function mapStateToProps(state) {

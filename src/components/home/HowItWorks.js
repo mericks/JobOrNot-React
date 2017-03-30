@@ -1,8 +1,10 @@
 import React from 'react';
+import Nav from '../navbar/Nav';
 
 const HowItWorks = () => {
     return (
         <div>
+            <Nav />
             <h1>How It Works</h1> <hr/>
             <h2>Recruiters and hiring managers</h2>
             <p>

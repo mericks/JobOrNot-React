@@ -6,6 +6,7 @@ import TalentForm from './components/forms/TalentForm';
 import SignInForm from './components/forms/SignInForm';
 import Profile from './components/profile/Profile';
 import UploadFiles from './components/forms/UploadFiles';
+import HowItWorks from './components/home/HowItWorks';
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path='/signin' component={SignInForm} />
           <Route exact path='/profile' component={Profile} />
           <Route exact path='/resumesubmit' component={UploadFiles} />
+          <Route exact path='/howitworks' component={HowItWorks} />
         </div>
       </Router>
     );

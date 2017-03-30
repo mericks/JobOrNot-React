@@ -22,8 +22,8 @@ const SignedInNav = (props) => {
       <nav>
         <ul>
           <li><img src='https://placeholdit.imgix.net/~text?txtsize=6&txt=50%C3%9750&w=50&h=50' alt='logo' /></li>
-          <li>JobOrNot</li>
-          <li>How It Works</li>
+          <li><Link to='/'>JobOrNot</Link></li>
+          <li><Link to='/howitworks'>How It Works</Link></li>
           <li><Link to='/profile'>Profile</Link></li>
           <li><Link to='/resumesubmit'>ResumeSubmitTest</Link></li>
           <li>Welcome, {props.user.firstName}</li>

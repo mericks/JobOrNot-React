@@ -9,7 +9,7 @@ class ResumeForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            skills: [],
+            skills: '',
             locations: ''
         };
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -20,11 +20,15 @@ class ResumeForm extends React.Component {
     handleFormSubmit(e) {
         e.preventDefault();
 
+        const skills = this.state.skills.split(' ');
+
+        console.log('skills: ', skills);
+
         const formPayload = {
-            skills: this.state.skills,
+            skills: skills,
             userId: this.props.userId,
             resume: this.props.resumeId,
-            locations: this.state.locations
+            location: this.state.location
         };
 
         console.log('payload: ', formPayload);

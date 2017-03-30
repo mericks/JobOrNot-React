@@ -12,9 +12,8 @@ export function resumeFetchData(options) {
     return (dispatch) => {
         dispatch(itemsIsLoading(true));
 
-        fetcher(options)
+        return fetcher(options)
             .then(resumes => {
-                console.log('resumes: ', resumes);
                 return dispatch(resumeFetchDataSuccess(resumes));
             })
             .then(dispatch(itemsIsLoading(false)))

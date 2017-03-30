@@ -2,19 +2,29 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { resumeFetchData } from '../../actions/ResumeDisplay-actions';
 
-// function getResume(props) {
-//     let resumePDF = props.fetchData({ method: 'GET', path: `/resumes/${}`)
+// function GetResume(props) {
+//     let resumePDF = props.fetchData({ method: 'GET', path: `/resumes/${props.resumes[0]}`});
+
+//     return resumePDF;
+// }
+
+// function itterateResumes(props) {
+//     let index = 0;
+
 // }
 
 class ResumeDisplay extends React.Component {
     componentWillMount() {
-        this.props.fetchData({ method: 'GET', path: '/resumes', token: this.props.token });
+        console.log('hello');
+        this.props.fetchData({ method: 'GET', path: '/resumes?skills[]=typing', token: this.props.token });
     }
 
     render() {
+        let resumePDF = this.props.fetchData({ method: 'GET', path: `/resumes/${this.props.resumes[0]}` });
+        console.log('props: ', this.props);
         return (
             <div>
-                <img src={this.props.resumes[0]} alt='Talent resume' />
+                {resumePDF}
             </div>
         );
     }

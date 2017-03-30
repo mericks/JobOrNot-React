@@ -3,7 +3,6 @@ import SingleInput from './SingleInput';
 import Nav from '../navbar/Nav';
 import { connect } from 'react-redux';
 import { sendSignUp } from '../../actions/auth-actions';
-import UploadFiles from './UploadFiles';
 
 class TalentForm extends Component {
     constructor(props) {
@@ -11,11 +10,9 @@ class TalentForm extends Component {
         this.state = {
             firstName: '',
             lastName: '',
-            userName: '',
+            username: '',
             email: '',
-            password: '',
-            skills: '',
-            locations: ''
+            password: ''
         };
 
         this.handleFormSignUp = this.handleFormSignUp.bind(this);
@@ -26,21 +23,28 @@ class TalentForm extends Component {
 
     handleFormSignUp(e) {
         e.preventDefault();
-        console.log('props: ', this.props);
+
         const formPayload = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
-            userName: this.state.userName,
+            username: this.state.username,
             email: this.state.email,
             password: this.state.password,
-            myResume: this.props.resume._id,
-            skills: this.state.skills,
-            locations: this.state.locations,
             role: 'talent'
         };
 
-        this.props.signUp({ method: 'POST', path: '/signup', body: formPayload });
-        this.handleFormClear(e);
+        this.props.signUp({ method: 'POST', path: '/signup', body: formPayload })
+        .then((action) => {
+            if (action.type !== 'ITEMS_HAS_ERRORED') {
+                // this.handleFormClear(e);
+                // this.props.history.push('/profile'); 
+            } else alert('Signup was not executed correctly. Please try again.');
+        })
+        .catch(() => {
+            console.log('at catch');
+            this.handleFormClear(e);
+            this.props.history.push('/profile');
+        });
     }
 
     // handleFormUpdate() {
@@ -48,15 +52,13 @@ class TalentForm extends Component {
     // }
 
     handleFormClear(e) {
-        e.preventDefault();
+        // e.preventDefault();
         this.setState({
             firstName: '',
             lastName: '',
-            userName: '',
+            username: '',
             email: '',
             password: '',
-            skills: '',
-            locations: '',
         });
     }
 
@@ -86,9 +88,9 @@ class TalentForm extends Component {
                         placeholder={'Last Name'} />
                     <SingleInput 
                         title={'User Name'}
-                        name={'userName'}
+                        name={'username'}
                         inputType={'text'}
-                        content={this.state.userName}
+                        content={this.state.username}
                         controlFunc={this.handleChange}
                         placeholder={'Select a User Name'} />
                     <SingleInput 
@@ -105,22 +107,9 @@ class TalentForm extends Component {
                         content={this.state.password}
                         controlFunc={this.handleChange}
                         placeholder={'Select a Password'} />
-                    <UploadFiles />
-                    <SingleInput 
-                        title={'Skills'}
-                        name={'skills'}
-                        inputType={'text'}
-                        content={this.state.skills}
-                        controlFunc={this.handleChange}
-                        placeholder={'Top Skills'} />
-                    <SingleInput 
-                        title={'Locations'}
-                        name={'locations'}
-                        inputType={'text'}
-                        content={this.state.locations}
-                        controlFunc={this.handleChange}
-                        placeholder={'Locations'} />
-                    <button onClick={this.handleFormClear}>
+                    <button 
+                        type='button'
+                        onClick={this.handleFormClear}>
                         Clear Form
                     </button>
                     <input 
@@ -133,7 +122,6 @@ class TalentForm extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log('state: ', state);
     return {
         resume: state.uploads
     };
@@ -148,6 +136,5 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(TalentForm);
 
 TalentForm.propTypes = {
-    signUp: React.PropTypes.func,
-    resume: React.PropTypes.object
+    signUp: PropTypes.func,
 };

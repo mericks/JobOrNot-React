@@ -1,3 +1,6 @@
+import fetcher from '../helpers';
+import { itemsHasErrored } from './general-actions';
+
 export function uploadSuccess(resume) {
     return {
         type: 'UPLOAD_DOCUMENT_SUCCESS',
@@ -12,13 +15,27 @@ export function uploadFail(error) {
     };
 }
 
-export function uploadDocumentRequest({ file, name }) {
+export function sendSkills(options) {
+    return (dispatch) => {
+        fetcher(options)
+            .then(resume => {
+                dispatch(uploadSuccess(resume));
+            })
+            .catch(() => dispatch(itemsHasErrored(true)));
+    };
+}
+
+export function uploadDocumentRequest({ file, name, token }) {
     let data = new FormData();
     data.append('file', file);
     data.append('name', name);
+
     return (dispatch) => {
         return fetch('http://localhost:4000/myResume', {
             method: 'POST',
+            headers: {
+                'Authorization': token
+            },
             body: data
         })
         .then(res => {

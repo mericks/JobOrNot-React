@@ -21,6 +21,7 @@ SingleInput.propTypes = {
     content: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number,
+        PropTypes.array
     ]).isRequired,
     placeholder: PropTypes.string.isRequired,
 }

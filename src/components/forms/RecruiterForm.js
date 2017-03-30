@@ -41,6 +41,9 @@ class RecruiterForm extends Component {
 
         this.props.signUp({ method: 'POST', path: '/signup', body: formPayload });
         this.handleFormClear(e);
+        this.context.router.push('/profile');
+        console.dir(this.context);
+        /* can we add a link here to go to a new page */
     }
 
     // handleFormUpdate() {

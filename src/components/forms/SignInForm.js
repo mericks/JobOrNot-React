@@ -26,9 +26,14 @@ class SignInForm extends Component {
         };
 
         this.props.signIn({ method: 'POST', path: '/signin', body: formPayload })
-        .then(() => {
-            this.handleFormClear(e);
-            this.props.history.push('/profile'); // THIS IS GOOD
+        .then((action) => {
+            if (action.type !== 'ITEMS_HAS_ERRORED') {
+                this.handleFormClear(e);
+                this.props.history.push('/profile'); // THIS IS GOOD
+            } else alert('Correct username and password must be provided');
+        })
+        .catch(() => {
+            console.log('at catch');
         });
     }
 
@@ -64,7 +69,10 @@ class SignInForm extends Component {
                         content={this.state.password}
                         controlFunc={this.handleChange}
                         placeholder={'Select a Password'} />
-                    <button onClick={this.handleFormClear}>
+                    <button                         
+                        type='button'
+                        onClick={this.handleFormClear}
+                    >
                         Clear Form
                     </button>
                     <input 

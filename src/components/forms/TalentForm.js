@@ -13,7 +13,6 @@ class TalentForm extends Component {
             username: '',
             email: '',
             password: '',
-            locations: ''
         };
 
         this.handleFormSignUp = this.handleFormSignUp.bind(this);
@@ -31,7 +30,6 @@ class TalentForm extends Component {
             username: this.state.username,
             email: this.state.email,
             password: this.state.password,
-            locations: this.state.locations,
             role: 'talent'
         };
 
@@ -51,7 +49,6 @@ class TalentForm extends Component {
             username: '',
             email: '',
             password: '',
-            locations: '',
         });
     }
 
@@ -100,13 +97,6 @@ class TalentForm extends Component {
                         content={this.state.password}
                         controlFunc={this.handleChange}
                         placeholder={'Select a Password'} />
-                    <SingleInput 
-                        title={'Locations'}
-                        name={'locations'}
-                        inputType={'text'}
-                        content={this.state.locations}
-                        controlFunc={this.handleChange}
-                        placeholder={'Locations'} />
                     <button onClick={this.handleFormClear}>
                         Clear Form
                     </button>

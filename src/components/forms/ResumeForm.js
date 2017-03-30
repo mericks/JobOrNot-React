@@ -9,7 +9,8 @@ class ResumeForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            skills: []
+            skills: [],
+            locations: ''
         };
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.handleFormClear = this.handleFormClear.bind(this);
@@ -17,22 +18,25 @@ class ResumeForm extends React.Component {
     }
 
     handleFormSubmit(e) {
-        e.preventDevault();
+        e.preventDefault();
 
         const formPayload = {
             skills: this.state.skills,
             userId: this.props.userId,
-            resume: this.props.resumeId
+            resume: this.props.resumeId,
+            locations: this.state.locations
         };
 
-        this.sendSkills({ method: 'PATCH', path: '/myResume', body: formPayload });
+        console.log('payload: ', formPayload);
+        this.props.sendSkills({ method: 'PATCH', path: `/myResume/${this.props.resumeId}`, body: formPayload, token: this.props.token });
         this.handleFormClear(e);
     }
 
     handleFormClear(e) {
-        e.preventDevault();
+        e.preventDefault();
         this.setState({
-            skills: []
+            skills: [],
+            locations: ''
         });
     }
 
@@ -46,9 +50,9 @@ class ResumeForm extends React.Component {
         return (
             <div>
                 <Nav />
+                <h1>THIS FORM ADD TALENT RESUME</h1>
                 <UploadFiles />
                 <form onSubmit={this.handleFormSubmit}>
-                    <h1>THIS FORM ADD TALENT RESUME</h1>
                     <SingleInput 
                         title={'Skills'}
                         name={'skills'}
@@ -56,12 +60,17 @@ class ResumeForm extends React.Component {
                         content={this.state.skills}
                         controlFunc={this.handleChange}
                         placeholder={'Top Skills'} />
+                     <SingleInput 
+                        title={'Locations'}
+                        name={'locations'}
+                        inputType={'text'}
+                        content={this.state.locations}
+                        controlFunc={this.handleChange}
+                        placeholder={'Locations'} />
                     <button onClick={this.handleFormClear}>
                         Clear Form
                     </button>
-                    <input
-                        type='submit'
-                        value='submit' />
+                    <input type='submit' value='Submit' />
                 </form>
             </div>
         );
@@ -69,9 +78,11 @@ class ResumeForm extends React.Component {
 }
 
 function mapStateToProps(state) {
+    console.log('state: ', state);
     return {
         userId: state.userAuth.user._id,
-        resumeId: state.resume_id
+        resumeId: state.uploads,
+        token: state.userAuth.token
     };
 }
 
@@ -84,6 +95,9 @@ function mapDisptachToProps(dispatch) {
 export default connect(mapStateToProps, mapDisptachToProps)(ResumeForm);
 
 ResumeForm.propTypes = {
+    uploads: React.PropTypes.object,
     resumeId: React.PropTypes.string,
-    userId: React.PropTypes.string
+    userId: React.PropTypes.string,
+    sendSkills: React.PropTypes.func,
+    token: React.PropTypes.string
 };

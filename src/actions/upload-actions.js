@@ -30,7 +30,6 @@ export function uploadDocumentRequest({ file, name, token }) {
     data.append('file', file);
     data.append('name', name);
 
-    console.log('data: ', data);
     return (dispatch) => {
         return fetch('http://localhost:4000/myResume', {
             method: 'POST',

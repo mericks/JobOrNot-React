@@ -25,12 +25,15 @@ class SignInForm extends Component {
             password: this.state.password,
         };
 
-        this.props.signIn({ method: 'POST', path: '/signin', body: formPayload });
-        this.handleFormClear(e);
+        this.props.signIn({ method: 'POST', path: '/signin', body: formPayload })
+        .then(() => {
+            this.handleFormClear(e);
+            this.props.history.push('/profile'); // THIS IS GOOD
+        });
     }
 
     handleFormClear(e) {
-        e.preventDefault();
+        // e.preventDefault();
         this.setState({
             username: '',
             password: '',

@@ -13,11 +13,9 @@ const RecruiterProfile = (props) => {
     return (
         <div>
             <section>
-                <h2>Start a new resume collection</h2>
                 <ResumeSearchForm />
             </section>
-            <button>button that allows profile update</button>
-            <button>button to go view resumes</button> {/* this goes in ResumeSearchForm*/}
+            <button>Update Profile</button>
             <section>
                 __liked resumes go here__
                 {props.user.likedResumes}

@@ -10,7 +10,7 @@ class ResumeSearchForm extends Component {
             jobTitleToFill: '', 
             jobCompanyToFill: '',
             // THESE TWO^^ ALSO HAPPEN IN RecruiterForm.js
-            jobSkills: [],
+            jobSkills: '',
         };
 
         this.handleFormResumeSearch = this.handleFormResumeSearch.bind(this);
@@ -49,7 +49,8 @@ class ResumeSearchForm extends Component {
     render() {
         return (
             <form onSubmit={this.handleFormResumeSearch}>
-                <h1>THIS IS THE RESUME SEARCH FORM</h1>
+                <h1>Find the talent with the skills you need.</h1>
+                <p>Search by skills. Save your favorite resumes to the job you want to fill.</p>
                 <SingleInput
                     title={'What\'s the job?'}
                     name={'jobTitleToFill'}
@@ -76,7 +77,7 @@ class ResumeSearchForm extends Component {
                     </button>
                 <input
                     type='submit'
-                    value='submit' />
+                    value='View Resumes' />
             </form>
         );
     };

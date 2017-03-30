@@ -39,8 +39,13 @@ class RecruiterForm extends Component {
             role: 'recruiter'
         };
 
-        this.props.signUp({ method: 'POST', path: '/signup', body: formPayload });
-        this.handleFormClear(e);
+        this.props.signUp({ method: 'POST', path: '/signup', body: formPayload })
+        .then(() => {
+            this.handleFormClear(e);
+            this.props.history.push('/profile'); // THIS IS GOOD
+        });
+        console.dir(this.context);
+        /* can we add a link here to go to a new page */
     }
 
     // handleFormUpdate() {
@@ -48,7 +53,7 @@ class RecruiterForm extends Component {
     // }
 
     handleFormClear(e) {
-        e.preventDefault();
+        // e.preventDefault();
         this.setState({
             firstName: '',
             lastName: '',
@@ -148,5 +153,5 @@ function mapDispatchToProps(dispatch) {
 export default connect(null, mapDispatchToProps)(RecruiterForm);
 
 RecruiterForm.propTypes = {
-    signUp: React.PropTypes.func
+    signUp: PropTypes.func
 };

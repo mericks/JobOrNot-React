@@ -1,15 +1,15 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import ProfileInfo from './ProfileInfo';
 import TalentProfile from './TalentProfile';
 import RecruiterProfile from './RecruiterProfile';
-import ProfileInfo from './ProfileInfo';
 import Nav from '../navbar/Nav';
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user
+        user: state.userAuth.user
     };
-};
+}
 
 const Profile = (props) => {
     let ProfileType;
@@ -21,7 +21,7 @@ const Profile = (props) => {
         <div>
             <Nav />
             <h1>Hello {props.user.firstName}</h1>
-            <ProfileInfo user={props.user} />
+            <ProfileInfo />
             <ProfileType />
         </div>
     );

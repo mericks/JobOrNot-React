@@ -24,7 +24,8 @@ const SignedInNav = (props) => {
           <li><img src='https://placeholdit.imgix.net/~text?txtsize=6&txt=50%C3%9750&w=50&h=50' alt='logo' /></li>
           <li>JobOrNot</li>
           <li>How It Works</li>
-          <li>Profile</li>
+          <li><Link to='/profile'>Profile</Link></li>
+          <li><Link to='/resumesubmit'>ResumeSubmitTest</Link></li>
           <li>Welcome, {props.user.firstName}</li>
           {/* THIS WORKS (30-34)...but it may need to be improved...*/}
           <li><Link to='/' onClick={(e) => {

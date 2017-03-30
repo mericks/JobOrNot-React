@@ -1,3 +1,6 @@
+import fetcher from '../helpers';
+import { itemsHasErrored } from './general-actions';
+
 export function uploadSuccess(resume) {
     return {
         type: 'UPLOAD_DOCUMENT_SUCCESS',
@@ -10,6 +13,16 @@ export function uploadFail(error) {
         type: 'UPLOAD_DOCUMENT_FAIL',
         error
     };
+}
+
+export function sendSkills(options) {
+    return (dispatch) => {
+        fetcher(options)
+            .then(resume => {
+                dispatch(uploadSuccess(resume));
+            })
+            .catch(() => dispatch(itemsHasErrored(true)));
+    }
 }
 
 export function uploadDocumentRequest({ file, name }) {

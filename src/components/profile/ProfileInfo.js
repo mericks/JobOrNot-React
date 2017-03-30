@@ -1,28 +1,48 @@
-import React from 'react';
-// TODO: THIS SHOULD WORK
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.userAuth.user
+    };
+};
+
+/* mapping an object, excluded from view */
+// const ProfileFormFields = (props) => {
+//     let obj = props.user;
+//     let listItemArray = [];
+//     for (const prop in obj) {
+//         console.log('obj: ', prop, '=', obj[prop]);
+//         let formFields = obj[prop];
+//         if (prop !== 'hash' && prop !== '__v' && prop !== '_id' && 
+//             prop !== 'jobTitleToFill' && prop !== 'jobCompanyToFill' && 
+//             prop !== 'role') {
+//             listItemArray.push(<li key={prop}>{prop}: {formFields}</li>);
+//         }
+//     };
+//     console.log('liarry is', listItemArray);
+//     return (<ul>{listItemArray}</ul>);
+// };
 
 const ProfileInfo = (props) => {
-    
-    /* this map won't work because user is going to be an object, not an array */
-    // const profileInputs = props.user.map((input, i) => {
-    //     return <li>{input}</li>;
-    // });
-
+    console.log('prosp.user: ', props.user);
+    let user = props.user
+    // let fields = ProfileFormFields();
+    // console.log('fields is', fields);
     return (
-        // <ul>{profileInputs}</ul>
-
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
+        <div>
+            <h3>Profile</h3>
+            <p>Name: {user.firstName} {user.lastName}</p>
+            <p>Username: {user.username}</p>
+            <p>Email: {user.email}</p>
+            <p>Company: {user.company}</p>
+            <p>Favorited resumes: {user.likedResumes}</p>
+        </div>
     );
-}
+}; 
 
-export default ProfileInfo;
+export default connect(mapStateToProps)(ProfileInfo);
+
+ProfileInfo.propTypes = {
+    user: PropTypes.object
+};

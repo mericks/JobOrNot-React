@@ -3,7 +3,6 @@ import SingleInput from './SingleInput';
 import Nav from '../navbar/Nav';
 import { connect } from 'react-redux';
 import { sendSignUp } from '../../actions/auth-actions';
-import UploadFiles from './UploadFiles';
 
 class TalentForm extends Component {
     constructor(props) {
@@ -24,7 +23,7 @@ class TalentForm extends Component {
 
     handleFormSignUp(e) {
         e.preventDefault();
-        console.log('props: ', this.props);
+
         const formPayload = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
@@ -34,9 +33,11 @@ class TalentForm extends Component {
             role: 'talent'
         };
 
-        this.props.signUp({ method: 'POST', path: '/signup', body: formPayload });
-        
-        this.handleFormClear(e);
+        this.props.signUp({ method: 'POST', path: '/signup', body: formPayload })
+        .then(() => {
+            this.handleFormClear(e);
+            this.props.history.push('/profile'); // THIS IS GOOD
+        });
     }
 
     // handleFormUpdate() {
@@ -44,7 +45,7 @@ class TalentForm extends Component {
     // }
 
     handleFormClear(e) {
-        e.preventDefault();
+        // e.preventDefault();
         this.setState({
             firstName: '',
             lastName: '',
@@ -99,7 +100,6 @@ class TalentForm extends Component {
                         content={this.state.password}
                         controlFunc={this.handleChange}
                         placeholder={'Select a Password'} />
-                    <UploadFiles />
                     <button onClick={this.handleFormClear}>
                         Clear Form
                     </button>
@@ -113,7 +113,6 @@ class TalentForm extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log('state: ', state);
     return {
         resume: state.uploads
     };
@@ -128,6 +127,6 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(TalentForm);
 
 TalentForm.propTypes = {
-    signUp: React.PropTypes.func,
-    resume: React.PropTypes.object
+    signUp: PropTypes.func,
+    resume: PropTypes.object
 };

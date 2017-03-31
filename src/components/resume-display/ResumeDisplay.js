@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PDF from 'react-pdfjs';
-import { resumeFetchData, resumeFetchFile } from '../../actions/ResumeDisplay-actions';
+import { resumeFetchData, resumeVoteUp } from '../../actions/ResumeDisplay-actions';
 
 function GetResume(props) {
     if (!props.resume) {
@@ -15,67 +15,61 @@ function GetResume(props) {
     );  
 }
 
-// function itterateResumes(props) {
-//     let index = 0;
-
-// }
-
-
 class ResumeDisplay extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentResume: 0
+            currentResumeIndex: 0,
         };
         this.handleVoteDown = this.handleVoteDown.bind(this);
         this.handleVoteUp = this.handleVoteUp.bind(this);
     }
 
-    componentWillMount() {
-        this.props.fetchData({ method: 'GET', path: '/resumes?skills[]=typing', token: this.props.token });
-    }
-
     handleVoteUp(e) {
         e.preventDefault();
+        let resumeCount = this.state.currentResumeIndex;
+        let currentResumeId = this.props.resumes[this.state.currentResumeIndex]._id;
+       // let currentResume = this.props.resumes[this.state.currentResumeIndex];
 
         const payLoad = {
-            likedResumes: this.props.resumes[this.state.currentResume],
+            likedResumes: currentResumeId,
             likeBy: this.props.user._id
         };
 
-        this.props.voteUp({ method: 'PATCH', path: `/resume/${this.props.user._id}`, body: payLoad, token: this.props.token });
-        
+        resumeCount++;
+
         this.setState({
-            currentResume: this.state.currentResume + 1
+            currentResumeIndex: resumeCount
         });
+
+        this.props.voteUp({ method: 'PATCH', path: `/resume/${currentResumeId}`, body: payLoad, token: this.props.token });
     }
 
     handleVoteDown(e) {
         e.preventDefault();
 
+        let resumeCount = this.state.currentResumeIndex;
+
+        resumeCount++;
         this.setState({
-            currentResume: this.state.currentResume + 1
+            currentResumeIndex: resumeCount
         });
     }
 
     render() {
         return (
             <div>
-/* original on master before merge conflict
                 <GetResume 
-                    resume={this.props.resumes[this.state.currentResume]} 
+                    resume={this.props.resumes[this.state.currentResumeIndex]} 
                     token={this.props.token} />
                 <button onClick={this.handleVoteUp}>Yes</button>
                 <button onClick={this.handleVoteDown}>No</button>
-original on master before merge conflict*/
-                <GetResume resume={this.props.resumes[0]} fetch={this.props.fetchFile} token={this.props.token} />
             </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-    console.log('state: ', state);
     return {
         resumes: state.displayResumes,
         token: state.userAuth.token,
@@ -86,14 +80,13 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         fetchData: (options) => dispatch(resumeFetchData(options)),
-        fetchFile: (options) => dispatch(resumeFetchFile(options))
+        voteUp: (options) => dispatch(resumeVoteUp(options))
     };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResumeDisplay);
 
 ResumeDisplay.propTypes = {
-    fetchData: React.PropTypes.func,
     resumes: React.PropTypes.array,
     token: React.PropTypes.string,
     user: React.PropTypes.object,

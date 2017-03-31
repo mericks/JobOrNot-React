@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import ProfileInfo from './ProfileInfo';
 import TalentProfile from './TalentProfile';
 import RecruiterProfile from './RecruiterProfile';
 import Nav from '../navbar/Nav';

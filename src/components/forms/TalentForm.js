@@ -43,7 +43,7 @@ class TalentForm extends Component {
         })
         .catch(() => {
             this.handleFormClear(e);
-            this.props.history.push('/profile');
+            this.props.history.push('/talentsignupcont');
         });
     }
 

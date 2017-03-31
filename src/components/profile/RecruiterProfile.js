@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 };
 
 const RecruiterProfile = (props) => (
-    <div className='container'>
+    <div className='container topComponent'>
         <div className='row'>
             <h2 className='headline centerText'>Find Talent Fast</h2>
             <h4 className='hand centerText'>Search by skills. Save your favorites.</h4>

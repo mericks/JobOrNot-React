@@ -51,8 +51,7 @@ class ResumeForm extends Component {
     render() {
         return (
             <div>
-                <h1>Add Your Resume and Skills!</h1>
-                <UploadFiles />
+                <h4>Submit Top Skills</h4>
                 <form onSubmit={this.handleFormSubmit}>
                     <SingleInput 
                         title={'Skills'}
@@ -68,10 +67,10 @@ class ResumeForm extends Component {
                         content={this.state.location}
                         controlFunc={this.handleChange}
                         placeholder={'Location'} />
+                    <input type='submit' value='Submit' /><br />
                     <button onClick={this.handleFormClear}>
                         Clear Form
                     </button>
-                    <input type='submit' value='Submit' />
                 </form>
             </div>
         );

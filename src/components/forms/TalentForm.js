@@ -99,62 +99,77 @@ class TalentForm extends Component {
     }
  
     render() {
-        return (
+        return ( 
             <div>
                 <Nav />
-                <form onSubmit={this.handleFormSignUp}>
-                    <h1>THIS FORM SIGNS UP TALENT</h1>
-                    <SingleInput 
-                        title={'First Name'}
-                        name={'firstName'}
-                        inputType={'text'}
-                        content={this.state.firstName}
-                        controlFunc={this.handleChange}
-                        placeholder={'First Name'} />
-                    <SingleInput 
-                        title={'Last Name'}
-                        name={'lastName'}
-                        inputType={'text'}
-                        content={this.state.lastName}
-                        controlFunc={this.handleChange}
-                        placeholder={'Last Name'} />
-                    <SingleInput 
-                        title={'User Name'}
-                        name={'username'}
-                        inputType={'text'}
-                        content={this.state.username}
-                        controlFunc={this.handleChange}
-                        placeholder={'Select a User Name'} />
-                    <SingleInput 
-                        title={'Email Address'}
-                        name={'email'}
-                        inputType={'text'}
-                        content={this.state.email}
-                        controlFunc={this.handleChange}
-                        placeholder={'Email Address'} />
-                    <SingleInput 
-                        title={'Password'}
-                        name={'password'}
-                        inputType={'password'}
-                        content={this.state.password}
-                        controlFunc={this.handleChange}
-                        placeholder={'Select a Password'} />
-                    <button 
-                        type='button'
-                        onClick={this.handleFormClear}>
-                        Clear Form
-                    </button>
-                    <input 
-                        type='submit'
-                        value='submit'/>
-                    <button
-                        type='button'
-                        onClick={this.handleTalentUpdate}
-                    >
-                        Update profile
-                    </button>
+                    <div className='container topComponent'>
+                        <div className='row'>
+                            <h3 className='headline centerText'>Talent Sign Up</h3>
+                        </div>
+                        <form onSubmit={this.handleFormSignUp}>
+                        <div className='row'>
+                            <div className='three columns offset-by-three'>
+                                <SingleInput 
+                                    title={'First Name'}
+                                    name={'firstName'}
+                                    inputType={'text'}
+                                    content={this.state.firstName}
+                                    controlFunc={this.handleChange}
+                                    placeholder={'First Name'} /><br />
+                                <SingleInput 
+                                    title={'User Name'}
+                                    name={'username'}
+                                    inputType={'text'}
+                                    content={this.state.username}
+                                    controlFunc={this.handleChange}
+                                    placeholder={'Select a User Name'} /><br />
+                            </div>
+                            <div className='three columns offset-by-one'>
+                                <SingleInput 
+                                    title={'Last Name'}
+                                    name={'lastName'}
+                                    inputType={'text'}
+                                    content={this.state.lastName}
+                                    controlFunc={this.handleChange}
+                                    placeholder={'Last Name'} /><br />
+                                <SingleInput 
+                                    title={'Password'}
+                                    name={'password'}
+                                    inputType={'password'}
+                                    content={this.state.password}
+                                    controlFunc={this.handleChange}
+                                    placeholder={'Select a Password'} /><br />
+                            </div>
+                        </div>
+                    <div className='row'>
+                        <div className='four columns offset-by-four centerText'>
+                            <SingleInput 
+                                title={'Email Address'}
+                                name={'email'}
+                                inputType={'text'}
+                                content={this.state.email}
+                                controlFunc={this.handleChange}
+                                placeholder={'Email Address'} /><br />
+                            <input 
+                                type='submit'
+                                value='submit'/><br />
+                            <button 
+                                type='button'
+                                onClick={this.handleFormClear}>
+                                Clear Form
+                            </button><br />
+                            <button
+                                type='button'
+                                onClick={this.handleTalentUpdate}>
+                                Update profile
+                            </button>
+
+                        </div>
+
+                    </div>
                 </form>
             </div>
+        </div>
         );
     };
 }

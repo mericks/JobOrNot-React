@@ -14,40 +14,35 @@
 
 #welcome {
     width: 100%;
-    padding: 4rem 0rem 2rem 0rem;
+    padding: 6rem 0rem 2rem 0rem;
 }
 
 #recruiter {
     width: 100%;
     background-color: #6290c3;
-    padding: 4rem 0rem 2rem 0rem;
+    padding: 6rem 0rem 2rem 0rem;
 }
 
 #welcomeBuffer {
     width: 100%;
-    padding: 4rem 0rem 2rem 0rem;
+    padding: 6rem 0rem 2rem 0rem;
 }
 
 #talent {
     width: 100%;
     background-color: #62e7da;
-    padding: 4rem 0rem 2rem 0rem;
+    padding: 6rem 0rem 2rem 0rem;
 }
 
 #footer {
     width: 100%;
-    padding: 4rem 0rem 2rem 0rem;
+    padding: 6rem 0rem 2rem 0rem;
 }
 
 
 /* Sign Up Button
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .signUpButton {
-    position: relative;
-}
-
-.signUpButton button {
-    position: absolute;
-    /*top: 50%;*/
-    margin: 100px;
+   text-align: center;
+    background-color: #baff29;
 }

@@ -27,7 +27,6 @@ const SignedInNav = (props) => (
                 </div>
                 <div className='nine columns'>
                     <Link to='/' className='u-pull-right' onClick={(e) => {
-                        {/*e.preventDefault();*/}
                         props.handleSignOut();
                         props.history.push('/');
                         }}>Sign Out</Link>

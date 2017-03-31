@@ -5,7 +5,7 @@ const WelcomeBuffer = () => (
     <div className='row'>
         <div className='centerText'>
             <h4>The fastest way to sort through resumes <strong>and</strong> find a job.</h4>
-            <h2>Seriously.</h2>
+            <h1 className='headline'>Seriously.</h1>
         </div>
     </div>
   </div>

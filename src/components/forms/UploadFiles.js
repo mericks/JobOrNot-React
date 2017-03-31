@@ -29,6 +29,7 @@ class UploadFiles extends React.Component {
             file: e.target.files[0],
             name: e.target.files[0].name
         });
+        alert('resume uploaded!');
     }
 
     render() {

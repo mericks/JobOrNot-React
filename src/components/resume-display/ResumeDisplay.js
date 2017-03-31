@@ -20,14 +20,54 @@ function GetResume(props) {
 
 // }
 
+
 class ResumeDisplay extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentResume: 0
+        };
+        this.handleVoteDown = this.handleVoteDown.bind(this);
+        this.handleVoteUp = this.handleVoteUp.bind(this);
+    }
+
     componentWillMount() {
         this.props.fetchData({ method: 'GET', path: '/resumes?skills[]=typing', token: this.props.token });
+    }
+
+    handleVoteUp(e) {
+        e.preventDefault();
+
+        const payLoad = {
+            likedResumes: this.props.resumes[this.state.currentResume],
+            likeBy: this.props.user._id
+        };
+
+        this.props.voteUp({ method: 'PATCH', path: `/resume/${this.props.user._id}`, body: payLoad, token: this.props.token });
+        
+        this.setState({
+            currentResume: this.state.currentResume + 1
+        });
+    }
+
+    handleVoteDown(e) {
+        e.preventDefault();
+
+        this.setState({
+            currentResume: this.state.currentResume + 1
+        });
     }
 
     render() {
         return (
             <div>
+/* original on master before merge conflict
+                <GetResume 
+                    resume={this.props.resumes[this.state.currentResume]} 
+                    token={this.props.token} />
+                <button onClick={this.handleVoteUp}>Yes</button>
+                <button onClick={this.handleVoteDown}>No</button>
+original on master before merge conflict*/
                 <GetResume resume={this.props.resumes[0]} fetch={this.props.fetchFile} token={this.props.token} />
             </div>
         );
@@ -38,7 +78,8 @@ function mapStateToProps(state) {
     console.log('state: ', state);
     return {
         resumes: state.displayResumes,
-        token: state.userAuth.token
+        token: state.userAuth.token,
+        user: state.userAuth.user
     };
 }
 
@@ -55,7 +96,8 @@ ResumeDisplay.propTypes = {
     fetchData: React.PropTypes.func,
     resumes: React.PropTypes.array,
     token: React.PropTypes.string,
-    fetchFile: React.PropTypes.func
+    user: React.PropTypes.object,
+    voteUp: React.PropTypes.func
 };
 
 GetResume.propTypes = {

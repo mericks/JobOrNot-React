@@ -8,6 +8,12 @@ export function resumeFetchArraySuccess(resume) {
     };
 }
 
+/* original on master before merge conflict with resumeFetchFileSuccess
+export function resumeVoteUp(options) {
+    return (dispatch) => {
+        return fetcher(options)
+            .catch(() => dispatch(itemsHasErrored(true)));
+original on master */
 export function resumeFetchFileSuccess(data) {
     return {
         type: 'RESUME_FETCH_FILE_SUCCESS',

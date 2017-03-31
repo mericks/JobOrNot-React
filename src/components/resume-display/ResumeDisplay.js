@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PDF from 'react-pdfjs';
 import { resumeFetchData, resumeVoteUp } from '../../actions/ResumeDisplay-actions';
+import { Link } from 'react-router-dom';
 
 function GetResume(props) {
     if (!props.resume) {
@@ -62,8 +63,9 @@ class ResumeDisplay extends React.Component {
                 <GetResume 
                     resume={this.props.resumes[this.state.currentResumeIndex]} 
                     token={this.props.token} />
-                <button onClick={this.handleVoteUp}>Yes</button>
-                <button onClick={this.handleVoteDown}>No</button>
+                <button onClick={this.handleVoteDown}>Not!</button>
+                <button onClick={this.handleVoteUp}>Job!</button>
+                <button><Link to='/profile'>Back to Profile</Link></button>
             </div>
         );
     }

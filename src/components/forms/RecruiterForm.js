@@ -167,7 +167,7 @@ class RecruiterForm extends Component {
                                     placeholder={'Company'} /><br />
                             </div>
                         </div>
-                    <div className='row multipleButtons'>
+                    <div className='row'>
                         <div className='four columns offset-by-four centerText'>
                             <input 
                                 type='submit'

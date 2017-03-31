@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { userLogoutSuccess } from '../../actions/auth-actions';
+import logo from '../../assets/JobOrNot_Blue_50.png';
 
 const mapStateToProps = (state) => {
     return {
@@ -17,26 +18,31 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-const SignedInNav = (props) => {
-    return (
-      <nav>
-        <ul>
-          <li><img src='https://placeholdit.imgix.net/~text?txtsize=6&txt=50%C3%9750&w=50&h=50' alt='logo' /></li>
-          <li>JobOrNot</li>
-          <li>How It Works</li>
-          <li><Link to='/profile'>Profile</Link></li>
-          <li><Link to='/resumesubmit'>ResumeSubmitTest</Link></li>
-          <li>Welcome, {props.user.firstName}</li>
-          {/* THIS WORKS (30-34)...but it may need to be improved...*/}
-          <li><Link to='/' onClick={(e) => {
-              {/*e.preventDefault();*/}
-              props.handleSignOut();
-              props.history.push('/');
-          }}>Sign Out</Link></li>
-        </ul>
-      </nav>
-    );
-};
-
+const SignedInNav = (props) => (
+    <nav className='navbar'>
+        <div className='container'>
+            <div className='row'>
+                <div className='three columns'>
+                    <Link to='/'><img src={logo} alt='Job or Not' /></Link>
+                </div>
+                <div className='nine columns'>
+                    <Link to='/' className='u-pull-right' onClick={(e) => {
+                        props.handleSignOut();
+                        props.history.push('/');
+                        }}>Sign Out</Link>
+                    <Link to='/profile' className='u-pull-right'>Profile</Link>
+                    Welcome, {props.user.firstName}
+                    <Link to='/howitworks' className='u-pull-right'>How It Works</Link>
+                </div>
+                </div>
+            </div>
+    </nav>
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignedInNav);
+
+SignedInNav.propTypes = {
+    user: React.PropTypes.object,
+    handleSignOut: React.PropTypes.func,
+    history: React.PropTypes.any
+};

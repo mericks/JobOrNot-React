@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import SignedInNav from './SignedInNav';
 import SignedOutNav from './SignedOutNav';
+import './Nav.css';
 
 const Nav = (props) => {
     if (props.isLoggedIn) return (<SignedInNav />);

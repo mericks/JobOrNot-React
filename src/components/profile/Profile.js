@@ -9,11 +9,10 @@ const mapStateToProps = (state) => {
     return {
         user: state.userAuth.user
     };
-}
+};
 
 const Profile = (props) => {
     let ProfileType;
-
     if (props.user.role === 'talent') ProfileType = TalentProfile;
     else ProfileType = RecruiterProfile;
 
@@ -21,7 +20,6 @@ const Profile = (props) => {
         <div>
             <Nav />
             <h1>Hello {props.user.firstName}</h1>
-            <ProfileInfo />
             <ProfileType />
         </div>
     );

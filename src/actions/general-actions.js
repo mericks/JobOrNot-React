@@ -4,3 +4,10 @@ export function itemsHasErrored(bool) {
         hasErrored: bool
     };
 }
+
+export function itemsIsLoading(bool) {
+    return {
+        type: 'ITEMS_IS_LOADING',
+        isLoading: bool
+    };
+}

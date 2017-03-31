@@ -2,16 +2,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const RecruiterIntro = () => (
-    <div>
-      <h2>Recruiters and hiring managers</h2>
-      <p>
-        Blaze through resumes of qualified talent at the click of a button. 
-        Set up an account, enter up to three jobs to select for, and click away. 
-        Move right to keep resumes for a job, left to filter them out. Go back to 
-        the profile page to see the resume collections for individual postings and 
-        contact the candidates for hire!
-      </p>
-      <Link to={'/recruitersignup'}><button>button to sign up</button></Link>
+    <div id='recruiter'>
+      <div className='container'>
+        <div className='row'>
+          <div className='eight columns'>
+            <h3 className='headline'>Recruiters &amp; Hiring Managers</h3>
+            <p>Blaze through resumes of qualified talent at the click of a button.</p> 
+            <p>Set up an account, enter up to three jobs you're hiring for, and click away.</p>
+            <p>Like a resume? Click right. Prefer to pass? Click left.</p>
+            <p>View your saved resume collections on your profile page and contact candidates for hire.</p>
+          </div>
+          <div className='four columns'>
+            <br />
+            <br />
+            <br />
+            <br />
+            <Link to={'/recruitersignup'}><button className='signUpButton'>Let's Do It!</button></Link>
+          </div>
+        </div>
+      </div>
     </div>
 );
 

@@ -39,6 +39,7 @@ class ResumeSearchForm extends Component {
         this.setState({
             jobTitleToFill: '',
             jobCompanyToFill: '',
+            jobSkills: '',
         });
     }
 
@@ -49,35 +50,34 @@ class ResumeSearchForm extends Component {
     render() {
         return (
             <form onSubmit={this.handleFormResumeSearch}>
-                <h1>Find the talent with the skills you need.</h1>
-                <p>Search by skills. Save your favorite resumes to the job you want to fill.</p>
+                <h4>Role</h4>
                 <SingleInput
                     title={'What\'s the job?'}
                     name={'jobTitleToFill'}
                     inputType={'text'}
                     content={this.state.jobTitleToFill}
                     controlFunc={this.handleChange}
-                    placeholder={'Job title'} />
+                    placeholder={'Job title'} /><br />
                 <SingleInput
                     title={'Which company?'}
                     name={'jobCompanyToFill'}
                     inputType={'text'}
                     content={this.state.jobCompanyToFill}
                     controlFunc={this.handleChange}
-                    placeholder={'Company name'} />
+                    placeholder={'Company name'} /><br />
                 <SingleInput
-                    title={'What skills for this job?'}
+                    title={'What skills?'}
                     name={'jobSkills'}
                     inputType={'text'}
                     content={this.state.jobSkills}
                     controlFunc={this.handleChange}
-                    placeholder={'Job skills'} />
+                    placeholder={'Job skills'} /><br />
+                <input
+                    type='submit'
+                    value='Review Resumes' /><br />
                 <button onClick={this.handleFormClear}>
                     Clear Form
                     </button>
-                <input
-                    type='submit'
-                    value='View Resumes' />
             </form>
         );
     };

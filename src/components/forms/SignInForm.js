@@ -26,9 +26,15 @@ class SignInForm extends Component {
         };
 
         this.props.signIn({ method: 'POST', path: '/signin', body: formPayload })
-        .then(() => {
+        .then((action) => {
+            if (action.type !== 'ITEMS_HAS_ERRORED') {
+                // this.handleFormClear(e);
+                // this.props.history.push('/profile');
+            } else alert('Correct username and password must be provided');
+        })
+        .catch(() => {
             this.handleFormClear(e);
-            this.props.history.push('/profile'); // THIS IS GOOD
+            this.props.history.push('/profile');
         });
     }
 
@@ -48,30 +54,42 @@ class SignInForm extends Component {
         return (
             <div>
                 <Nav button={this.props.button}/>
-                <form onSubmit={this.handleFormSignIn}>
-                    <h1>THIS IS THE SIGN IN FORM</h1>
-                    <SingleInput 
-                        title={'User Name'}
-                        name={'username'}
-                        inputType={'text'}
-                        content={this.state.username}
-                        controlFunc={this.handleChange}
-                        placeholder={'Select a User Name'} />
-                    <SingleInput 
-                        title={'Password'}
-                        name={'password'}
-                        inputType={'password'}
-                        content={this.state.password}
-                        controlFunc={this.handleChange}
-                        placeholder={'Select a Password'} />
-                    <button onClick={this.handleFormClear}>
-                        Clear Form
-                    </button>
-                    <input 
-                        type='submit'
-                        value='submit'/>
-                </form>
+                <div className='container topComponent'>
+                    <div className='row'>
+                        <h3 className='headline centerText'>Sign In</h3>
+                    </div>
+                    <div className='row'>
+                        <div className='three columns offset-by-five'>
+                                <form onSubmit={this.handleFormSignIn}>
+                                    <SingleInput 
+                                        title={'Username'}
+                                        name={'username'}
+                                        inputType={'text'}
+                                        content={this.state.username}
+                                        controlFunc={this.handleChange}
+                                        placeholder={'Username'} /><br />
+                                    <SingleInput 
+                                        title={'Password'}
+                                        name={'password'}
+                                        inputType={'password'}
+                                        content={this.state.password}
+                                        controlFunc={this.handleChange}
+                                        placeholder={'Password'} /><br />
+                                    <input 
+                                        type='submit'
+                                        value='Submit'/>
+                                    <br />
+                                    <button                         
+                                        type='button'
+                                        onClick={this.handleFormClear}
+                                    >
+                                        Clear Form
+                                    </button>
+                                </form>
+                            </div>
+                </div>
             </div>
+        </div>
         );
     };
 }
@@ -86,5 +104,6 @@ export default connect(null, mapDispatchToProps)(SignInForm);
 
 SignInForm.propTypes = {
     button: React.PropTypes.element,
-    signIn: React.PropTypes.func
+    signIn: React.PropTypes.func,
+    history: React.PropTypes.any
 };

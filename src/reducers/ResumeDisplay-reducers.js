@@ -7,11 +7,11 @@ export function displayResumes(state = [], action) {
     }
 }
 
-export function resumeFileData(state = null, action) {
+export function viewResume(state = '', action) {
     switch (action.type) {
-        case 'RESUME_FETCH_FILE_SUCCESS':
-            return action.data;
+        case 'RESUME_TO_VIEW_SUCCESS':
+            return action.resume;
         default:
-            return state;  
+            return state;
     }
 }

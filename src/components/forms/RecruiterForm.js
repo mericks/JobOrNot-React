@@ -48,7 +48,6 @@ class RecruiterForm extends Component {
             } else alert('Signup was not executed correctly. Please try again.');
         })
         .catch(() => {
-            console.log('at catch');
             this.handleFormClear(e);
             this.props.history.push('/profile'); 
         });
@@ -104,7 +103,6 @@ class RecruiterForm extends Component {
                 } else alert('Update was not executed correctly. Please try again.');
             })
             .catch(() => {
-                console.log('at catch');
                 this.handleFormClear(e);
                 this.props.history.push('/profile');
             });    
@@ -209,5 +207,6 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(RecruiterForm);
 
 RecruiterForm.propTypes = {
-    signUp: PropTypes.func
+    signUp: PropTypes.func,
+    history: PropTypes.any
 };

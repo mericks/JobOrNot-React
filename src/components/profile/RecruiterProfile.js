@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import RecruiterInfo from './RecruiterInfo';
 import ResumeSearchForm from '../forms/ResumeSearchForm';
 import RecruiterLikedResumes from './RecruiterLikedResumes';
 
 const mapStateToProps = (state) => {
     return {
-        user: state.userAuth.user   // or will it be state.user?
+        user: state.userAuth.user
     };
 };
 

@@ -10,6 +10,19 @@ const mapStateToProps = (state) => {
     };
 };
 
+/*
+const TalentProfile = (props) => {
+    let TalentStatus;
+    if (!props.user.file) TalentStatus = ResumeForm;
+    else TalentStatus = TalentStats;
+
+    return (
+        <div>
+            <Link to='/talentsignup'>Edit profile</Link>
+            <Link to='/resume-display'>Your Resume</Link>
+
+            <TalentStatus />
+*/
 const TalentProfile = (props) => (
     <div className='container topComponent'>
         <div className='row'>

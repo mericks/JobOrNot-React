@@ -23,8 +23,6 @@ class ResumeForm extends Component {
 
         const skills = this.state.skills.split(' ');
 
-        console.log('skills: ', skills);
-
         const formPayload = {
             skills: skills,
             userId: this.props.userId,

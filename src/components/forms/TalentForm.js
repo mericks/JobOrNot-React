@@ -42,7 +42,6 @@ class TalentForm extends Component {
             } else alert('Signup was not executed correctly. Please try again.');
         })
         .catch(() => {
-            console.log('at catch');
             this.handleFormClear(e);
             this.props.history.push('/talentsignupcont');
         });
@@ -92,7 +91,6 @@ class TalentForm extends Component {
                 } else alert('Update was not executed correctly. Please try again.');
             })
             .catch(() => {
-                console.log('at catch');
                 this.handleFormClear(e);
                 this.props.history.push('/profile');
             });    
@@ -192,5 +190,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(TalentForm);
 
 TalentForm.propTypes = {
     signUp: PropTypes.func,
-    history: PropTypes.any
+    history: PropTypes.any,
+    token: PropTypes.string,
+    updateProfile: PropTypes.func
 };

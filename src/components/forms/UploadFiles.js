@@ -21,6 +21,7 @@ class UploadFiles extends React.Component {
             name: this.state.name,
             token: this.props.token
         });
+        alert('resume uploaded!');
     }
 
     handleFileChange(e) {

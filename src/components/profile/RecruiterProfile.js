@@ -13,6 +13,8 @@ const mapStateToProps = (state) => {
 const RecruiterProfile = (props) => {
     return (
         <div>
+            <p>Company: {props.user.company}</p>
+            <p>Favorited resumes: {props.user.likedResumes}</p>
             <Link to='/recruitersignup'>Edit profile</Link>
             <section>
                 <ResumeSearchForm />

@@ -19,6 +19,8 @@ const TalentProfile = (props) => {
     return (
         <div>
             <Link to='/talentsignup'>Edit profile</Link>
+            <Link to='/resume-display'>Your Resume</Link>
+
             <p>THIS IS TALENTPROFILE SECTION</p>
             <TalentStatus />
         </div>

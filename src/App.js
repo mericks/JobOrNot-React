@@ -7,6 +7,10 @@ import SignInForm from './components/forms/SignInForm';
 import ResumeDisplay from './components/resume-display/ResumeDisplay';
 import Profile from './components/profile/Profile';
 import HowItWorks from './components/home/HowItWorks';
+import './vendor/normalize.css';
+import './vendor/skeleton.css';
+import './App.css';
+
 
 function App() {
     return (

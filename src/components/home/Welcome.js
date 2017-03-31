@@ -1,15 +1,14 @@
 import React from 'react';
 
-const Welcome = () => {
-
-  return (
-    <div>
-      <p><strong>Welcome to the fastest way to sort through resumes and find a job. </strong>
-      JobOrNot is designed for recruiters, hiring managers, and talented candidates with an easy 
-      to use interface to immediately get things done.
-      </p>
+const Welcome = () => (
+  <div className='container' id='welcome'>
+    <div className='row'>
+        <div className='topComponent centerText'>
+            <h2>We Make the Best Matches.</h2>
+            <h4>Recruiters + Talent + Hiring Managers</h4>
+          </div>
     </div>
-  )
-}
+  </div>
+);
 
 export default Welcome;

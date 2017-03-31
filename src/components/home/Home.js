@@ -1,10 +1,11 @@
 import React from 'react';
-
 import Nav from '../navbar/Nav';
 import Welcome from './Welcome';
 import RecruiterIntro from './RecruiterIntro';
 import TalentIntro from './TalentIntro';
-import Footer from '../footer';
+import WelcomeBuffer from './WelcomeBuffer';
+import Footer from './Footer';
+import './Home.css';
 
 const Home = () => {
     return (
@@ -12,6 +13,7 @@ const Home = () => {
             <Nav />
             <Welcome />
             <RecruiterIntro />
+            <WelcomeBuffer />>
             <TalentIntro />
             <Footer />
         </div> 

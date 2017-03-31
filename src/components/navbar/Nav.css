@@ -16,8 +16,9 @@ nav {
   color: #1a1b41;
   background-color: #baff29;
   position: fixed;
-  padding: 10px;
+  padding: 1rem;
   display: inline-block;
+  z-index: 99;
 }
 
 .navbar a {
@@ -32,5 +33,5 @@ nav {
 }
 
 .u-pull-right {
-  margin-left: 80px;
+  margin-left: 8rem;
 }

@@ -6,12 +6,3 @@ export function displayResumes(state = [], action) {
             return state;
     }
 }
-
-export function resumeFileData(state = null, action) {
-    switch (action.type) {
-        case 'RESUME_FETCH_FILE_SUCCESS':
-            return action.data;
-        default:
-            return state;  
-    }
-}

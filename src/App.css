@@ -1,0 +1,26 @@
+/*
+
+#6290c3 Silver Lake Blue
+#62e7da Columbia Blue
+#1a1b41 Yankees Blue
+#f7fff4 Mint Cream
+#baff29 Green-Yellow
+
+*/
+
+
+/* Fonts
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+/*font-family: 'Open Sans', sans-serif;*/
+
+
+
+/* General Style Properties
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+body {
+  background-color: #f7fff4;
+  font-family: 'Open Sans', sans-serif;
+  color: #1a1b41;
+}

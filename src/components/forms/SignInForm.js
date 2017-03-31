@@ -33,7 +33,6 @@ class SignInForm extends Component {
             } else alert('Correct username and password must be provided');
         })
         .catch(() => {
-            console.log('at catch');
             this.handleFormClear(e);
             this.props.history.push('/profile');
         });
@@ -96,5 +95,6 @@ export default connect(null, mapDispatchToProps)(SignInForm);
 
 SignInForm.propTypes = {
     button: React.PropTypes.element,
-    signIn: React.PropTypes.func
+    signIn: React.PropTypes.func,
+    history: React.PropTypes.any
 };

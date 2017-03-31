@@ -18,29 +18,33 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-const SignedInNav = (props) => {
-    return (
-        <nav className='navbar'>
-            <div className='container'>
-                <div className='row'>
-                    <div className='three columns'>
-                        <Link to='/'><img src={logo} alt='Job or Not' /></Link>
-                    </div>
-                    <div className='nine columns'>
-                        <Link to='/' className='u-pull-right' onClick={(e) => {
-                            {/*e.preventDefault();*/}
-                            props.handleSignOut();
-                            props.history.push('/');
-                            }}>Sign Out</Link>
-                        <Link to='/resume-display' className='u-pull-right'>Your Resume</Link>
-                        <Link to='/profile' className='u-pull-right'>Profile</Link>
-                        Welcome, {props.user.firstName}
-                        <Link to='/howitworks' className='u-pull-right'>How It Works</Link>
-                    </div>
-                  </div>
-              </div>
-        </nav>
-    );
-}
+const SignedInNav = (props) => (
+    <nav className='navbar'>
+        <div className='container'>
+            <div className='row'>
+                <div className='three columns'>
+                    <Link to='/'><img src={logo} alt='Job or Not' /></Link>
+                </div>
+                <div className='nine columns'>
+                    <Link to='/' className='u-pull-right' onClick={(e) => {
+                        {/*e.preventDefault();*/}
+                        props.handleSignOut();
+                        props.history.push('/');
+                        }}>Sign Out</Link>
+                    <Link to='/resume-display' className='u-pull-right'>Your Resume</Link>
+                    <Link to='/profile' className='u-pull-right'>Profile</Link>
+                    Welcome, {props.user.firstName}
+                    <Link to='/howitworks' className='u-pull-right'>How It Works</Link>
+                </div>
+                </div>
+            </div>
+    </nav>
+);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignedInNav);
+
+SignedInNav.propTypes = {
+    user: React.PropTypes.object,
+    handleSignOut: React.PropTypes.func,
+    history: React.PropTypes.any
+};

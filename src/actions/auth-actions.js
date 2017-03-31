@@ -28,6 +28,13 @@ export function userSignUpSuccess(user) {
     };
 }
 
+export function userUpdateProfileSuccess(user) {
+    return {
+        type: 'USER_UPDATE_PROFILE_SUCCESS',
+        user
+    };
+}
+
 export function setToken(token) {
     return {
         type: 'SET_TOKEN',
@@ -45,6 +52,15 @@ export function sendSignUp(options) {
     };
 }
 
+export function updateProfile(options) {
+    return (dispatch) => {
+        return fetcher(options)
+            .then(user => {
+                dispatch(userUpdateProfileSuccess(user));
+            })
+            .catch(() => dispatch(itemsHasErrored(true)));
+    };
+}
 export function sendLogIn(options) {
     return (dispatch) => {
         return fetcher(options)

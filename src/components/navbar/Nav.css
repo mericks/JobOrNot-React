@@ -1,0 +1,36 @@
+/*
+
+#6290c3 Silver Lake Blue
+#62e7da Columbia Blue
+#1a1b41 Yankees Blue
+#f7fff4 Mint Cream
+#baff29 Green-Yellow
+
+*/
+
+
+/* Navigation Bar & Footer
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+nav {
+  width: 100%;
+  color: #1a1b41;
+  background-color: #baff29;
+  position: fixed;
+  padding: 10px;
+  display: inline-block;
+}
+
+.navbar a {
+  color: #1a1b41;
+  text-decoration: none;
+}
+
+ .navbar a:hover {
+  color: #1a1b41;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.u-pull-right {
+  margin-left: 80px;
+}

@@ -31,7 +31,7 @@ const ProfileInfo = (props) => {
     // console.log('fields is', fields);
     return (
         <div>
-            <h3>Profile</h3>
+            <h3>Your Profile</h3>
             <p>Name: {user.firstName} {user.lastName}</p>
             <p>Username: {user.username}</p>
             <p>Email: {user.email}</p>

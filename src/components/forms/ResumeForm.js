@@ -51,7 +51,7 @@ class ResumeForm extends Component {
     render() {
         return (
             <div>
-                <h1>THIS FORM ADD TALENT RESUME</h1>
+                <h1>Add Your Resume and Skills!</h1>
                 <UploadFiles />
                 <form onSubmit={this.handleFormSubmit}>
                     <SingleInput 

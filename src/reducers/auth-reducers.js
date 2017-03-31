@@ -24,7 +24,12 @@ export function userAuth(state = initialState, action) {
                 isLoggedIn: false,
                 user: null,
                 token: null
-            }
+            };
+        case 'USER_UPDATE_PROFILE_SUCCESS':
+            return {
+                ...state,
+                user: action.user,
+            };
         default:
             return state;
     }

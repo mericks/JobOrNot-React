@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PDF from 'react-pdfjs';
-import { resumeFetchData } from '../../actions/ResumeDisplay-actions';
+import { resumeFetchData, resumeFetchFile } from '../../actions/ResumeDisplay-actions';
 
 function GetResume(props) {
     if (!props.resume) {
@@ -14,6 +14,12 @@ function GetResume(props) {
         </div>
     );  
 }
+
+// function itterateResumes(props) {
+//     let index = 0;
+
+// }
+
 
 class ResumeDisplay extends React.Component {
     constructor(props) {
@@ -55,11 +61,14 @@ class ResumeDisplay extends React.Component {
     render() {
         return (
             <div>
+/* original on master before merge conflict
                 <GetResume 
                     resume={this.props.resumes[this.state.currentResume]} 
                     token={this.props.token} />
                 <button onClick={this.handleVoteUp}>Yes</button>
                 <button onClick={this.handleVoteDown}>No</button>
+original on master before merge conflict*/
+                <GetResume resume={this.props.resumes[0]} fetch={this.props.fetchFile} token={this.props.token} />
             </div>
         );
     }
@@ -77,6 +86,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         fetchData: (options) => dispatch(resumeFetchData(options)),
+        fetchFile: (options) => dispatch(resumeFetchFile(options))
     };
 }
 
@@ -91,6 +101,7 @@ ResumeDisplay.propTypes = {
 };
 
 GetResume.propTypes = {
+    fetch: React.PropTypes.func,
     resume: React.PropTypes.object,
     token: React.PropTypes.string
 };

@@ -34,8 +34,6 @@ const ProfileInfo = (props) => {
             <p>Name: {user.firstName} {user.lastName}</p>
             <p>Username: {user.username}</p>
             <p>Email: {user.email}</p>
-            <p>Company: {user.company}</p>
-            <p>Favorited resumes: {user.likedResumes}</p>
         </div>
     );
 }; 

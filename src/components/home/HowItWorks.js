@@ -22,7 +22,7 @@ const HowItWorks = () => (
                             save those you like into a collection. Click RIGHT for <strong>job</strong>, LEFT 
                             for <strong>not</strong>.</li> 
                             <li>Wash, rinse, repeat for new roles. It's that simple!</li>
-                            <li>Your profile page stores your collection of hot resumes for you to ponder at your leisure.</li>
+                            <li>Ponder the best resumes at your leisure. We save a collection of your favorites, accessible on your profile page.</li>
                         </ol>
                         <h5 className='hand'>Happy Hunting!</h5>
                     </p>

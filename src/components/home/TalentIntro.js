@@ -14,9 +14,9 @@ const TalentIntro = () => (
           </div>
           <div className='eight columns'>
             <h3 className='headline'>Talent. You know who you are!</h3>
-            <p>We put an end to the black box of a typical job search.</p>
-            <p>Load your resume once. Access recruiters looking for talent like you.</p>
-            <p>You'll Gain new insight on how effective your resume is performing as deliver stats on the number of times your resume has been viewed vs saved.</p>
+            <p>We've put an end to the time-consuming, black box job search.</p>
+            <p>Load your resume once. Access recruiters looking for talented people you.</p>
+            <p>Bonus! You'll gain new insight on the effectiveness of your resume as we deliver stats on times viewed vs times saved.</p>
           </div>
         </div>
       </div>

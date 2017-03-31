@@ -56,24 +56,26 @@ class SignInForm extends Component {
                 <Nav button={this.props.button}/>
                 <div className='container topComponent'>
                     <div className='row'>
+                        <h3 className='headline centerText'>Sign in</h3>
+                    </div>
+                    <div className='row'>
+                        <div className='three columns offset-by-five'>
                                 <form onSubmit={this.handleFormSignIn}>
-                                    <h3 className='headline'>Sign in</h3>
                                     <SingleInput 
                                         title={'User Name'}
                                         name={'username'}
                                         inputType={'text'}
                                         content={this.state.username}
                                         controlFunc={this.handleChange}
-                                        placeholder={'Select a User Name'} />
+                                        placeholder={'Select a User Name'} /><br />
                                     <SingleInput 
                                         title={'Password'}
                                         name={'password'}
                                         inputType={'password'}
                                         content={this.state.password}
                                         controlFunc={this.handleChange}
-                                        placeholder={'Select a Password'} />
+                                        placeholder={'Select a Password'} /><br />
                                     <input 
-                                        color='baff29'
                                         type='submit'
                                         value='submit'/>
                                     <br />
@@ -84,6 +86,7 @@ class SignInForm extends Component {
                                         Clear Form
                                     </button>
                                 </form>
+                            </div>
                 </div>
             </div>
         </div>

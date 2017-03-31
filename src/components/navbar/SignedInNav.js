@@ -30,7 +30,6 @@ const SignedInNav = (props) => (
                         props.handleSignOut();
                         props.history.push('/');
                         }}>Sign Out</Link>
-                    <Link to='/resume-display' className='u-pull-right'>Your Resume</Link>
                     <Link to='/profile' className='u-pull-right'>Profile</Link>
                     Welcome, {props.user.firstName}
                     <Link to='/howitworks' className='u-pull-right'>How It Works</Link>

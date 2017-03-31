@@ -114,81 +114,95 @@ class RecruiterForm extends Component {
         return ( 
             <div>
                 <Nav />
-                <form onSubmit={this.handleFormSignUp}>
-                    <h1>THIS FORM SIGNS UP RECRUITERS</h1>
-                    <SingleInput 
-                        title={'First Name'}
-                        name={'firstName'}
-                        inputType={'text'}
-                        content={this.state.firstName}
-                        controlFunc={this.handleChange}
-                        placeholder={'First Name'} />
-                    <SingleInput 
-                        title={'Last Name'}
-                        name={'lastName'}
-                        inputType={'text'}
-                        content={this.state.lastName}
-                        controlFunc={this.handleChange}
-                        placeholder={'Last Name'} />
-                    <SingleInput 
-                        title={'User Name'}
-                        name={'username'}
-                        inputType={'text'}
-                        content={this.state.username}
-                        controlFunc={this.handleChange}
-                        placeholder={'Select a User Name'} />
-                    <SingleInput 
-                        title={'Email Address'}
-                        name={'email'}
-                        inputType={'text'}
-                        content={this.state.email}
-                        controlFunc={this.handleChange}
-                        placeholder={'Email Address'} />
-                    <SingleInput 
-                        title={'Password'}
-                        name={'password'}
-                        inputType={'password'}
-                        content={this.state.password}
-                        controlFunc={this.handleChange}
-                        placeholder={'Select a Password'} />
-                    <SingleInput 
-                        title={'Company'}
-                        name={'company'}
-                        inputType={'text'}
-                        content={this.state.company}
-                        controlFunc={this.handleChange}
-                        placeholder={'Company'} />
-                    <SingleInput 
-                        title={'Title of Role You are Working to Fill'}
-                        name={'jobTitleToFill'}
-                        inputType={'text'}
-                        content={this.state.jobTitleToFill}
-                        controlFunc={this.handleChange}
-                        placeholder={'Job Title'} />
-                    <SingleInput 
-                        title={'Company for Role You are Working to Fill'}
-                        name={'jobCompanyToFill'}
-                        inputType={'text'}
-                        content={this.state.jobCompanyToFill}
-                        controlFunc={this.handleChange}
-                        placeholder={'Hiring Company'} />
-                    <button 
-                        type='button'
-                        onClick={this.handleFormClear}
-                    >
-                        Clear Form
-                    </button>
-                    <input 
-                        type='submit'
-                        value='submit'/>
-                    <button
-                        type='button'
-                        onClick={this.handleRecruiterUpdate}
-                    >
-                        Update profile
-                    </button>
+                    <div className='container topComponent'>
+                        <div className='row'>
+                            <h3 className='headline centerText'>Recruiter Sign Up</h3>
+                        </div>
+                        <form onSubmit={this.handleFormSignUp}>
+                        <div className='row'>
+                            <div className='three columns offset-by-three'>
+                                <SingleInput 
+                                    title={'First Name'}
+                                    name={'firstName'}
+                                    inputType={'text'}
+                                    content={this.state.firstName}
+                                    controlFunc={this.handleChange}
+                                    placeholder={'First Name'} /><br />
+                                <SingleInput 
+                                    title={'User Name'}
+                                    name={'username'}
+                                    inputType={'text'}
+                                    content={this.state.username}
+                                    controlFunc={this.handleChange}
+                                    placeholder={'Select a User Name'} /><br />
+                                <SingleInput 
+                                    title={'Email Address'}
+                                    name={'email'}
+                                    inputType={'text'}
+                                    content={this.state.email}
+                                    controlFunc={this.handleChange}
+                                    placeholder={'Email Address'} /><br />
+                            </div>
+                            <div className='three columns offset-by-one'>
+                                <SingleInput 
+                                    title={'Last Name'}
+                                    name={'lastName'}
+                                    inputType={'text'}
+                                    content={this.state.lastName}
+                                    controlFunc={this.handleChange}
+                                    placeholder={'Last Name'} /><br />
+                                <SingleInput 
+                                    title={'Password'}
+                                    name={'password'}
+                                    inputType={'password'}
+                                    content={this.state.password}
+                                    controlFunc={this.handleChange}
+                                    placeholder={'Select a Password'} /><br />
+                                <SingleInput 
+                                    title={'Company'}
+                                    name={'company'}
+                                    inputType={'text'}
+                                    content={this.state.company}
+                                    controlFunc={this.handleChange}
+                                    placeholder={'Company'} /><br />
+                                {/*<SingleInput 
+                                    title={'Title of Role You are Working to Fill'}
+                                    name={'jobTitleToFill'}
+                                    inputType={'text'}
+                                    content={this.state.jobTitleToFill}
+                                    controlFunc={this.handleChange}
+                                    placeholder={'Job Title'} />
+                                <SingleInput 
+                                    title={'Company for Role You are Working to Fill'}
+                                    name={'jobCompanyToFill'}
+                                    inputType={'text'}
+                                    content={this.state.jobCompanyToFill}
+                                    controlFunc={this.handleChange}
+                                    placeholder={'Hiring Company'} />*/}
+                            </div>
+                        </div>
+                    <div className='row multipleButtons'>
+                        <div className='four columns offset-by-four centerText'>
+                            <input 
+                                type='submit'
+                                value='submit'/><br />
+                            <button 
+                                type='button'
+                                onClick={this.handleFormClear}>
+                                Clear Form
+                            </button><br />
+                            <button
+                                type='button'
+                                onClick={this.handleRecruiterUpdate}>
+                                Update profile
+                            </button>
+
+                        </div>
+
+                    </div>
                 </form>
             </div>
+        </div>
         );
     };
 }

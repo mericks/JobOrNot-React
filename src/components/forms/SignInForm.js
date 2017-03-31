@@ -73,6 +73,7 @@ class SignInForm extends Component {
                                         controlFunc={this.handleChange}
                                         placeholder={'Select a Password'} />
                                     <input 
+                                        color='baff29'
                                         type='submit'
                                         value='submit'/>
                                     <br />

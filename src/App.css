@@ -46,3 +46,10 @@ body {
 .centerText {
   text-align: center;
 }
+
+/* Sign Up Button
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.signUpButton {
+   text-align: center;
+    background-color: #baff29;
+}

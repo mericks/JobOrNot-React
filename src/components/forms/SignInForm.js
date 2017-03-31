@@ -56,7 +56,7 @@ class SignInForm extends Component {
                 <Nav button={this.props.button}/>
                 <div className='container topComponent'>
                     <div className='row'>
-                        <h3 className='headline centerText'>Sign in</h3>
+                        <h3 className='headline centerText'>Sign In</h3>
                     </div>
                     <div className='row'>
                         <div className='three columns offset-by-five'>

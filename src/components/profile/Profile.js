@@ -20,7 +20,6 @@ const Profile = (props) => {
         <div>
             <Nav />
             <h1>Hello {props.user.firstName}</h1>
-            <ProfileInfo />
             <ProfileType />
         </div>
     );

@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import ResumeForm from '../forms/ResumeForm';
 import TalentStats from './TalentStats';
 
@@ -17,15 +18,16 @@ const TalentProfile = (props) => {
 
     return (
         <div>
+            <Link to='/talentsignup'>Edit profile</Link>
             <p>THIS IS TALENTPROFILE SECTION</p>
             <TalentStatus />
         </div>
     );
 };
 
-export default connect(mapStateToProps)(TalentProfile);
 
 TalentProfile.propTypes = {
     user: PropTypes.object
 };
 
+export default connect(mapStateToProps)(TalentProfile);

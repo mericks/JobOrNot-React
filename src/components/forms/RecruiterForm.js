@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import SingleInput from './SingleInput';
 import Nav from '../navbar/Nav';
 import { connect } from 'react-redux';
-import { sendSignUp } from '../../actions/auth-actions';
+import { sendSignUp, updateProfile } from '../../actions/auth-actions';
 
 class RecruiterForm extends Component {
     constructor(props) {
@@ -22,6 +22,7 @@ class RecruiterForm extends Component {
         // this.handleFormUpdate = this.handleFormUpdate.bind(this);
         this.handleFormClear = this.handleFormClear.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleRecruiterUpdate = this.handleRecruiterUpdate.bind(this);
     }
 
     handleFormSignUp(e) {
@@ -73,6 +74,40 @@ class RecruiterForm extends Component {
 
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
+    }
+
+    handleRecruiterUpdate(e) {
+        e.preventDefault();
+
+        const formPayload = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            username: this.state.username,
+            email: this.state.email,
+            password: this.state.password,
+            company: this.state.company,
+            jobTitleToFill: this.state.jobTitleToFill,
+            jobCompanyToFill: this.state.jobCompanyToFill,
+            role: 'recruiter'
+        };
+
+        this.props.updateProfile({ 
+            method: 'PATCH', 
+            path: '/changeAccountInfo', 
+            body: formPayload,
+            token: this.props.token,
+        })
+            .then((action) => {
+                if (action.type !== 'ITEMS_HAS_ERRORED') {
+                    // this.handleFormClear(e);
+                    // this.props.history.push('/profile'); 
+                } else alert('Update was not executed correctly. Please try again.');
+            })
+            .catch(() => {
+                console.log('at catch');
+                this.handleFormClear(e);
+                this.props.history.push('/profile');
+            });    
     }
  
     render() {
@@ -146,19 +181,32 @@ class RecruiterForm extends Component {
                     <input 
                         type='submit'
                         value='submit'/>
+                    <button
+                        type='button'
+                        onClick={this.handleRecruiterUpdate}
+                    >
+                        Update profile
+                    </button>
                 </form>
             </div>
         );
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapStateToProps(state) {
     return {
-        signUp: (options) => dispatch(sendSignUp(options))
+        token: state.userAuth.token
     };
 }
 
-export default connect(null, mapDispatchToProps)(RecruiterForm);
+function mapDispatchToProps(dispatch) {
+    return {
+        signUp: (options) => dispatch(sendSignUp(options)),
+        updateProfile: (options) => dispatch(updateProfile(options))
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecruiterForm);
 
 RecruiterForm.propTypes = {
     signUp: PropTypes.func

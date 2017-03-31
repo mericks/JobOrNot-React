@@ -62,22 +62,22 @@ class SignInForm extends Component {
                         <div className='three columns offset-by-five'>
                                 <form onSubmit={this.handleFormSignIn}>
                                     <SingleInput 
-                                        title={'User Name'}
+                                        title={'Username'}
                                         name={'username'}
                                         inputType={'text'}
                                         content={this.state.username}
                                         controlFunc={this.handleChange}
-                                        placeholder={'Select a User Name'} /><br />
+                                        placeholder={'Username'} /><br />
                                     <SingleInput 
                                         title={'Password'}
                                         name={'password'}
                                         inputType={'password'}
                                         content={this.state.password}
                                         controlFunc={this.handleChange}
-                                        placeholder={'Select a Password'} /><br />
+                                        placeholder={'Password'} /><br />
                                     <input 
                                         type='submit'
-                                        value='submit'/>
+                                        value='Submit'/>
                                     <br />
                                     <button                         
                                         type='button'

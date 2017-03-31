@@ -54,33 +54,38 @@ class SignInForm extends Component {
         return (
             <div>
                 <Nav button={this.props.button}/>
-                <form onSubmit={this.handleFormSignIn}>
-                    <h1>THIS IS THE SIGN IN FORM</h1>
-                    <SingleInput 
-                        title={'User Name'}
-                        name={'username'}
-                        inputType={'text'}
-                        content={this.state.username}
-                        controlFunc={this.handleChange}
-                        placeholder={'Select a User Name'} />
-                    <SingleInput 
-                        title={'Password'}
-                        name={'password'}
-                        inputType={'password'}
-                        content={this.state.password}
-                        controlFunc={this.handleChange}
-                        placeholder={'Select a Password'} />
-                    <button                         
-                        type='button'
-                        onClick={this.handleFormClear}
-                    >
-                        Clear Form
-                    </button>
-                    <input 
-                        type='submit'
-                        value='submit'/>
-                </form>
+                <div className='container topComponent'>
+                    <div className='row'>
+                                <form onSubmit={this.handleFormSignIn}>
+                                    <h3 className='headline'>Sign in</h3>
+                                    <SingleInput 
+                                        title={'User Name'}
+                                        name={'username'}
+                                        inputType={'text'}
+                                        content={this.state.username}
+                                        controlFunc={this.handleChange}
+                                        placeholder={'Select a User Name'} />
+                                    <SingleInput 
+                                        title={'Password'}
+                                        name={'password'}
+                                        inputType={'password'}
+                                        content={this.state.password}
+                                        controlFunc={this.handleChange}
+                                        placeholder={'Select a Password'} />
+                                    <input 
+                                        type='submit'
+                                        value='submit'/>
+                                    <br />
+                                    <button                         
+                                        type='button'
+                                        onClick={this.handleFormClear}
+                                    >
+                                        Clear Form
+                                    </button>
+                                </form>
+                </div>
             </div>
+        </div>
         );
     };
 }

@@ -165,20 +165,6 @@ class RecruiterForm extends Component {
                                     content={this.state.company}
                                     controlFunc={this.handleChange}
                                     placeholder={'Company'} /><br />
-                                {/*<SingleInput 
-                                    title={'Title of Role You are Working to Fill'}
-                                    name={'jobTitleToFill'}
-                                    inputType={'text'}
-                                    content={this.state.jobTitleToFill}
-                                    controlFunc={this.handleChange}
-                                    placeholder={'Job Title'} />
-                                <SingleInput 
-                                    title={'Company for Role You are Working to Fill'}
-                                    name={'jobCompanyToFill'}
-                                    inputType={'text'}
-                                    content={this.state.jobCompanyToFill}
-                                    controlFunc={this.handleChange}
-                                    placeholder={'Hiring Company'} />*/}
                             </div>
                         </div>
                     <div className='row multipleButtons'>

@@ -32,6 +32,4 @@ const RecruiterProfile = (props) => (
     </div>
 );
 
-
-
 export default connect(mapStateToProps)(RecruiterProfile);

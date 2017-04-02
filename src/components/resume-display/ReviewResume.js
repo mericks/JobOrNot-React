@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PDF from 'react-pdfjs';
 
-
 function FetchResume(props) {
-    console.log('props: ', props);
     return (
         <div>
             <PDF file={`/resume/${props.resumeId}?accessToken=${props.token}`} />

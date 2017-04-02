@@ -23,7 +23,6 @@ class ResumeSearchForm extends Component {
         e.preventDefault();
 
         const jobSkills = this.state.jobSkills.split(' ');
-        console.log('jobSkills: ', jobSkills);
 
         this.props.fetchData({ method: 'GET', path: `/resumes?skills[]=${jobSkills}`, token: this.props.token });
         this.handleFormClear(e);

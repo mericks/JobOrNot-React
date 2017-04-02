@@ -47,7 +47,7 @@ class RecruiterLikedResumes extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state) {
     return {
         user: state.userAuth.user,
         token: state.userAuth.token

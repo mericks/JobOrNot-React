@@ -16,7 +16,6 @@ class TalentForm extends Component {
         };
 
         this.handleFormSignUp = this.handleFormSignUp.bind(this);
-        // this.handleFormUpdate = this.handleFormUpdate.bind(this);
         this.handleFormClear = this.handleFormClear.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleTalentUpdate = this.handleTalentUpdate.bind(this);
@@ -46,10 +45,6 @@ class TalentForm extends Component {
             this.props.history.push('/talentsignupcont');
         });
     }
-
-    // handleFormUpdate() {
-    //     // update form logic goes here
-    // }
 
     handleFormClear(e) {
         // e.preventDefault();

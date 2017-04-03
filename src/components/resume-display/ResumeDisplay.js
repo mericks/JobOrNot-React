@@ -30,12 +30,18 @@ class ResumeDisplay extends React.Component {
         e.preventDefault();
         let resumeCount = this.state.currentResumeIndex;
         let currentResumeId = this.props.resumes[this.state.currentResumeIndex]._id;
-       // let currentResume = this.props.resumes[this.state.currentResumeIndex];
+        let timesViewed = 1;
+        if (this.props.resumes[resumeCount].timesViewed) {
+            timesViewed = this.props.resumes[resumeCount].timesViewed + 1;
+        }
 
         const payLoad = {
             likedResumes: currentResumeId,
-            likeBy: this.props.user._id
+            likeBy: this.props.user._id,
+            timesViewed: timesViewed
         };
+
+        console.log('payLoad: ', payLoad);
 
         resumeCount++;
 
@@ -50,11 +56,23 @@ class ResumeDisplay extends React.Component {
         e.preventDefault();
 
         let resumeCount = this.state.currentResumeIndex;
+        let currentResumeId = this.props.resumes[this.state.currentResumeIndex]._id;
+        let timesViewed = 0;
+        if (this.props.resumes[currentResumeId].timesViewed) {
+            timesViewed = this.props.resumes[this.state.currentResumeIndex].timesViewed + 1;
+        }
+
+        const payLoad = {
+            timesViewed: timesViewed
+        };
 
         resumeCount++;
+
         this.setState({
             currentResumeIndex: resumeCount
         });
+
+        this.props.voteUp({ method: 'PATCH', path: `/resume/${currentResumeId}`, body: payLoad, token: this.props.token });
     }
 
     render() {

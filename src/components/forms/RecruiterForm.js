@@ -53,10 +53,6 @@ class RecruiterForm extends Component {
         });
     }
 
-    // handleFormUpdate() {
-    //     // update form logic goes here
-    // }
-
     handleFormClear(e) {
         // e.preventDefault();
         this.setState({
@@ -208,5 +204,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(RecruiterForm);
 
 RecruiterForm.propTypes = {
     signUp: PropTypes.func,
-    history: PropTypes.any
+    history: PropTypes.any,
+    updateProfile: PropTypes.func,
+    token: PropTypes.string
 };

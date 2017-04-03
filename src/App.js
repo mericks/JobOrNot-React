@@ -9,10 +9,10 @@ import Profile from './components/profile/Profile';
 import HowItWorks from './components/home/HowItWorks';
 import ReviewResume from './components/resume-display/ReviewResume';
 import TalentSignUpCont from './components/profile/TalentSignUpCont';
+import DeleteProfile from './components/profile/DeleteProfile';
 import './vendor/normalize.css';
 import './vendor/skeleton.css';
 import './App.css';
-
 
 function App() {
     return (
@@ -28,6 +28,7 @@ function App() {
             <Route exact path='/resume-display' component={ResumeDisplay} />
             <Route exact path='/review-resume' component={ReviewResume} />
             <Route exact path='/talentsignupcont' component={TalentSignUpCont} />
+            <Route exact path='/delete-profile' component={DeleteProfile} />
           </Switch>
         </div>
       </Router>

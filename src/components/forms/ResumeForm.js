@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SingleInput from './SingleInput';
 import { sendSkills } from '../../actions/upload-actions';
-import UploadFiles from './UploadFiles';
 
 class ResumeForm extends Component {
     constructor(props) {
@@ -12,8 +11,6 @@ class ResumeForm extends Component {
             location: ''
         };
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
-        // this.handleFormUpdate = this.handleFormUpdate.bind(this);
-
         this.handleFormClear = this.handleFormClear.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
@@ -22,8 +19,6 @@ class ResumeForm extends Component {
         e.preventDefault();
 
         const skills = this.state.skills.split(' ');
-
-        console.log('skills: ', skills);
 
         const formPayload = {
             skills: skills,

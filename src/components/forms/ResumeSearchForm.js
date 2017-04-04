@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SingleInput from './SingleInput';
-import { sendLogIn } from '../../actions/auth-actions';
+import { Link } from 'react-router-dom';
+import { resumeFetchData } from '../../actions/ResumeDisplay-actions';
 
 class ResumeSearchForm extends Component {
     constructor(props) {
@@ -20,17 +21,10 @@ class ResumeSearchForm extends Component {
 
     handleFormResumeSearch(e) {
         e.preventDefault();
-    /***** 
-    Needs to take keyword inputs, transition to resume viewer 
-    (Route to new component), and tell resume viewer what resumes
-    to populate based on keywords
-    *****/
 
-        // const formPayload = {
+        const jobSkills = this.state.jobSkills.split(' ');
 
-        // };
-
-        // this.props.signIn({ method: 'POST', path: '/signin', body: formPayload });
+        this.props.fetchData({ method: 'GET', path: `/resumes?skills[]=${jobSkills}`, token: this.props.token });
         this.handleFormClear(e);
     }
 
@@ -72,9 +66,11 @@ class ResumeSearchForm extends Component {
                     content={this.state.jobSkills}
                     controlFunc={this.handleChange}
                     placeholder={'Job skills'} /><br />
-                <input
-                    type='submit'
-                    value='Review Resumes' /><br />
+                <button type='submit' onClick={this.handleFormResumeSearch}>
+                    <Link to='/resume-display'>   
+                        Review Resumes
+                    </Link>
+                </button><br />
                 <button onClick={this.handleFormClear}>
                     Clear Form
                     </button>
@@ -83,15 +79,22 @@ class ResumeSearchForm extends Component {
     };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapStateToProps(state) {
     return {
-        signIn: (options) => dispatch(sendLogIn(options))
+        token: state.userAuth.token,
+        user: state.userAuth.user
     };
 }
 
-export default connect(null, mapDispatchToProps)(ResumeSearchForm);
+function mapDispatchToProps(dispatch) {
+    return {
+        fetchData: (options) => dispatch(resumeFetchData(options)),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ResumeSearchForm);
 
 ResumeSearchForm.propTypes = {
-    button: React.PropTypes.element,
-    signIn: React.PropTypes.func
+    fetchData: React.PropTypes.func,
+    token: React.PropTypes.string
 };

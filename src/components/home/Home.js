@@ -13,7 +13,7 @@ const Home = () => {
             <Nav />
             <Welcome />
             <RecruiterIntro />
-            <WelcomeBuffer />>
+            <WelcomeBuffer />
             <TalentIntro />
             <Footer />
         </div> 

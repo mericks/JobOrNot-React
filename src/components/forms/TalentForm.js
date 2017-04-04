@@ -16,7 +16,6 @@ class TalentForm extends Component {
         };
 
         this.handleFormSignUp = this.handleFormSignUp.bind(this);
-        // this.handleFormUpdate = this.handleFormUpdate.bind(this);
         this.handleFormClear = this.handleFormClear.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleTalentUpdate = this.handleTalentUpdate.bind(this);
@@ -42,15 +41,10 @@ class TalentForm extends Component {
             } else alert('Signup was not executed correctly. Please try again.');
         })
         .catch(() => {
-            console.log('at catch');
             this.handleFormClear(e);
             this.props.history.push('/talentsignupcont');
         });
     }
-
-    // handleFormUpdate() {
-    //     // update form logic goes here
-    // }
 
     handleFormClear(e) {
         // e.preventDefault();
@@ -92,7 +86,6 @@ class TalentForm extends Component {
                 } else alert('Update was not executed correctly. Please try again.');
             })
             .catch(() => {
-                console.log('at catch');
                 this.handleFormClear(e);
                 this.props.history.push('/profile');
             });    
@@ -192,5 +185,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(TalentForm);
 
 TalentForm.propTypes = {
     signUp: PropTypes.func,
-    history: PropTypes.any
+    history: PropTypes.any,
+    token: PropTypes.string,
+    updateProfile: PropTypes.func
 };

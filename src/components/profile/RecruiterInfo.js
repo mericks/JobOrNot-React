@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const mapStateToProps = (state) => {
     return {
-        user: state.userAuth.user   // or will it be state.user?
+        user: state.userAuth.user
     };
 };
 

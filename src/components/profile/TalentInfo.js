@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import DeleteProfile from './DeleteProfile';
 
 const mapStateToProps = (state) => {
     return {
-        user: state.userAuth.user   // or will it be state.user?
+        user: state.userAuth.user
     };
 };
 
@@ -15,7 +16,8 @@ const TalentInfo = (props) => (
             <p>Username: {props.user.username}</p>
             <p>Email: {props.user.email}</p>
         <br />
-        <Link to='/talentsignup'><button>Edit profile</button></Link>
+        <button><Link to='/talentsignup'>Edit profile</Link></button>
+        <DeleteProfile />
     </div>
 );
 

@@ -9,7 +9,7 @@ class SignInForm extends Component {
         super(props);
         this.state = {
             username: '',
-            password: '',   // TODO: DON'T BRING PW BACK IN THE STATE. HANDLE IN BACKEND
+            password: ''
         };
 
         this.handleFormSignIn = this.handleFormSignIn.bind(this);

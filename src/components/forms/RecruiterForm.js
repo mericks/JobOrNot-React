@@ -48,15 +48,10 @@ class RecruiterForm extends Component {
             } else alert('Signup was not executed correctly. Please try again.');
         })
         .catch(() => {
-            console.log('at catch');
             this.handleFormClear(e);
             this.props.history.push('/profile'); 
         });
     }
-
-    // handleFormUpdate() {
-    //     // update form logic goes here
-    // }
 
     handleFormClear(e) {
         // e.preventDefault();
@@ -104,7 +99,6 @@ class RecruiterForm extends Component {
                 } else alert('Update was not executed correctly. Please try again.');
             })
             .catch(() => {
-                console.log('at catch');
                 this.handleFormClear(e);
                 this.props.history.push('/profile');
             });    
@@ -209,5 +203,8 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(RecruiterForm);
 
 RecruiterForm.propTypes = {
-    signUp: PropTypes.func
+    signUp: PropTypes.func,
+    history: PropTypes.any,
+    updateProfile: PropTypes.func,
+    token: PropTypes.string
 };

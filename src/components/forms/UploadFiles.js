@@ -21,6 +21,7 @@ class UploadFiles extends React.Component {
             name: this.state.name,
             token: this.props.token
         });
+        alert('resume uploaded!');
     }
 
     handleFileChange(e) {
@@ -33,12 +34,11 @@ class UploadFiles extends React.Component {
 
     render() {
         return (
-            /*TODO: have a message about upload success*/
             <div>
                 <h4>Upload Resume</h4>
                 <form onSubmit={this.handleFileUpload}>
                     Resume: <input type='file' name='resume' onChange={this.handleFileChange} />
-                    <button type='submit' onClick={this.handleFileUpload}>Submit Resume</button> 
+                    <button type='submit' onClick={this.handleFileUpload}>Submit Resume</button>
                 </form>
             </div>
         );
